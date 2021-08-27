@@ -13,6 +13,6 @@ $login_user = $_SESSION['login_user'];
   $_SESSION['flash_message'] = null;
  //全プロフィール情報を取得する
  $profiles = Profile::all();
-//  var_dump($profiles);
+ var_dump($profiles);
 
  include_once 'views/profile_show_view.php';

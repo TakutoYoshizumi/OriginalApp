@@ -117,23 +117,4 @@
             return 'PDO exception: ' . $e->getMessage();
                 }
             }     
-     
-     //ログインチェック　メソッド
-     public static function login($userID,$password){
-         try{
-                $pdo = self::get_connection();
-                $stmt = $pdo -> prepare("SELECT * FROM users WHERE userID=:userID AND password=:password");
-                $stmt->bindParam(':userID', $userID, PDO::PARAM_STR);
-                $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-                $stmt->execute();
-                // フェッチの結果を、Userクラスのインスタンスにマッピングする
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
-                // Userクラスのインスタンスを返す
-                $user = $stmt->fetch();  
-                self::close_connection($pdo, $stmp);
-                return $user;                
-         }catch(PDOException $e){
-                return 'PDO exception: ' . $e->getMessage();
-         }
-     }
   }

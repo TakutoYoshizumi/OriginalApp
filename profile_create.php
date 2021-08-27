@@ -5,7 +5,7 @@
   session_start();
   
   $login_user = $_SESSION["login_user"];
-  // var_dump($login_user);
+  var_dump($login_user);
   
   include_once "views/profile_create_view.php";
 

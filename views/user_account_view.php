@@ -34,6 +34,7 @@
                <ul>
                    <li><?=$login_user->name?></li>
                    <li><a href="profile_show.php">プロフィールへ</a></li>
+                   <li><a href="profile_create.php">プロフィールを作成する</a></li>
                </ul>
            </div>
            <div class="grid">
