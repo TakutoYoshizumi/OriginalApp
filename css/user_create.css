@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/user_create.jpg);
+  background-size: cover;
+  background-position: top;
+  display: flex;
+  padding: 24px 0;
+  justify-content: center; }
+  .wrapper .content {
+    width: 550px;
+    height: 600px;
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+    align-items: center;
+    box-sizing: border-box; }
+    .wrapper .content h1 {
+      font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+      letter-spacing: 2px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ff385c;
+      margin-bottom: 30px; }
+    .wrapper .content .flash_message {
+      flex-direction: column; }
+    .wrapper .content ul {
+      display: flex; }
+      .wrapper .content ul li {
+        font-size: 14px; }
+
+/*# sourceMappingURL=user_create.css.map */

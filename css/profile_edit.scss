@@ -1,0 +1,157 @@
+@import 'model.scss';
+$cWhite:#00000033;
+$cNavy:#484848;
+$cGreen:#008489;
+$cGray:#717171;
+@mixin font($size,$weight,$height){
+    font-size:$size;
+    font-weight:$weight;
+    line-height:$height;
+}
+@mixin section{
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $cWhite;
+}
+
+
+header{
+    height:90px;
+}
+.navbar{
+        padding: 20px 40px;
+        box-shadow: 5px 3px 10px 0px #00000052;
+        cursor: pointer;
+        
+        & h1{
+            @include title(20px,1px);
+            @include pink;
+            
+        }        
+        & #nav{
+                width: 90px;
+                height: 45px;
+                border: 1px solid #DDDDDD;
+                border-radius: 25px;
+                justify-content: space-around;
+                display: flex;
+                align-items: center;
+            
+            & .menu-btn{
+                background:transparent;
+                border:none;
+                position:relative;
+                
+                & > span{
+                    background: black;
+                    width: 22px;
+                    height: 2px;
+                    display: block;
+                    position: absolute;
+                    
+                    &:nth-child(1){
+                        top: -6px;
+                    }
+                    &:nth-child(3){
+                        top: 6px;
+                    }                    
+                }
+            }            
+        
+            & .user-icon {
+                width: 30px;
+                height: 30px;
+            
+                & img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+            }
+        }
+}
+
+main{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    
+    & .grid {
+       display: grid;
+        gap: 40px;
+        grid-template-columns: 1fr 2fr;
+        
+        & .grid-item-left{
+            height: 500px;
+            padding: 40px 20px;
+            border-radius: 8px;   
+            box-shadow: 0 2px 8px $cWhite;
+            text-align: center;
+            
+            & .icon{
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 1px solid #00000029;
+                padding: 10px;                
+            }
+                    
+        }
+    
+        & .grid-item-right{
+            height: 800px;
+            padding: 25px 40px;
+        
+            & .items{
+                margin-bottom:50px;
+                
+                & h2{
+                @include font(32px,400,2);
+                letter-spacing:3px;
+                color:$cNavy;
+                margin-bottom: 10px;                
+                }
+                
+                & ul{
+                    font-size:12px;
+                    & li:nth-child(1){
+                        margin-bottom:15px;
+                        color:$cGray;
+                    }
+                }
+            }
+            
+            & .profile{
+                margin-bottom: 50px;
+                
+                & h2{
+                @include font(20px,400,20px);
+                letter-spacing:2px;
+                color:$cNavy; 
+                margin-bottom:30px;
+                }
+                & P{
+                    @include font(16px,400,1);
+                    @include section;
+                }
+                & .flex{
+                    display: grid;
+                    grid-template-columns: 35% 35%;
+                    gap: 80px;
+                }
+            }
+            & ul{
+                font-size:12px;
+            }
+        }
+    }
+}
+
+footer{
+    background: #F7F7F7;
+    height: 100px;
+    width: 100%;
+}

@@ -1,0 +1,12 @@
+@mixin title($size,$space){
+    font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+    letter-spacing:$space;
+    font-size: $size;
+    font-weight: bold;
+}
+
+@mixin pink{
+    color: rgb(255, 56, 92);
+}
+
+

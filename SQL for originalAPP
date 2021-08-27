@@ -1,0 +1,25 @@
+
+
+//Profile
+
+//ユーザーテーブル
+create table users(
+    id int primary key auto_increment, 
+    name varchar(50) not null,
+    userID varchar(50) not null unique,
+    password varchar(50) not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+//プロフィール
+create table profile(
+    id int auto_increment primary key,
+    user_id int not null,
+    age varchar(50) not null,
+    gender varchar(50) not null,
+    job varchar(50) not null,
+    country varchar(50) not null,
+    introduction varchar(50) not null,
+    image varchar(255) not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+);
