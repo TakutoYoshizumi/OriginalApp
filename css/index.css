@@ -10,7 +10,7 @@
   justify-content: center; }
   .wrapper .content {
     width: 550px;
-    height: 510px;
+    height: 500px;
     background-color: #fff;
     border-radius: 30px;
     display: flex;
@@ -32,5 +32,11 @@
 
 span {
   color: #03a9f4; }
+
+.form-floating > label {
+  padding: 0.7rem .75rem; }
+  .form-floating > label span {
+    color: #212529;
+    font-size: 12px; }
 
 /*# sourceMappingURL=index.css.map */

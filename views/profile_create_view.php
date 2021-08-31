@@ -26,8 +26,8 @@
            <form action="profile_store.php" method="POST" enctype="multipart/form-data">
                年齢: <input type="text" name="age"><br>
                <label>
-               性別: <input type="radio" name="gender" value="men">男
-               　　　<input type="radio" name="gender" value="wemen">女
+               性別: <input type="radio" name="gender" value="男性">男性
+               　　　<input type="radio" name="gender" value="女性">女性
                </label><br>
                仕事: <input type="text" name="job"><br>
                滞在国: <input type="text" name="country"><br>

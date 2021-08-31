@@ -9,13 +9,20 @@
   // var_dump($_POST);
   // var_dump($_FILES);
   $login_user = $_SESSION["login_user"];
-  //入力情報を取得
+  var_dump($login_user);
+  
+  //プロフィール情報を取得
   $age = $_POST["age"];
   $gender = $_POST["gender"];
   $job = $_POST["job"];
   $country = $_POST["country"];
   $introduction = $_POST["introduction"];
   $image = $_FILES["image"]["name"];
+  
+  $profiles = new Profile($login_user->id,$age,$gender,$job,$country,$introduction,$image);
+  
+  //入力項目に誤りがないかチェック
+  $errors = $profiles->validate();
   
   //画像をアップロード
   //画像が選択されていれば
@@ -27,12 +34,22 @@
     $image = "";
   }
   
-  //ユーザーのプロフィールインスタンスを作成
-  $profile = new Profile($login_user->id,$age,$gender,$job,$country,$introduction,$image);
-  // var_dump($profile);
-  $flash_message = $profile->save();
-  $SESSION["flash_message"] = $flash_message;
+  $login_user = $_SESSION["login_user"];
+  $_SESSION["login_user"] = $login_user;
+  // 入力エラーが１つもなければ
+  if(count($errors) === 0){
+    //ユーザーのプロフィールインスタンスを作成
+    $flash_message = $profiles->save();
+    $SESSION["flash_message"] = $flash_message;
+    header("Location:profile_show.php?id=".$login_user->id);
+    exit;
+    
+    //入力エラーが１つでもあれば
+  }else{
+    var_dump($errors);
+    $SESSION["errors"] = $errors;
+    header("Location:profile_create.php");
+    exit;
+  }
   
-  header("Location:profil_show.php");
-  exit;
   

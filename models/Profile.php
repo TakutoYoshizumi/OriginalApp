@@ -31,7 +31,7 @@
                     
                     //新規登録の時
                     if($this->id === null){
-                        $stmt = $pdo -> prepare("INSERT INTO profile (user_id,age, gender,job,country,introduction,image) VALUES (:user_id,:age, :gender,:job,:country,:introduction,:image)");//変数値を保持しているのでprepare
+                        $stmt = $pdo -> prepare("INSERT INTO profiles (user_id,age, gender,job,country,introduction,image) VALUES (:user_id,:age, :gender,:job,:country,:introduction,:image)");//変数値を保持しているのでprepare
                         // バインド処理
                         $stmt->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
                         $stmt->bindParam(':age', $this->age, PDO::PARAM_INT);
@@ -44,13 +44,14 @@
                         self::close_connection($pdo, $stmp);
                         return "プロフィールの作成が成功しました";
                     }else{ //更新処理
-                        $stmt = $pdo -> prepare("UPDATE profile SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction WHERE id=:id");//変数値を保持しているのでprepare
+                        $stmt = $pdo -> prepare("UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE id=:id");//変数値を保持しているのでprepare
                         
                         $stmt->bindParam(':age', $this->age, PDO::PARAM_INT);
                         $stmt->bindParam(':gender', $this->gender, PDO::PARAM_STR);
                         $stmt->bindParam(':job', $this->job, PDO::PARAM_STR);
                         $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
                         $stmt->bindParam(':introduction', $this->introduction, PDO::PARAM_STR);
+                        $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT); 
                         // $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                         // 実行
@@ -67,16 +68,14 @@
      //入力チェック メソッド
      public function validate(){
          $errors = array();
-         if ($this->age === '') {
-             $errors[] = '年齢を入力してください';
+         if(!preg_match('/^[0-9\s]*$/',$this->age)){
+             $errors[]="数字で入力してください";
          }
-         if ($this->userID === '') {
-             $errors[] = 'ユーザーIDを入力してください';
+         if(!preg_match('/^[ぁ-んァ-ヶー一-龠\s]*$/',$this->job)){
+             $errors[]="ひらがな、カタカナ、漢字で入力してください";
          }
-         if($this->password ===""){
-            $errors[] ="パスワードを入力してください";
-         }elseif(!preg_match('/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/', $this->password)){
-            $errors[] = '半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードを入力してください';
+         if(!preg_match('/^[ぁ-んァ-ヶーa-zA-Z一-龠\s]*$/', $this->country)){
+            $errors[] = '数字、記号は入力できません';
          }
          return $errors;
      }
@@ -102,7 +101,7 @@
             
          try {
             $pdo = self::get_connection();
-            $stmt = $pdo -> prepare("SELECT * FROM profile WHERE id=:id");//変数値を保持しているのでprepare
+            $stmt = $pdo -> prepare("SELECT * FROM profiles WHERE id=:id");//変数値を保持しているのでprepare
             // バインド処理
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             // 実行

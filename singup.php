@@ -6,17 +6,20 @@
 
     // var_dump($_POST);
     $name = $_POST['name'];
-    $userID = $_POST['userID'];
+    $account = $_POST['account'];
     $password = $_POST['password'];
 
+    
+    
     //入力された値でユーザー登録
-    $user = new User($name, $userID, $password);
-    // var_dump($user);
+    $user = new User($name, $account, $password);
+    //入力チェック
+    $errors=$user->validation($user->account);
+    // var_dump($errors);
+    
 
-    //入力エラーチェック
-    $errors = $user->validate();
 
-    //入力エラーが１つでもあれば
+    // 入力エラーが１つでもあれば
     if (count($errors) === 0) {
         $flash_message = $user->save();
         $_SESSION['flash_message'] = $flash_message;

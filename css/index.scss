@@ -45,3 +45,11 @@ $cGray: #dee0e1;
 span{
     color: #03a9f4;
 }
+.form-floating>label{
+    padding: 0.7rem .75rem;
+    
+    & span{
+        color: #212529;
+        font-size:12px;
+    }
+}

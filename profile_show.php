@@ -6,13 +6,16 @@
  require_once 'models/User.php';
 
  session_start();
-
-$login_user = $_SESSION['login_user'];
+ 
+ $id =$_GET["id"];
+ var_dump($id);
+ $login_user = $_SESSION['login_user'];
 // var_dump($login_user);
   $flash_message = $_SESSION['flash_message'];
+//   var_dump($flash_message);
   $_SESSION['flash_message'] = null;
- //全プロフィール情報を取得する
- $profiles = Profile::all();
+ //ユーザーのプロフィール情報を取得
+ $profiles = Profile::find($id);
  var_dump($profiles);
 
  include_once 'views/profile_show_view.php';

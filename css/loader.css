@@ -1,0 +1,81 @@
+.pace-done #global-container {
+  transition: opacity 1s;
+  opacity: 1; }
+
+.pace-running #global-container {
+  opacity: 0; }
+
+.pace {
+  z-index: 2000;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px; }
+
+.pace.pace-inactive {
+  display: none; }
+
+.pace .pace-progress {
+  transform: none !important;
+  text-align: center; }
+
+.pace .pace-progress:after {
+  content: attr(data-progress-text);
+  display: block;
+  font-weight: 100;
+  font-size: 2em;
+  font-family: "Helvetica Neue","Yu Gothic","Meiryo",sans-serif;
+  color: #333333bf;
+  padding-top: 5px; }
+
+.pace-progress-inner {
+  width: 45px;
+  height: 45px;
+  background-color: #333333bf;
+  margin: 0 auto;
+  animation-name: sk-rotateplane;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards; }
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg); }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg); } }
+@-webkit-keyframes pace-theme-center-circle-spin {
+  from {
+    -webkit-transform: rotateY(0deg); }
+  to {
+    -webkit-transform: rotateY(360deg); } }
+@-moz-keyframes pace-theme-center-circle-spin {
+  from {
+    -moz-transform: rotateY(0deg); }
+  to {
+    -moz-transform: rotateY(360deg); } }
+@-ms-keyframes pace-theme-center-circle-spin {
+  from {
+    -ms-transform: rotateY(0deg); }
+  to {
+    -ms-transform: rotateY(360deg); } }
+@-o-keyframes pace-theme-center-circle-spin {
+  from {
+    -o-transform: rotateY(0deg); }
+  to {
+    -o-transform: rotateY(360deg); } }
+@keyframes pace-theme-center-circle-spin {
+  from {
+    transform: rotateY(0deg); }
+  to {
+    transform: rotateY(360deg); } }
+
+/*# sourceMappingURL=loader.css.map */

@@ -7,6 +7,7 @@
  session_start();
  
  // var_dump($_POST);
+ // var_dump($_FILES);
  $id=$_POST["id"];
  $introduction=$_POST["introduction"];
  $country=$_POST["country"];
@@ -14,11 +15,11 @@
  $job=$_POST["job"];
  $gender=$_POST["gender"];
  $image = $_FILES["image"]["name"];
- 
+
   
  //idから対象のプロフィール情報を取得
  $profiles = Profile::find($id);
- var_dump($profiles);
+ // var_dump($profiles);
  
  //情報を更新する
  $profiles->introduction=$introduction;

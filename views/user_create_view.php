@@ -13,7 +13,7 @@
       <div class="wrapper">
          <div class="content">
             <h1>新規ユーザー登録</h1>
-            <p>Wellocome</p>
+            <p>Welcome</p>
             <!--入力エラー表示-->
             <?php if($errors !== null):?>
             <ul class =flash_message>
@@ -29,7 +29,7 @@
                   <label for="floatingInput">ユーザー名</label>
                </div>
                <div class="form-floating mb-4">
-                  <input type="text"class="form-control col-6"id="floatingInput" name="userID" placeholder="ユーザーID">
+                  <input type="text"class="form-control col-6"id="floatingInput" name="account" placeholder="ユーザーID">
                   <label for="floatingInput">ユーザーID</label>
                </div>
                <div class="form-floating mb-5">
