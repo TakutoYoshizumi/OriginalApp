@@ -28,6 +28,19 @@
       </header>
       <main>
          <div class="grid">
+            <!--入力エラー表示-->
+            <?php if($errors !== null):?>
+            <ul>
+               <?php foreach($errors as $error): ?>
+               <li><?= $error?></li>
+               <?php endforeach;?>
+            </ul>
+            <?php endif; ?>
+            <?php if($flash_message !== null):?>
+            <ul>
+               <li><?= $flash_message?></li>
+            </ul>
+            <?php endif; ?>                        
             <div class="grid-item-left">
                <img src="upload/<?=$profiles->image?>" class="icon">
                <input type="hidden" name="id" value="<?=$profiles->id?>">

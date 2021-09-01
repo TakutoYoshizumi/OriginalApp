@@ -27,6 +27,19 @@
          </nav>
       </header>
       <main>
+            <!--入力エラー表示-->
+            <?php if($errors !== null):?>
+            <ul>
+               <?php foreach($errors as $error): ?>
+               <li><?= $error?></li>
+               <?php endforeach;?>
+            </ul>
+            <?php endif; ?>
+            <?php if($flash_message !== null):?>
+            <ul>
+               <li><?= $flash_message?></li>
+            </ul>
+            <?php endif; ?>                     
          <form action = "profile_update.php" method="POST" enctype="multipart/form-data" class="row g-3 form">
             <div class="grid">
                <div class="grid-item-left">
