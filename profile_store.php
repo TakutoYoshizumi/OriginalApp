@@ -9,7 +9,8 @@
   // var_dump($_POST);
   // var_dump($_FILES);
   $login_user = $_SESSION["login_user"];
-  var_dump($login_user);
+   $_SESSION["login_user"] = $login_user;
+  // var_dump($login_user);
   
   //プロフィール情報を取得
   $age = $_POST["age"];
@@ -28,14 +29,12 @@
   //画像が選択されていれば
   if($_FILES["image"]["size"] !==0){
     //uploadディレクトリにファイルを保存
-    $file = "upload/".$image;
-    move_uploaded_file($_FILES["image"]["name"],$file);
+    $file = 'upload/' . $image;
+    move_uploaded_file($_FILES['image']['tmp_name'], $file);
   }else{
     $image = "";
   }
   
-  $login_user = $_SESSION["login_user"];
-  $_SESSION["login_user"] = $login_user;
   // 入力エラーが１つもなければ
   if(count($errors) === 0){
     //ユーザーのプロフィールインスタンスを作成
@@ -46,7 +45,7 @@
     
     //入力エラーが１つでもあれば
   }else{
-    var_dump($errors);
+    // var_dump($errors);
     $SESSION["errors"] = $errors;
     header("Location:profile_create.php");
     exit;

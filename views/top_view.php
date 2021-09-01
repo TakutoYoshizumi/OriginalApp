@@ -14,18 +14,23 @@
    <style>
       #global-container{
          height:100%;
-         width:100;
+         width:100%;
       }
-      .wrapper{
+      .example{
       height:700px;
       background-image:url(images/sample.jpg);
       background-position:bottom;
       background-size:cover;
       }
+      .wrapper{
+         width:100%;
+         height:100%;
+         text-align:center;
+      }
    </style>
-   <body
-      <header>
+   <body>
       <div id="global-container">
+      <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
             <h1>Awesome&nbsp;<span>Meetup</span></h1>
@@ -53,6 +58,12 @@
          </nav>
       </header>
       <div class="wrapper">
+         <div class="example"></div>
+         <ul class="nav">
+               <li>
+                  <a href="event_create.php?id=<?=$login_user->id?>">イベント作成</a>
+               </li>
+            </ul>   
       </div>
       </div>
    </body>

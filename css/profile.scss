@@ -121,6 +121,9 @@ main{
                         margin-bottom:15px;
                         color:$cGray;
                     }
+                    & .flash_message{
+                      color:red !important;
+                }
                 }
             }
             
@@ -145,6 +148,7 @@ main{
             }
             & ul{
                 font-size:12px;
+                
             }
         }
     }

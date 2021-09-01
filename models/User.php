@@ -33,23 +33,6 @@
              return 'PDO exception: '.$e->getMessage();
          }
      }      
-     //入力チェック メソッド
-    //  public function validate(){
-    //      $errors = array();
-    //      if ($this->name === '') {
-    //          $errors[] = '名前を入力してください';
-    //      }
-    //      if ($this->account === '') {
-    //          $errors[] = 'ユーザーIDを入力してください';
-    //      }
-    //      if($this->password ===""){
-    //         $errors[] ="パスワードを入力してください";
-    //      }elseif(!preg_match('/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/', $this->password)){
-    //         $errors[] = '半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードを入力してください';
-    //      }
-    //      return $errors;
-    //  }
-     
      //ログインチェック　メソッド
      public static function login($account,$password){
          try{
@@ -69,8 +52,8 @@
          }
      }
      
-     
-          public function validation($account){
+     //入力チェックバリデーション
+      public function validation($account){
          try{
                 $errors = array();
                 $pdo = self::get_connection();
@@ -102,5 +85,23 @@
                 return 'PDO exception: ' . $e->getMessage();
          }
      }
+     
+     //ユーザー削除メソッド
+     public static function destroy($id){
+             try {
+                    $pdo = self::get_connection();
+
+                        $stmt = $pdo -> prepare("DELETE FROM users WHERE id=:id");//変数値を保持しているのでprepare
+                        // バインド処理
+                        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                        $stmt->execute();
+                        self::close_connection($pdo, $stmp);
+                        return "ユーザーを削除しました";
+                  } catch (PDOException $e) {
+                    return 'PDO exception: ' . $e->getMessage();
+                 }               
+                    
+                }
+     
      
   }

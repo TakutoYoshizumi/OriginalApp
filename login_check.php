@@ -32,7 +32,7 @@
           $true[] = 'true';
       }
       }
-      if (count($true) !== 0) {
+      if (count($true) !== 0 ||$profiles === false) {
           header('Location:profile_create.php');
           exit;
       } else {

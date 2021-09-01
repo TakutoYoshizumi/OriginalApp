@@ -7,7 +7,10 @@
  session_start();
 
  // var_dump($_POST);
- var_dump($_FILES);
+ // var_dump($_FILES);
+ $login_user = $_SESSION["login_user"];
+ $_SESSION["login_user"] = $login_user; 
+ 
  $id = $_POST['id'];
  $introduction = $_POST['introduction'];
  $country = $_POST['country'];
@@ -30,21 +33,22 @@
  //入力エラーチェック
  $errors = $profiles->validate();
  
- if(count($errors) === 0){
-   if (empty($image) !== true) {
+ //画像情報がある時のみアップロード
+ //if文で空文字のアップロード防止
+  if (empty($image) !== true) {
        $profiles->image = $image;
      //画像をアップロード
      //画像が選択されていれば
-    $file = 'upload/'.$image;
+    $file = 'upload/' . $image;
     // uploadディレクトリにファイル保存
-    move_uploaded_file($_FILES['image']['name'], $file);
-   }
-  
-   $flash_message = $profiles->save();
-   $_SESSION['flash_message'] = $flash_message;
-  
-   header('Location:profile_show.php?id='.$id);
-   exit;
+    move_uploaded_file($_FILES['image']['tmp_name'], $file);
+  }
+ if(count($errors) === 0){
+    $flash_message = $profiles->save();
+    $_SESSION['flash_message'] = $flash_message;
+   
+    header('Location:profile_show.php?id='.$id);
+    exit;
     //入力エラーが１つでもあれば
   }else{
     // var_dump($errors);

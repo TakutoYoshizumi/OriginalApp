@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>プロフィールページ</title>
+      <title>イベントページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="css/profile.css">
       <link rel="stylesheet" href="css/reset.css">
@@ -21,7 +21,7 @@
                   <span></span>
                </div>
                <div class="user-icon">
-                  <img src="upload/<?=$profiles->image?>">
+                  <img src="upload/<?=$login_user->image?>">
                </div>
             </div>
          </nav>
@@ -36,10 +36,14 @@
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-                       
+            <?php if($flash_message !== null):?>
+            <ul>
+               <li><?= $flash_message?></li>
+            </ul>
+            <?php endif; ?>                        
             <div class="grid-item-left">
-               <img src="upload/<?=$profiles->image?>" class="icon">
-               <input type="hidden" name="id" value="<?=$profiles->id?>">
+               <img src="upload/<?=$events->image?>" class="icon">
+               <input type="hidden" name="id" value="<?=$events->id?>">
             </div>
             <div class="grid-item-right">
                <div class="items">
@@ -48,35 +52,37 @@
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
                      <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
                   </ul>
-               <?php if($flash_message !== null):?>
-               <ul>
-                  <li class="flash_message"><?= $flash_message?></li>
-               </ul>
-               <?php endif; ?>                   
                </div>
                <div class="profile">
                   <section>
-                     <h2>自己紹介</h2>
-                     <P><?=$profiles->introduction?></P>
+                     <h2>イベント名</h2>
+                     <P><?=$events->name?></P>
                   </section>
                   <section>
-                     <h2>滞在国</h2>
-                     <P><?=$profiles->country?></P>
+                     <h2>イベント内容</h2>
+                     <P><?=$events->content?></P>
                   </section>
                   <section class="flex">
                      <div class="section-item">
-                        <h2>性別</h2>
-                        <P><?=$profiles->gender?></P>
+                        <h2>イベント開催日</h2>
+                        <P><?=$events->day?></P>
                      </div>
                      <div class="section-item">
-                        <h2>年齢</h2>
-                        <P><?=$profiles->age?>歳</P>
+                        <h2>イベント開始時間</h2>
+                        <P><?=$events->time?></P>
                      </div>
                   </section>
-                  <section>
-                     <h2>仕事</h2>
-                     <P><?=$profiles->job?></P>
+                  <section class="flex">
+                     <div class="section-item">
+                        <h2>開催場所</h2>
+                        <P><?=$events->place?></P>
+                     </div>
+                     <div class="section-item">
+                        <h2>参加人数</h2>
+                        <P><?=$events->participants?>人</P>
+                     </div>
                   </section>
+                  
                </div>
                <ul>
                   <li>トップページへ戻りますか？</li>

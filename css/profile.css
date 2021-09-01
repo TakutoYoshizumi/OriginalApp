@@ -82,6 +82,8 @@ main {
           main .grid .grid-item-right .items ul li:nth-child(1) {
             margin-bottom: 15px;
             color: #717171; }
+          main .grid .grid-item-right .items ul .flash_message {
+            color: red !important; }
       main .grid .grid-item-right .profile {
         margin-bottom: 50px; }
         main .grid .grid-item-right .profile h2 {
