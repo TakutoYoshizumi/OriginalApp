@@ -31,5 +31,10 @@
       display: flex; }
       .wrapper .content ul li {
         font-size: 14px; }
+    .wrapper .content .form-floating > label {
+      padding: 0.7rem .75rem; }
+      .wrapper .content .form-floating > label span {
+        color: #212529;
+        font-size: 12px; }
 
 /*# sourceMappingURL=user_create.css.map */

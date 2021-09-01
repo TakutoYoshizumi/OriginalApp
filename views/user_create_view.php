@@ -34,7 +34,7 @@
                </div>
                <div class="form-floating mb-5">
                   <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
-                  <label for="floatingPassword">パスワード</label>
+                  <label for="floatingPassword"><span>パスワード<br>半角英小文字大文字数字を全て含む8文字以上</span></label>
                </div>
                <div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-outline-primary w-50 py-2 ">登録</button>

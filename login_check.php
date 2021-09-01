@@ -6,8 +6,8 @@
   session_start();
   //入力値取得　POSTグローバル変数
   // var_dump($_POST);
-  
-    $account= $_POST[account];
+
+    $account = $_POST[account];
     $password = $_POST[password];
 
     //accontとpasswordをもとにログインをチェック
@@ -17,24 +17,29 @@
   // 条件分岐でユーザーが登録してあるかをチェック
   //ユーザーが登録していればtrue。
   if ($user !== false) {
-      $_SESSION["login_user"] = $user;
+      $_SESSION['login_user'] = $user;
       $id = $user->id;
       // var_dump($id);
-    //ログインユーザーのプロフィールを取得
+    //ログインユーザーのidをもとにプロフィールを取得
     $profiles = Profile::find($id);
-    
-    
+    // var_dump($profiles);
 
-  // 条件分岐でプロフィールに未回答の項目があればtrue。
-      if ((empty($profiles)) === true) {
+    //プロフィールの入力項目に未回答があればプロフィールページへリダイレクト
+    $true = array();
+      foreach ($profiles as $key => $value) {
+          // 条件分岐でプロフィールに未回答の項目があればtrue。
+      if ((empty($value)) === true) {
+          $true[] = 'true';
+      }
+      }
+      if (count($true) !== 0) {
           header('Location:profile_create.php');
           exit;
-    //条件分岐でプロフィールが完成していたらトップページへ
       } else {
           header('Location:top.php');
           exit;
       }
-  //エラーが１つでもあればelse。
+  // //エラーが１つでもあればelse。
   } else {
       $errors = [];  //= $errors=array();
       $errors[] = 'お探しのユーザーが見つかりません';

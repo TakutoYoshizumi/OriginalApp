@@ -9,7 +9,7 @@
   
   //対象のユーザーをDBから引き出す
   $profiles = Profile::find($id);
-  var_dump($profiles);
+  // var_dump($profiles);
 
  include_once "views/profile_edit_view.php";
   

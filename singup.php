@@ -1,5 +1,6 @@
 <?php
 
+
     //(C)
     require_once 'models/User.php';
     session_start();
@@ -9,14 +10,11 @@
     $account = $_POST['account'];
     $password = $_POST['password'];
 
-    
-    
     //入力された値でユーザー登録
     $user = new User($name, $account, $password);
     //入力チェック
-    $errors=$user->validation($user->account);
+    $errors = $user->validation($user->account);
     // var_dump($errors);
-    
 
 
     // 入力エラーが１つでもあれば
@@ -35,7 +33,5 @@
         header('Location:user_create.php');
         exit;
     }
-
-    
 
   

@@ -27,7 +27,7 @@ $cGray: #dee0e1;
 
     
     & h1{
-        @include title;
+        @include title(30px,2px);
         @include pink;
         margin-bottom: 30px;
     }
@@ -42,5 +42,12 @@ $cGray: #dee0e1;
             font-size: 14px;
         }
     }
+.form-floating>label{
+    padding: 0.7rem .75rem;
+    & span{
+        color: #212529;
+        font-size:12px;
+    }
+}    
     }
 }

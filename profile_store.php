@@ -29,7 +29,7 @@
   if($_FILES["image"]["size"] !==0){
     //uploadディレクトリにファイルを保存
     $file = "upload/".$image;
-    move_uploaded_file($_FILES["image"]["tmp_name"],$file);
+    move_uploaded_file($_FILES["image"]["name"],$file);
   }else{
     $image = "";
   }
