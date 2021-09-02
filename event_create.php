@@ -14,6 +14,10 @@
   $errors = $_SESSION["errors"];
   $_SESSION["errors"] = null;
   
+  //セッションからユーザーアイコンを取得
+  $user_icon = $_SESSION["user_icon"];
+  $_SESSION["user_icon"] = $user_icon;
+  
   
   include_once "views/event_create_view.php";
 

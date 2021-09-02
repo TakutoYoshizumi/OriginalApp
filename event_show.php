@@ -9,14 +9,18 @@
  session_start();
 
  $id = $_GET['id'];
- var_dump($id);
+// var_dump($id);
  $login_user = $_SESSION['login_user'];
 // var_dump($login_user);
-  $flash_message = $_SESSION['flash_message'];
+ $flash_message = $_SESSION['flash_message'];
+ $_SESSION['flash_message'] = null;
+  
+    //セッションからユーザーアイコンを取得
+  $user_icon = $_SESSION["user_icon"];
+  $_SESSION["user_icon"] = $user_icon;
 
-  $_SESSION['flash_message'] = null;
   //イベント情報を取得
   $events = Event::find($id);
-  var_dump($events);
+  // var_dump($events);
 
  include_once 'views/event_show_view.php';

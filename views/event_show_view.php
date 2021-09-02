@@ -21,7 +21,7 @@
                   <span></span>
                </div>
                <div class="user-icon">
-                  <img src="upload/<?=$login_user->image?>">
+                  <img src="upload/<?=$user_icon?>">
                </div>
             </div>
          </nav>

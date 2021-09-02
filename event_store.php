@@ -26,7 +26,7 @@
   // var_dump($events);
   //入力項目に誤りがないかチェック
   $errors = $events->validate();
-  var_dump($errors);
+  // var_dump($errors);
   // //画像をアップロード
   // //画像が選択されていれば
   if($_FILES["image"]["size"] !==0){
@@ -38,21 +38,19 @@
   }
   
   // // 入力エラーが１つもなければ
-  // if(count($errors) === 0){
-  //   イベントインスタンスを作成
-    // $flseash_message = $events->save();
-    // var_dump($flash_message);
-    // $SESSION["flash_message"] = $flash_message;
+  if(count($errors) === 0){
+    // イベントインスタンスを作成
+    $flseash_message = $events->save();
+    var_dump($flash_message);
+    $SESSION["flash_message"] = $flash_message;
       header("Location:event_top.php");
-    // header("Location:event_show.php?id=".$login_user->id);
-    // exit;
-    
+    exit;
   // //   //入力エラーが１つでもあれば
-  // }else{
-  //   var_dump($errors);
-  //   $SESSION["errors"] = $errors;
-  //   header("Location:profile_create.php");
-  //   exit;
-  // }
+  }else{
+    var_dump($errors);
+    $SESSION["errors"] = $errors;
+    header("Location:event_create.php");
+    exit;
+  }
   
   

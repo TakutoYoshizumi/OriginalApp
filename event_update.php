@@ -22,7 +22,6 @@
   $time = $_POST["time"];
   $participants = $_POST["participants"];
   $image = $_FILES["image"]["name"];
-
  //idから対象のイベント情報を取得
  $events = Event::find($id);
 //   var_dump($events);
@@ -34,31 +33,33 @@
  $events->day = $day;
  $events->time = $time;
  $events->participants = $participants;
- 
+ // var_dump($events->participants);
  //入力エラーチェック
  $errors = $events->validate();
  
  //画像情報がある時のみアップロード
  //if文で空文字のアップロード防止
   if (empty($image) !== true) {
-       $profiles->image = $image;
+       $events->image = $image;
      //画像をアップロード
      //画像が選択されていれば
     $file = 'upload/' . $image;
     // uploadディレクトリにファイル保存
     move_uploaded_file($_FILES['image']['tmp_name'], $file);
   }
- if(count($errors) === 0){
+  // 入力エラーが１つもなければ
+  if(count($errors) === 0){
+    // イベントインスタンスを作成
     $flash_message = $events->save();
-    $_SESSION['flash_message'] = $flash_message;
-   
-    header('Location:event_show.php?id='.$id);
+    // var_dump($flash_message);
+    $_SESSION["flash_message"] = $flash_message;
+    header("Location:event_show.php?id=".$id);
     exit;
-//     //入力エラーが１つでもあれば
+  // //   //入力エラーが１つでもあれば
   }else{
     // var_dump($errors);
     $_SESSION["errors"] = $errors;
-    header('Location:profile_edit.php?id='.$id);
+    header("Location:event_edit.php?id=".$id);
     exit;
   }
   
