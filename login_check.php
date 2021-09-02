@@ -22,7 +22,10 @@
       // var_dump($id);
     //ログインユーザーのidをもとにプロフィールを取得
     $profiles = Profile::find($id);
-    // var_dump($profiles);
+    //プロフィールからユーザーのアイコンを取得
+    $user_icon = $profiles->image;
+    $_SESSION["user_icon"] =$user_icon;
+    
 
     //プロフィールの入力項目に未回答があればプロフィールページへリダイレクト
     $true = array();

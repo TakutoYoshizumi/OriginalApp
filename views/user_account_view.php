@@ -23,7 +23,7 @@
                <span></span>
            </div>
            <div class="user-icon">
-               <img src="images/icon.jpg">
+               <img src="images/<?=$user_icon?>">
            </div>
        </div>
       </nav>           

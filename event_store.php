@@ -25,14 +25,14 @@
   $events = new Event($login_user->id,$name,$content,$place,$day,$time,$image,$participants);
   // var_dump($events);
   //入力項目に誤りがないかチェック
-  // $errors = $profiles->validate();
-  
+  $errors = $events->validate();
+  var_dump($errors);
   // //画像をアップロード
   // //画像が選択されていれば
   if($_FILES["image"]["size"] !==0){
     //uploadディレクトリにファイルを保存
     $file = 'upload/' . $image;
-    move_uploaded_file($_FILES["image"]["name"],$file);
+    move_uploaded_file($_FILES['image']['tmp_name'], $file);
   }else{
     $image = "";
   }
@@ -40,11 +40,12 @@
   // // 入力エラーが１つもなければ
   // if(count($errors) === 0){
   //   イベントインスタンスを作成
-    $flseash_message = $events->save();
-    var_dump($flash_message);
-    $SESSION["flash_message"] = $flash_message;
-    header("Location:event_show.php?id=".$login_user->id);
-    exit;
+    // $flseash_message = $events->save();
+    // var_dump($flash_message);
+    // $SESSION["flash_message"] = $flash_message;
+      header("Location:event_top.php");
+    // header("Location:event_show.php?id=".$login_user->id);
+    // exit;
     
   // //   //入力エラーが１つでもあれば
   // }else{

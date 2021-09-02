@@ -35,7 +35,7 @@
                <!--<input type="submit" value="登録">-->
            </form>
             <ul>
-               <li><a href="profile_show.php">プロフィールページへ&#8599;</a></li>
+               <li><a href="event_show.php?id=<?=$login_user->id?>">イベントページへ&#8599;</a></li>
                <li><a href="logout.php">ログアウト&#8599;</a></li>
             </ul>           
          </div>

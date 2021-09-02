@@ -53,7 +53,7 @@
                         $stmt->bindParam(':introduction', $this->introduction, PDO::PARAM_STR);
                         $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT); 
-                        // $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
+                        $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                         // 実行
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);

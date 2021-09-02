@@ -52,7 +52,7 @@
                   <span></span>
                </div>
                <div class="user-icon">
-                  <img src="images/icon.jpg">
+                  <img src="images/<?=$user_icon?>">
                </div>
             </div>
          </nav>
@@ -62,6 +62,7 @@
          <ul class="nav">
                <li>
                   <a href="event_create.php?id=<?=$login_user->id?>">イベント作成</a>
+                  <a href="event_top.php">イベント一覧ページ</a>
                </li>
             </ul>   
       </div>

@@ -1,7 +1,8 @@
 <?php
  //(M)
  //ユーザーのプロフィール設計図
- require_once 'models/Model.php'; 
+ require_once 'models/Model.php';
+ require_once 'models/User.php';
  class Event extends Model{
      
      public $id;
@@ -49,20 +50,19 @@
                         self::close_connection($pdo, $stmp);
                         return "イベントの作成が成功しました";
                     }else{ //更新処理
-                        $stmt = $pdo -> prepare("UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE id=:id");//変数値を保持しているのでprepare
+                        $stmt = $pdo -> prepare("INSERT INTO events (name,content,place,day,time,image,participants) VALUES (:name,:content,:place,:day,:time,:image,:participants)");//変数値を保持しているのでprepare
                         
-                        $stmt->bindParam(':age', $this->age, PDO::PARAM_INT);
-                        $stmt->bindParam(':gender', $this->gender, PDO::PARAM_STR);
-                        $stmt->bindParam(':job', $this->job, PDO::PARAM_STR);
-                        $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
-                        $stmt->bindParam(':introduction', $this->introduction, PDO::PARAM_STR);
+                        $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
+                        $stmt->bindParam(':content', $this->content, PDO::PARAM_STR);
+                        $stmt->bindParam(':place', $this->place, PDO::PARAM_STR);
+                        $stmt->bindParam(':day', $this->day, PDO::PARAM_STR);
+                        $stmt->bindParam(':time', $this->time, PDO::PARAM_STR);
                         $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT); 
-                        // $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
+                        $stmt->bindParam(':participants', $this->participants, PDO::PARAM_INT);
                         // 実行
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);
-                        return "プロフィールを更新しました";
+                        return "イベント情報を更新しました";
                         
                     }
                     
@@ -73,35 +73,40 @@
      //入力チェック メソッド
      public function validate(){
          $errors = array();
-         if(!preg_match('/^[0-9\s]*$/',$this->age)){
-             $errors[]="数字で入力してください";
-         }
-         if(!preg_match('/^[ぁ-んァ-ヶー一-龠\s]*$/',$this->job)){
-             $errors[]="ひらがな、カタカナ、漢字で入力してください";
-         }
-         if(!preg_match('/^[ぁ-んァ-ヶーa-zA-Z一-龠\s]*$/', $this->country)){
+         if(!preg_match('/^[ぁ-んァ-ヶーa-zA-Z一-龠\s]*$/', $this->name)){
             $errors[] = '数字、記号は入力できません';
          }
+         if(!preg_match('/^[ぁ-んァ-ヶーa-zA-Z一-龠\s]*$/', $this->place)){
+            $errors[] = '数字、記号は入力できません';
+         }         
+         if(!preg_match('/^[0-9\s]*$/',$this->day)){
+             $errors[]="数字で入力してください";
+         }         
+         if(!preg_match('/^[0-9\s]*$/',$this->time)){
+             $errors[]="数字で入力してください";
+         }
+         if(!preg_match('/^[0-9\s]*$/',$this->participants)){
+             $errors[]="数字で入力してください";
+         }         
          return $errors;
      }
      //全プロフィール情報　取得メソッド
      public static function all(){
-         try {
-            $pdo = self::get_connection();
-                    $stmt = $pdo->query('SELECT age, gender,job,country,introduction,image FROM profile');
-             // フェッチの結果を、Profileクラスのインスタンスにマッピングする
-            $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Profile');
-            $profiles = $stmt->fetchAll();
-            self::close_connection($pdo, $stmp);
-            // Pfofileクラスのインスタンスの配列を返す
-            return $profiles;
-         } catch (PDOException $e) {
-            return 'PDO exception: ' . $e->getMessage();
-         }
-         
-     }
+                try {
+                    $pdo = self::get_connection();
+                    $stmt = $pdo->query('SELECT id,name, content,place,day,time,participants,image,created_at FROM events');
+                    // フェッチの結果を、Postクラスのインスタンスにマッピングする
+                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Event');
+                    $events = $stmt->fetchAll();
+                    self::close_connection($pdo, $stmp);
+                    
+                    return $events;
+                } catch (PDOException $e) {
+                    return 'PDO exception: ' . $e->getMessage();
+                }
+            }
      
-     //idから対象のProfileオブジェクトを取得するメソッド
+     //idから対象のEventオブジェクトを取得するメソッド
      public static function find($id){
             
          try {

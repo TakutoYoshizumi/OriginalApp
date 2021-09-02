@@ -50,7 +50,7 @@
                   <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
                   <ul>
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
-                     <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
+                     <li><a href="event_edit.php?id=<?=$login_user->id?>">イベントを編集</a></li>
                   </ul>
                </div>
                <div class="profile">
@@ -88,6 +88,10 @@
                   <li>トップページへ戻りますか？</li>
                   <li><a href="top.php">トップページはこちら&#8599;</a></li>
                </ul>
+               <ul>
+                  <li>イベント一覧ページへ戻りますか？</li>
+                  <li><a href="event_top.php">イベント一覧ページはこちら&#8599;</a></li>
+               </ul>                
             </div>
          </div>
       </main>
