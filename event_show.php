@@ -14,8 +14,9 @@
  //セッションからログインユーザー情報を取得
  $login_user = $_SESSION['login_user'];
 
- 
- $_SESSION['flash_message'] = null;
+  // セッションからメッセージを
+  $flash_message=$_SESSION["flash_message"];
+  $_SESSION["flash_message"] = null;
   
  //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];

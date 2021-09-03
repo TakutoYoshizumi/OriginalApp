@@ -14,5 +14,6 @@
     //インスタンスをDBに保存
   $_SESSION["flash_message"] =$flash_message;
   
+  
   header("Location:event_show.php?id=".$event_id);
   exit;

@@ -134,25 +134,30 @@
                 }
             }     
              //注目する投稿に紐付いたいいね一覧を取得するメソッド
-            public function favorites(){
-                    try {
+    public function is_favorite($user_id){
+            try {
                         $pdo = self::get_connection();
-                        $stmt = $pdo -> prepare("SELECT favorites.user_id,users.name FROM favorites JOIN users ON favorites.user_id=users.id WHERE favorites.event_id=:event_id");
+                        $stmt = $pdo -> prepare("SELECT * FROM favorites WHERE user_id=:user_id AND event_id=:event_id");//変数値を保持しているのでprepare
                         // バインド処理
-                        $stmt->bindParam(':event_id', $this->id, PDO::PARAM_INT);
+                        $stmt->bindParam(':user_id',$user_id, PDO::PARAM_STR);
+                        $stmt->bindParam(':event_id', $this->id, PDO::PARAM_STR);
                         // 実行
                         $stmt->execute();
                         
-                        // フェッチの結果を、Favoriteクラスのインスタンスにマッピングする
+                        // フェッチの結果を、Userクラスのインスタンスにマッピングする
                         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Favorite');
-                        //クラスのインスタンス配列を返す
-                        $favorites = $stmt->fetchAll();  //ひとり抜き出し
+                        // Favoriteクラスのインスタンスを抜き出す
+                        $favorite = $stmt->fetch();  //ひとり抜き出し
                         self::close_connection($pdo, $stmp);
-                        return $favorites;                    
+                        if($favorite !==false){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                        return $favorite;                    
                         
-                    } catch (PDOException $e) {
+          } catch (PDOException $e) {
                         return 'PDO exception: ' . $e->getMessage();
                     }                 
-                     
-                 }                  
+                 }
   }

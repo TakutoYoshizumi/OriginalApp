@@ -45,12 +45,14 @@
                <img src="upload/<?=$event->image?>" class="icon">
                <input type="hidden" name="id" value="<?=$event->id?>">
                
+               <?php if($event->is_favorite()): ?>
                <form action="favorite_store.php" method="POST">
                   <input type="hidden" name="event_id" value="<?=$event->id?>">
                   <button type="subbmit">Like</button>
                </form>
+               <?php else :?>
               <form action="favorite_destroy.php" method="POST">
-                  <input type="hidden" name="post_id" value="<?=$post->id?>">
+                  <input type="hidden" name="event_id" value="<?=$event->id?>">
                   <button type="submit">いいね解除</button>
               </form>               
                <div>
