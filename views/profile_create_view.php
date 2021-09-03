@@ -26,7 +26,7 @@
            <form action="profile_store.php" method="POST" enctype="multipart/form-data">
                年齢: <input type="text" name="age"><br>
                <label>
-               性別: <input type="radio" name="gender" value="男性">男性
+               性別: <input type="radio" name="gender" value="男性" checked>男性
                　　　<input type="radio" name="gender" value="女性">女性
                </label><br>
                仕事: <input type="text" name="job"><br>
@@ -34,7 +34,6 @@
                自己紹介: <input type="textarea" name="introduction"><br>
                写真: <input type="file" name="image"><br>
                <button type="submit">投稿</button>
-               <!--<input type="submit" value="登録">-->
            </form>
             <ul>
                <li><a href="profile_show.php">プロフィールページへ&#8599;</a></li>

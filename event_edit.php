@@ -9,8 +9,7 @@
   $id = $_GET["id"];
   
   //対象のイベントをDBから引き出す
-  $events = Event::find($id);
-  // var_dump($events);
+  $event = Event::find($id);
   
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];
@@ -19,8 +18,7 @@
   
   //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];
-  $_SESSION["user_icon"] = $user_icon;
 
- include_once "views/event_edit_view.php";
+  include_once "views/event_edit_view.php";
   
   

@@ -5,16 +5,14 @@
   
   session_start();
   
-  // var_dump($_GET);
+  //ユーザーidを取得
   $id = $_GET["id"];
   
   //対象のユーザーをDBから引き出す
-  $profiles = Profile::find($id);
-  // var_dump($profiles);
+  $profile = Profile::find($id);
   
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];
-  // var_dump($errors);
   $_SESSION["errors"] = null;
 
  include_once "views/profile_edit_view.php";

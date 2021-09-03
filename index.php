@@ -2,9 +2,9 @@
   //(C)
   require_once 'models/User.php';
   session_start();
-
+  
+  //セッションからエラーを受け取る
   $errors = $_SESSION['errors'];
-  // var_dump($errors);
   $_SESSION['errors'] = null;
 
   //ログアウトメッセージをflash_messageから引き出す

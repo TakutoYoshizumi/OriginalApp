@@ -4,38 +4,38 @@
   require_once 'models/Profile.php';
 
   session_start();
-  //入力値取得　POSTグローバル変数
-  // var_dump($_POST);
+  
+  //入力さたログイン情報を取得
+  $account = $_POST[account];
+  $password = $_POST[password];
 
-    $account = $_POST[account];
-    $password = $_POST[password];
-
-    //accontとpasswordをもとにログインをチェック
+  //取得した値をもとにログインをチェック
    $user = User::login($account, $password);
-  // var_dump($user);
 
   // 条件分岐でユーザーが登録してあるかをチェック
   //ユーザーが登録していればtrue。
   if ($user !== false) {
-      $_SESSION['login_user'] = $user;
-      $id = $user->id;
-      // var_dump($id);
-    //ログインユーザーのidをもとにプロフィールを取得
-    $profiles = Profile::find($id);
+    //ユーザーをセッションに保存
+    $_SESSION['login_user'] = $user;
+    //ユーザーのidを取得
+    $id = $user->id;
+    //取得したidからプロフィールを取得
+    $profile = Profile::find($id);
     //プロフィールからユーザーのアイコンを取得
-    $user_icon = $profiles->image;
-    $_SESSION["user_icon"] =$user_icon;
+    $user_icon = $profile->image;
+    //アイコンをセッションに保存
+    $_SESSION["user_icon"] = $user_icon;
     
 
     //プロフィールの入力項目に未回答があればプロフィールページへリダイレクト
     $true = array();
-      foreach ($profiles as $key => $value) {
+      foreach ($profile as $key => $value) {
           // 条件分岐でプロフィールに未回答の項目があればtrue。
       if ((empty($value)) === true) {
           $true[] = 'true';
       }
       }
-      if (count($true) !== 0 ||$profiles === false) {
+      if (count($true) !== 0 ||$profile === false) {
           header('Location:profile_create.php');
           exit;
       } else {

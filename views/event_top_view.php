@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>会員制写真投稿サイト</title>
+        <title>イベント一覧ページ</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <style>
@@ -40,7 +40,7 @@ ul img{
                 <th>画像</th>
                 <th>投稿日時</th>
             </tr>
-            <?php foreach($events as $event):?>
+            <?php foreach($event as $event):?>
             <tr>
                 <td><a href="event_show.php?id=<?=$event->id?>"><?=$event->name?></a></td>
                 <td><?=$event->content?></td>

@@ -42,44 +42,62 @@
             </ul>
             <?php endif; ?>                        
             <div class="grid-item-left">
-               <img src="upload/<?=$events->image?>" class="icon">
-               <input type="hidden" name="id" value="<?=$events->id?>">
+               <img src="upload/<?=$event->image?>" class="icon">
+               <input type="hidden" name="id" value="<?=$event->id?>">
+               
+               <form action="favorite_store.php" method="POST">
+                  <input type="hidden" name="event_id" value="<?=$event->id?>">
+                  <button type="subbmit">Like</button>
+               </form>
+              <form action="favorite_destroy.php" method="POST">
+                  <input type="hidden" name="post_id" value="<?=$post->id?>">
+                  <button type="submit">いいね解除</button>
+              </form>               
+               <div>
+              <p><?= count($favorites)?>いいね</p>
+              <P>いいねした人の一覧</P>
+                 <ul>
+                     <?php foreach($favorites as $favorite): ?>
+                       <li><?= $favorite->name ?></li>
+                       <?php endforeach; ?>
+                 </ul>      
+              </div>
             </div>
             <div class="grid-item-right">
                <div class="items">
                   <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
                   <ul>
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
-                     <li><a href="event_edit.php?id=<?=$login_user->id?>">イベントを編集</a></li>
+                     <li><a href="event_edit.php?id=<?=$event->id?>">イベントを編集</a></li>
                   </ul>
                </div>
                <div class="profile">
                   <section>
                      <h2>イベント名</h2>
-                     <P><?=$events->name?></P>
+                     <P><?=$event->name?></P>
                   </section>
                   <section>
                      <h2>イベント内容</h2>
-                     <P><?=$events->content?></P>
+                     <P><?=$event->content?></P>
                   </section>
                   <section class="flex">
                      <div class="section-item">
                         <h2>イベント開催日</h2>
-                        <P><?=$events->day?></P>
+                        <P><?=$event->day?></P>
                      </div>
                      <div class="section-item">
                         <h2>イベント開始時間</h2>
-                        <P><?=$events->time?></P>
+                        <P><?=$event->time?></P>
                      </div>
                   </section>
                   <section class="flex">
                      <div class="section-item">
                         <h2>開催場所</h2>
-                        <P><?=$events->place?></P>
+                        <P><?=$event->place?></P>
                      </div>
                      <div class="section-item">
                         <h2>参加人数</h2>
-                        <P><?=$events->participants?>人</P>
+                        <P><?=$event->participants?>人</P>
                      </div>
                   </section>
                   

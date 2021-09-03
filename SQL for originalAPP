@@ -41,3 +41,17 @@ create table events(
     created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     foreign key(user_id) references users(id)
 );
+
+//いいねテーブル
+create table favorites(
+    id int auto_increment primary key,
+    user_id int not null,
+    event_id int not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(event_id) references events(id)
+    on delete cascade
+    on update cascade
+);

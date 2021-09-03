@@ -6,9 +6,9 @@
   
   session_start();
   
+  //セッションからログインユーザー情報を取得
   $login_user = $_SESSION["login_user"];
-  $_SESSION["login_user"] = $login_user;
-  // var_dump($login_user);
+  
   
     //入力エラーを受け取る
   $errors = $_SESSION["errors"];
@@ -16,8 +16,6 @@
   
   //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];
-  $_SESSION["user_icon"] = $user_icon;
-  
   
   include_once "views/event_create_view.php";
 

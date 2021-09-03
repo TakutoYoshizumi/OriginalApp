@@ -21,7 +21,7 @@
                   <span></span>
                </div>
                <div class="user-icon">
-                  <img src="upload/<?=$profiles->image?>">
+                  <img src="upload/<?=$profile->image?>">
                </div>
             </div>
          </nav>
@@ -38,8 +38,8 @@
             <?php endif; ?>
                        
             <div class="grid-item-left">
-               <img src="upload/<?=$profiles->image?>" class="icon">
-               <input type="hidden" name="id" value="<?=$profiles->id?>">
+               <img src="upload/<?=$profile->image?>" class="icon">
+               <input type="hidden" name="id" value="<?=$profile->id?>">
             </div>
             <div class="grid-item-right">
                <div class="items">
@@ -57,25 +57,25 @@
                <div class="profile">
                   <section>
                      <h2>自己紹介</h2>
-                     <P><?=$profiles->introduction?></P>
+                     <P><?=$profile->introduction?></P>
                   </section>
                   <section>
                      <h2>滞在国</h2>
-                     <P><?=$profiles->country?></P>
+                     <P><?=$profile->country?></P>
                   </section>
                   <section class="flex">
                      <div class="section-item">
                         <h2>性別</h2>
-                        <P><?=$profiles->gender?></P>
+                        <P><?=$profile->gender?></P>
                      </div>
                      <div class="section-item">
                         <h2>年齢</h2>
-                        <P><?=$profiles->age?>歳</P>
+                        <P><?=$profile->age?>歳</P>
                      </div>
                   </section>
                   <section>
                      <h2>仕事</h2>
-                     <P><?=$profiles->job?></P>
+                     <P><?=$profile->job?></P>
                   </section>
                </div>
                <ul>

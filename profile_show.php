@@ -9,12 +9,12 @@
 
  $id = $_GET['id'];
  $login_user = $_SESSION['login_user'];
-// var_dump($login_user);
-  $flash_message = $_SESSION['flash_message'];
-
-  $_SESSION['flash_message'] = null;
- //ユーザーのプロフィール情報を取得
- $profiles = Profile::find($id);
-//  var_dump($profiles);
+ 
+ //セッションからメーセージを取得
+ $flash_message = $_SESSION['flash_message'];
+ $_SESSION['flash_message'] = null;
+ 
+ //ユーザーidからユーザーのプロフィール情報を取得
+ $profile = Profile::find($id);
 
  include_once 'views/profile_show_view.php';

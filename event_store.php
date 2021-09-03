@@ -7,13 +7,11 @@
   
   session_start();
   
-  // var_dump($_POST);
-  // var_dump($_FILES);
+  //セッションからログインユーザー情報を取得
    $login_user = $_SESSION["login_user"];
-  $_SESSION["login_user"] = $login_user;
-  // var_dump($login_user);
   
-  //プロフィール情報を取得
+  
+  //入力情報を取得
   $name = $_POST["name"];
   $content = $_POST["content"];
   $place = $_POST["place"];
@@ -22,32 +20,34 @@
   $participants = $_POST["participants"];
   $image = $_FILES["image"]["name"];
   
-  $events = new Event($login_user->id,$name,$content,$place,$day,$time,$image,$participants);
-  // var_dump($events);
+  //入力からイベントインスタンスを新規作成
+  $event = new Event($login_user->id,$name,$content,$place,$day,$time,$image,$participants);
+  
   //入力項目に誤りがないかチェック
-  $errors = $events->validate();
+  $errors = $event->validate();
   // var_dump($errors);
-  // //画像をアップロード
-  // //画像が選択されていれば
+  
+  // 入力エラーが１つもなければ
+  if(count($errors) === 0){
+  
+  //画像が選択されていれば
   if($_FILES["image"]["size"] !==0){
     //uploadディレクトリにファイルを保存
     $file = 'upload/' . $image;
+    //画像をアップロード
     move_uploaded_file($_FILES['image']['tmp_name'], $file);
-  }else{
-    $image = "";
   }
   
-  // // 入力エラーが１つもなければ
-  if(count($errors) === 0){
     // イベントインスタンスを作成
-    $flseash_message = $events->save();
-    var_dump($flash_message);
+    $flseash_message = $event->save();
     $SESSION["flash_message"] = $flash_message;
-      header("Location:event_top.php");
+    
+    header("Location:event_top.php");
     exit;
-  // //   //入力エラーが１つでもあれば
+    
+  //   //入力エラーが１つでもあれば
   }else{
-    var_dump($errors);
+    //セッションにエラーを保存
     $SESSION["errors"] = $errors;
     header("Location:event_create.php");
     exit;

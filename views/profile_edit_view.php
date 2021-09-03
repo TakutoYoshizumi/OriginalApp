@@ -43,7 +43,7 @@
          <form action = "profile_update.php" method="POST" enctype="multipart/form-data" class="row g-3 form">
             <div class="grid">
                <div class="grid-item-left">
-                  <img src="upload/<?=$profiles->image?>" class="icon">
+                  <img src="upload/<?=$profile->image?>" class="icon">
                   <input type="file" name="image"><br>
                </div>
                <div class="grid-item-right">
@@ -55,12 +55,12 @@
                   </div>
                   <div class="mb-4">
                      <label for="exampleFormControlTextarea1" class="form-label mb-3">自己紹介</label>
-                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="introduction" value="<?=$profile->introduction?>"><?=$profiles->introduction?>
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="introduction" value="<?=$profile->introduction?>"><?=$profile->introduction?>
                      </textarea>
                   </div>
                   <div class="col-md-8 mb-4">
                      <label class="form-label mb-3">滞在国</label>
-                     <input type="text" name="country" value="<?=$profiles->country?>" class="form-control" id="inputAddress" placeholder=<?=$profiles->country?>>
+                     <input type="text" name="country" value="<?=$profile->country?>" class="form-control" id="inputAddress" placeholder=<?=$profile->country?>>
                   </div>
                   <div class="col-md-8 mb-4">
                      <!--値がセットされていたらchecked-->
@@ -69,12 +69,12 @@
                      <div class="form-check form-check-inline ml-3">
                         <div class="form-check form-check-inline ml-3">
                            <input type="radio" name="gender" value="男性"
-                              <?php if($profiles->gender === "男性"):?>
+                              <?php if($profile->gender === "男性"):?>
                               checked
                               <?php endif;?>>
                            <label class="form-check-label " for="inlineRadio1">男性</label>
                            <input type="radio" name="gender" value="女性" 
-                              <?php if($profiles->gender === "女性"):?>
+                              <?php if($profile->gender === "女性"):?>
                               checked
                               <?php endif;?>>
                            <label class="form-check-label " for="inlineRadio2">女性</label>                          
@@ -82,13 +82,13 @@
                      </div>
                      <div class="col-md-6">
                         <label for="inputPassword4" class="form-label mb-3">年齢</label>
-                        <input type="number" name="age" value="<?=$profiles->age?>" class="form-control" id="inputPassword4" placeholder=<?=$profiles->age?>歳>
+                        <input type="number" name="age" value="<?=$profile->age?>" class="form-control" id="inputPassword4" placeholder=<?=$profile->age?>歳>
                      </div>
                      <div class="col-md-8">
                         <label class="form-label mb-3" >仕事</label>
-                        <input type="text" name="job" value="<?=$profiles->job?>" class="form-control" id="inputAddress2" placeholder=<?=$profiles->job?>>
+                        <input type="text" name="job" value="<?=$profile->job?>" class="form-control" id="inputAddress2" placeholder=<?=$profile->job?>>
                      </div>
-                     <input type="hidden" name="id" value="<?=$profiles->id?>">
+                     <input type="hidden" name="id" value="<?=$profile->id?>">
                      <div class="col-6">
                         <input class="btn btn-primary my-4" type="submit" value="Submit">
                      </div>

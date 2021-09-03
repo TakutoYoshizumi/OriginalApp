@@ -32,10 +32,9 @@
                開催時間: <input type="time" name="time"><br>
                参加人数: <input type="number" name="participants"><br>
                <button type="submit">投稿</button>
-               <!--<input type="submit" value="登録">-->
            </form>
             <ul>
-               <li><a href="event_show.php?id=<?=$login_user->id?>">イベントページへ&#8599;</a></li>
+               <li><a href="event_show.php?id=<?$event->id?>">イベントページへ&#8599;</a></li>
                <li><a href="logout.php">ログアウト&#8599;</a></li>
             </ul>           
          </div>

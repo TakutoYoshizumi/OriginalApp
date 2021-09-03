@@ -52,14 +52,14 @@
                      </ul>
                   </div>
                   <form action="event_update.php" method="POST" enctype="multipart/form-data">
-                                 イベント名: <input type="text" name="name"><br>
-                                 イベント内容: <input type="textarea" name="content"><br>
+                                 イベント名: <input type="text" name="name" value="<?= $event->name ?>"><br>
+                                 イベント内容: <input type="textarea" name="content" value="<?= $event->content ?>"><br>
                                                 写真: <input type="file" name="image"><br>
-                                 開催地: <input type="text" name="place"><br>
-                                 開催日: <input type="date" name="day"><br>
-                                 開催時間: <input type="time" name="time"><br>
-                                 参加人数: <input type="number" name="participants"><br>
-                                 <input type="hidden" name="id" value="<?=$events->id?>">
+                                 開催地: <input type="text" name="place" value="<?= $event->place ?>"><br>
+                                 開催日: <input type="date" name="day" value="<?= $event->day?>"><br>
+                                 開催時間: <input type="time" name="time" value="<?= $event->time?>"><br>
+                                 参加人数: <input type="number" name="participants" value="<?= $event->participants ?>"><br>
+                                 <input type="hidden" name="id" value="<?=$event->id?>">
                                  <button type="submit">投稿</button>
                                  <!--<input type="submit" value="登録">-->
                   </form>
