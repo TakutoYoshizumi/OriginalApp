@@ -3,6 +3,8 @@
  //イベント設計図
  require_once 'models/Model.php';
  require_once 'models/User.php';
+ require_once "models/Favorite.php";
+ 
  class Event extends Model{
      
      public $id;
@@ -160,4 +162,27 @@
                         return 'PDO exception: ' . $e->getMessage();
                     }                 
                  }
+
+             //注目する投稿に紐付いたいいね一覧を取得するメソッド
+            public function favorites(){
+                    try {
+                        $pdo = self::get_connection();
+                        $stmt = $pdo -> prepare("SELECT favorites.user_id,users.name FROM favorites JOIN users ON favorites.user_id=users.id WHERE favorites.event_id=:event_id");
+                        // バインド処理
+                        $stmt->bindParam(':event_id', $this->id, PDO::PARAM_INT);
+                        // 実行
+                        $stmt->execute();
+                        
+                        // フェッチの結果を、Favoriteクラスのインスタンスにマッピングする
+                        $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Favorite');
+                        //クラスのインスタンス配列を返す
+                        $favorites = $stmt->fetchAll();  //ひとり抜き出し
+                        self::close_connection($pdo, $stmp);
+                        return $favorites;                    
+                        
+                    } catch (PDOException $e) {
+                        return 'PDO exception: ' . $e->getMessage();
+                    }                 
+                     
+                 }                   
   }

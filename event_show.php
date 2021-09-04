@@ -25,6 +25,7 @@
   $event = Event::find($id);
   
   //このイベント投稿に対するいいね一覧を取得
-  // $favorites->$event->favorites();
+   $favorites = $event->favorites();
+ 
 
  include_once 'views/event_show_view.php';

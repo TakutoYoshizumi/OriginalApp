@@ -45,7 +45,7 @@
                <img src="upload/<?=$event->image?>" class="icon">
                <input type="hidden" name="id" value="<?=$event->id?>">
                
-               <?php if($event->is_favorite()): ?>
+               <?php if(! $event->is_favorite($login_user->id)): ?>
                <form action="favorite_store.php" method="POST">
                   <input type="hidden" name="event_id" value="<?=$event->id?>">
                   <button type="subbmit">Like</button>
@@ -54,13 +54,14 @@
               <form action="favorite_destroy.php" method="POST">
                   <input type="hidden" name="event_id" value="<?=$event->id?>">
                   <button type="submit">いいね解除</button>
-              </form>               
+              </form>  
+              <?php endif;?>
                <div>
               <p><?= count($favorites)?>いいね</p>
               <P>いいねした人の一覧</P>
                  <ul>
                      <?php foreach($favorites as $favorite): ?>
-                       <li><?= $favorite->name ?></li>
+                       <li><a href="profile_show.php?id=<?=$favorite->user_id?>"><?= $favorite->name ?></a></li>
                        <?php endforeach; ?>
                  </ul>      
               </div>
