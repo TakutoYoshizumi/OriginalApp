@@ -6,10 +6,9 @@
 
  session_start();
 
- // var_dump($_POST);
- // var_dump($_FILES);
+
  $login_user = $_SESSION["login_user"];
- $_SESSION["login_user"] = $login_user; 
+
  
  $id = $_POST['id'];
  $introduction = $_POST['introduction'];
@@ -21,7 +20,7 @@
 
  //idから対象のプロフィール情報を取得
  $profiles = Profile::find($id);
- // var_dump($profiles);
+ 
 
  //情報を更新する
  $profiles->introduction = $introduction;
@@ -47,13 +46,13 @@
     $flash_message = $profiles->save();
     $_SESSION['flash_message'] = $flash_message;
    
-    header('Location:profile_show.php?id='.$id);
+    header('Location:profile_show.php?id='.$login_user->id);
     exit;
     //入力エラーが１つでもあれば
   }else{
-    // var_dump($errors);
+ 
     $_SESSION["errors"] = $errors;
-    header('Location:profile_edit.php?id='.$id);
+    header('Location:profile_edit.php?id='.$login_user->id);
     exit;
   }
   

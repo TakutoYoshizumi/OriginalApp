@@ -21,7 +21,7 @@
         $flash_message = $user->save();
         $_SESSION['flash_message'] = $flash_message;
 
-    　　header('Location:index.php');
+        header('Location:index.php');
         exit;
     //入力エラーがあれば
     } else {

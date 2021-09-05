@@ -55,3 +55,59 @@ create table favorites(
     on delete cascade
     on update cascade
 );
+//コメントテーブル
+create table comments(
+    id int auto_increment primary key,
+    user_id int not null,
+    event_id int not null,
+    content varchar(255) not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(post_id) references events(id)
+    on delete cascade
+    on update cascade
+);
+
+//カテゴリーテーブル
+create table categories(
+    id int auto_increment primary key,
+    type varchar(100) not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
+    default charset=sjis;
+
+inset into categories(type) value('アウトドア');
+
+//テーブル
+create table event_category_relations(
+    id int auto_increment primary key,
+    event_id int not null,
+    category_id int not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(event_id) references events(id)
+    on delete cascade
+    on update cascade,
+    foreign key(category_id) references categories(id)
+    on delete cascade
+    on update cascade
+);
+
+//コメント投稿テーブル
+create table comments(
+    id int auto_increment primary key,
+    user_id int not null,
+    event_id int not null,
+    content varchar(255) not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(event_id) references events(id)
+    on delete cascade
+    on update cascade
+);
+
+
+SELECT comments.id,users.name,comments.content,comments.created_at FROM comments JOIN users ON comments.user_id=users.id WHERE comments.event_id="1";
+SELECT comments.id,users.name,comments.content,comments.created_at FROM comments JOIN users ON comments.user_id=user_id where comments.event_id="1";       

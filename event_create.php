@@ -3,6 +3,7 @@
   require_once "filters/LoginFilter.php";
   require_once "models/Profile.php";
   require_once "models/User.php";
+  require_once "models/Category.php";
   
   session_start();
   
@@ -13,6 +14,9 @@
     //入力エラーを受け取る
   $errors = $_SESSION["errors"];
   $_SESSION["errors"] = null;
+  
+  $categories=Category::all();
+  // var_dump($categories);
   
   //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];

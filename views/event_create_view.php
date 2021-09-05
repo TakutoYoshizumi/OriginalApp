@@ -25,6 +25,11 @@
             
            <form action="event_store.php" method="POST" enctype="multipart/form-data">
                イベント名: <input type="text" name="name"><br>
+                           <p>
+                           <?php foreach($categories as $category): ?>
+                           <input type ="checkbox" name="category_id[]" value="<?=$category->id?>"><?=$category->type?>
+                           <?php endforeach; ?>
+                           </p>               
                イベント内容: <input type="textarea" name="content"><br>
                               写真: <input type="file" name="image"><br>
                開催地: <input type="text" name="place"><br>
@@ -34,7 +39,7 @@
                <button type="submit">投稿</button>
            </form>
             <ul>
-               <li><a href="event_show.php?id=<?$event->id?>">イベントページへ&#8599;</a></li>
+               <li><a href="event_top.php">イベントページ一覧へ&#8599;</a></li>
                <li><a href="logout.php">ログアウト&#8599;</a></li>
             </ul>           
          </div>

@@ -116,6 +116,25 @@
             </div>
          </div>
       </main>
-      <footer></footer>
+      </form>
+      <footer>     
+         <h2>コメント</h2>
+         <?php if(count($comments) !==0):?>
+         <ul>
+            <?php foreach($comments as $comment): ?>
+            <li><?=$comment->name?><?=$comment->content?><?=$comment->created_at?></li>
+            <li><a href="comment_destroy.php?id=<?=$comment->id?> & event_id=<?=$comment->event_id?>">コメント削除</a></li>
+            <?php endforeach ;?>
+         </ul>
+         <?php else:?>
+         <P>まだコメントはありません</P>
+         <?php endif;?>
+         <form action="comment_store.php" method="POST">
+            コメント内容<input type="text" name="content"><br>
+            <input type="hidden" name="event_id" value="<?=$event->id?>">
+            <button type="submit">コメント投稿</button>
+         </form>
+      </footer>
    </body>
 </html>
+

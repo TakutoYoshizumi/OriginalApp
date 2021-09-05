@@ -9,7 +9,7 @@
   $id = $_GET["id"];
   
   //対象のユーザーをDBから引き出す
-  $profile = Profile::find($id);
+  $profile = Profile::find_by_user_id($id);
   
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];

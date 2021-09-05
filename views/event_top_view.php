@@ -32,6 +32,7 @@ ul img{
         <table>
             <tr>
                 <th>イベント名</th>
+                <th>カテゴリー</th>
                 <th>内容</th>
                 <th>開催日</th>
                 <th>開始時間</th>
@@ -43,6 +44,13 @@ ul img{
             <?php foreach($event as $event):?>
             <tr>
                 <td><a href="event_show.php?id=<?=$event->id?>"><?=$event->name?></a></td>
+                <td>
+                    <ul>
+                    <?php foreach($event->categories() as $category):?>
+                    <li><?=$category->type ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                </td>
                 <td><?=$event->content?></td>
                 <td><?=$event->day?></td>
                 <td><?=$event->time?></td>

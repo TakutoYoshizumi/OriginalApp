@@ -36,7 +36,7 @@
                <button type="submit">投稿</button>
            </form>
             <ul>
-               <li><a href="profile_show.php">プロフィールページへ&#8599;</a></li>
+               <!--<li><a href="profile_show.php">プロフィールページへ&#8599;</a></li>-->
                <li><a href="logout.php">ログアウト&#8599;</a></li>
             </ul>           
          </div>

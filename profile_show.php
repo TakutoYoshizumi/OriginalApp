@@ -15,6 +15,12 @@
  $_SESSION['flash_message'] = null;
  
  //ユーザーidからユーザーのプロフィール情報を取得
- $profile = Profile::find($id);
+ $profile = Profile::find_by_user_id($id);
+ 
+  //プロフィールからユーザーのアイコンを取得
+  $user_icon = $profile->image;
+  $_SESSION['user_icon'] =$user_icon;
+  
+
 
  include_once 'views/profile_show_view.php';

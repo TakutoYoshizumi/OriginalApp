@@ -13,4 +13,3 @@
   $user_icon = $_SESSION["user_icon"];
   
   include_once "views/top_view.php";
-

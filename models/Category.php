@@ -1,36 +1,20 @@
 <?php
  //(M)
- //イベント設計図
+ //イベントカテゴリーの設計図
  require_once 'models/Model.php';
  require_once 'models/User.php';
  require_once "models/Favorite.php";
- require_once "models/Category.php";
- require_once "models/Comment.php";
  
- class Event extends Model{
+ class Category extends Model{
      
      public $id;
-     public $user_id;
-     public $name;
-     public $content;
-     public $place;
-     public $day;
-     public $time;
-     public $participants;
-     public $image;
+     public $type;
      public $created_at;
      
-     public function __construct($user_id='',$name= '', $content = '', $place= '',$day='',$time= '',$image = '',$participants=""){
+     public function __construct($type=""){
          
-         $this->user_id = $user_id;
-         $this->name = $name;
-         $this->content = $content;
-         $this->place = $place;
-         $this->day = $day;
-         $this->time= $time;
-         $this->image = $image;
-         $this->participants= $participants;
-         
+         $this->type = $type;
+
      }
      
      //イベント登録・更新メソッド
@@ -52,7 +36,7 @@
                         $stmt->bindParam(':participants', $this->participants, PDO::PARAM_INT);
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);
-                        return $pdo->lastInsertId();
+                        return "イベントの作成が成功しました";
                     }else{ //更新処理
                         $stmt = $pdo -> prepare("UPDATE events SET name=:name, content=:content, place=:place, day=:day, time=:time, image=:image, participants=:participants WHERE id=:id");//変数値を保持しているのでprepare
                         // バインド処理
@@ -101,17 +85,17 @@
          }
          return $errors;
      }
-     //全プロフィール情報　取得メソッド
+     //全カテゴリー情報　取得メソッド
      public static function all(){
                 try {
                     $pdo = self::get_connection();
-                    $stmt = $pdo->query('SELECT id,name, content,place,day,time,participants,image,created_at FROM events');
-                    // フェッチの結果を、Postクラスのインスタンスにマッピングする
-                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Event');
-                    $event = $stmt->fetchAll();
+                    $stmt = $pdo->query('SELECT * FROM categories');
+                    // フェッチの結果を、Categoryクラスのインスタンスにマッピングする
+                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Category');
+                    $categories = $stmt->fetchAll();
                     self::close_connection($pdo, $stmp);
                     
-                    return $event;
+                    return $categories;
                 } catch (PDOException $e) {
                     return 'PDO exception: ' . $e->getMessage();
                 }
@@ -186,48 +170,5 @@
                         return 'PDO exception: ' . $e->getMessage();
                     }                 
                      
-                 }
-                 
-            //このイベントに紐付いたカテゴリー一覧を取得
-            public function categories(){
-                try {
-                    $pdo = self::get_connection();
-                    $stmt = $pdo->prepare('SELECT categories.type FROM categories JOIN event_category_relations ON categories.id = event_category_relations.category_id WHERE event_category_relations.event_id = :event_id');
-                    // バインド処理
-                    $stmt->bindParam(':event_id', $this->id, PDO::PARAM_INT);                    
-                    $stmt->execute();
-                    
-                    // フェッチの結果を、Categoryクラスのインスタンスにマッピングする
-                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Category');                    
-                    $categories= $stmt->fetchAll();
-                    self::close_connection($pdo, $stmp);
-                    
-                    return $categories;
-                } catch (PDOException $e) {
-                    return 'PDO exception: ' . $e->getMessage();
-                }                
-            }
-            
-            //このイベントに紐付いたコメント一覧を取得
-            public function comments(){
-             try {
-                $pdo = self::get_connection();
-                $stmt = $pdo -> prepare("SELECT comments.id,comments.event_id,users.name,comments.content,comments.created_at FROM comments JOIN users ON comments.user_id=users.id where comments.event_id=:event_id order by created_at desc;");//変数値を保持しているのでprepare
-                // バインド処理
-                $stmt->bindParam(':event_id', $this->id, PDO::PARAM_INT);
-                // 実行
-                $stmt->execute();
-                // フェッチの結果を、Commentクラスのインスタンスにマッピングする
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');
-                // Commentクラスのインスタンス配列を返す
-                $comments = $stmt->fetchAll();  //ひとり抜き出し
-                self::close_connection($pdo, $stmp);
-                return $comments;                    
-            } catch (PDOException $e) {
-                return 'PDO exception: ' . $e->getMessage();
-                    }
-                }                 
-                
-            
-}
-
+                 }                   
+  }

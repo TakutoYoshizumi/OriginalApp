@@ -107,7 +107,7 @@
          
      }
      
-     //idから対象のProfileオブジェクトを取得するメソッド
+     //プロフィールからidから対象のProfileオブジェクトを取得するメソッド
      public static function find($id){
             
          try {
@@ -127,6 +127,26 @@
             return 'PDO exception: ' . $e->getMessage();
                 }
             }
+    //user_idから対象のProfileオブジェクトを取得するメソッド            
+     public static function find_by_user_id($id){
+            
+         try {
+            $pdo = self::get_connection();
+            $stmt = $pdo -> prepare("SELECT * FROM profiles WHERE user_id=:user_id");//変数値を保持しているのでprepare
+            // バインド処理
+            $stmt->bindParam(':user_id', $id, PDO::PARAM_INT);
+            // 実行
+            $stmt->execute();
+            // フェッチの結果を、Userクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Profile');
+            // Userクラスのインスタンスを返す
+            $profile = $stmt->fetch();  //ひとり抜き出し
+            self::close_connection($pdo, $stmp);
+            return $profile;                    
+        } catch (PDOException $e) {
+            return 'PDO exception: ' . $e->getMessage();
+                }
+            }            
     //idから対象のProfileオブジェクトを削除するメソッド
      public static function destroy($id){
                  try {
