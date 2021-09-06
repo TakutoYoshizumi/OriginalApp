@@ -60,17 +60,16 @@
                         $stmt->bindParam(':content', $this->content, PDO::PARAM_STR);
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);
-                        return "コメント投稿が成功しました";
+                        return "コメントの投稿が成功しました";
                     }else{ //更新処理
-                        $stmt = $pdo -> prepare("UPDATE posts SET title=:title, content=:content,image=:image WHERE id=:id");//変数値を保持しているのでprepare
-                        $stmt->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-                        $stmt->bindParam(':event_id', $this->event_id, PDO::PARAM_INT);
+                        $stmt = $pdo -> prepare("UPDATE comments SET content=:content  WHERE id=:id");//変数値を保持しているのでprepare
+            
                         $stmt->bindParam(':content', $this->content, PDO::PARAM_STR);
                         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT); 
                         // 実行
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);
-                        return $this->id."番目の投稿情報を更新しました";
+                        return "コメントを更新しました";
                         
                     }
                     
@@ -78,23 +77,23 @@
                     return 'PDO exception: ' . $e->getMessage();
                 }
             }
-            //投稿番号からPostオブジェクトを取得するメソッド
+            //コメント番号からCommentオブジェクトを取得するメソッド
             public static function find($id){
-            
+
                 try {
                     $pdo = self::get_connection();
-                    $stmt = $pdo -> prepare("SELECT posts.id,posts.user_id,users.name,posts.title,posts.content,posts.image,posts.created_at FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id=:id");//変数値を保持しているのでprepare
+                    $stmt = $pdo -> prepare("SELECT * FROM comments where id =:id");//変数値を保持しているのでprepare
                     // バインド処理
                     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                     // 実行
                     $stmt->execute();
                     
-                    // フェッチの結果を、Userクラスのインスタンスにマッピングする
-                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Post');
-                    // Postクラスのインスタンスを返す
-                    $post = $stmt->fetch();  //ひとり抜き出し
+                    // フェッチの結果を、Commentクラスのインスタンスにマッピングする
+                    $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Comment');
+                    // Commentクラスのインスタンスを返す
+                    $comment = $stmt->fetch();  //ひとり抜き出し
                     self::close_connection($pdo, $stmp);
-                    return $post;                    
+                    return $comment;                    
                     
                 } catch (PDOException $e) {
                     return 'PDO exception: ' . $e->getMessage();

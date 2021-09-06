@@ -124,6 +124,11 @@
             <?php foreach($comments as $comment): ?>
             <li><?=$comment->name?><?=$comment->content?><?=$comment->created_at?></li>
             <li><a href="comment_destroy.php?id=<?=$comment->id?> & event_id=<?=$comment->event_id?>">コメント削除</a></li>
+            <form action="comment_update.php" method="POST">
+               コメント編集<input type="text" name="content" placeholder="<?=$comment->content?>"><br>
+               <input type="hidden" name="id" value="<?=$comment->id?>">
+               <button type="submit">コメント編集</button>
+            </form>   
             <?php endforeach ;?>
          </ul>
          <?php else:?>
@@ -132,7 +137,7 @@
          <form action="comment_store.php" method="POST">
             コメント内容<input type="text" name="content"><br>
             <input type="hidden" name="event_id" value="<?=$event->id?>">
-            <button type="submit">コメント投稿</button>
+            <button type="submit">コメント投稿</button>            
          </form>
       </footer>
    </body>
