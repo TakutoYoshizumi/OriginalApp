@@ -12,6 +12,5 @@
   
   //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];
-  $_SESSION["user_icon"] = $user_icon;
   
   include_once "views/user_account_view.php";

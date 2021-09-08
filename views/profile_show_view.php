@@ -47,7 +47,9 @@
                   <ul>
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
                      <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
+                     <li><a href="message_show.php?receive_user_id=<?=$profile->id?>">メッセージ送信</a></li>
                   </ul>
+   
                <?php if($flash_message !== null):?>
                <ul>
                   <li class="flash_message"><?= $flash_message?></li>

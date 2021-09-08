@@ -39,7 +39,7 @@
                   <a class="nav-link active" aria-current="page" href="user_account.php?id=<?=$login_user->id?>">アカウント</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">メッセージ</a>
+                  <a class="nav-link" href="message_top.php?id=<?=$login_user->id?>">メッセージ</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="logout">ログアウト</a>
@@ -64,6 +64,9 @@
                   <a href="event_create.php?id=<?=$login_user->id?>">イベント作成</a>
                   <a href="event_top.php">イベント一覧ページ</a>
                </li>
+               <li>
+                  <a href="all_profile_top.php">ユーザー一覧ページ</a>
+               </li>               
             </ul>   
       </div>
       </div>

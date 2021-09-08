@@ -106,6 +106,23 @@
          }
          
      }
+     //全ユーザープロフィール情報　取得メソッド
+     public static function all_profiles(){
+         try {
+            $pdo = self::get_connection();
+                    $stmt = $pdo->query('SELECT profiles.user_id,users.name,profiles.age, profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image FROM profiles JOIN users ON profiles.user_id=users.id');
+    
+             // フェッチの結果を、Profileクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Profile');
+            $all_profiles = $stmt->fetchAll();
+            self::close_connection($pdo, $stmp);
+            // Pfofileクラスのインスタンスの配列を返す
+            return $all_profiles;
+         } catch (PDOException $e) {
+            return 'PDO exception: ' . $e->getMessage();
+         }
+         
+     }     
      
      //プロフィールからidから対象のProfileオブジェクトを取得するメソッド
      public static function find($id){

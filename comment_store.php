@@ -6,8 +6,7 @@
   session_start();
   
   $login_user = $_SESSION["login_user"];
-//   var_dump($login_user);
-//   var_dump($_POST
+
 
   //POSTで送られてきた値を取得
   $event_id = $_POST["event_id"];

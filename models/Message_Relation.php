@@ -2,32 +2,34 @@
 
 //(M)
 require_once 'models/Model.php';
-require_once 'models/Message.php';
-//いいね設計図
-class Message_Relation extends Model
+require_once 'models/User.php';
+require_once "models/Message.php";
+class Meassage_Relation extends Model
 {
     public $id;
-    public $send_user_id;   //送信するユーザーid
-    public $event_id;    //イベントのid
+    public $send_user_id; 
+    public $message_id;    
     public $created_at;  
-    public function __construct($event_id = '', $category_id = '')
+    public function __construct($send_user_id = '', $message_id = '')
   {
-      $this->event_id = $event_id;
-      $this->category_id = $category_id;
+      $this->send_user_id = $send_user_id;
+      $this->message_id = $message_id;
   }
-  //いいね登録メソッド
+  
+
   public function save()
   {
       try {
           $pdo = self::get_connection();
       //新規登録の時
       if ($this->id === null) {
-          $stmt = $pdo->prepare('INSERT INTO event_category_relations (event_id, category_id) VALUES (:event_id, :category_id)'); //変数値を保持しているのでprepare
+          $stmt = $pdo->prepare('INSERT INTO message_relations (send_user_id, message_id) VALUES (:send_user_id, :message_id'); //変数値を保持しているのでprepare
         // バインド処理
-        $stmt->bindParam(':event_id', $this->event_id, PDO::PARAM_INT);
-          $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
+        $stmt->bindParam(':send_user_id', $this->send_user_id, PDO::PARAM_INT);
+          $stmt->bindParam(':message_id', $this->message_id, PDO::PARAM_INT);
           $stmt->execute();
           self::close_connection($pdo, $stmp);
+          
 
       } else { //更新処理
         $stmt = $pdo->prepare('UPDATE posts SET title=:title, content=:content,image=:image WHERE id=:id'); //変数値を保持しているのでprepare
