@@ -84,38 +84,34 @@
                <h2>アカウント</h2>
                
                <div class="d-flex h-100 w-100 justify-content-between">
-                  <div class="w-25 h-100 border"></div>
-                  <div class="w-50 h-100 border">
-                     <div id="message-wrapper">
-                     <div class="flex">
-                     <?php foreach($messages as $message):?>
+                  <div class="w-25 h-100 border">
+                    <div class="flex">
+                     <?php foreach($message_relations as $e):?>
                      <!--自分が送信するメッセージ-->
-                     <?php if($message->send_user_id === $login_user->id):?>
-                     <ul class="my">
-                        <li><?=$message->message_content?></li>
-                        <li><?=$message->created_at?></li>
-                        <li>自分</li>
-                        <li><img src="upload/<?=$user_icon?>"></li>
+                     <ul>
+                     <?php if($e->send_user_id != $login_user->id):?>
+                        <li><?=$e->receive_user_id?></li>
+                        <li><?=$e->name?></li>
+                        <li><img src="upload/<?=$e->image?>"></li>
                      </ul>
-                     <!-他のユーザーからのメッセージ--->
-                     <?php else:?>
+                   <?php elseif($e->send_user_id === $login->id):?>
                      <ul class="other">
-                        <li><?=$message->message_content?></li>
-                        <li><?=$message->created_at?></li>
-                        <li>From<?=$message->name?>さん</li>
-                        <li><img src="upload/<?=$message->image?>"></li>
-                     </ul>
+                        <li><?=$e->receive_user_id?></li>
+                        <li><?=$e->name?></li>
+                        <li><img src="upload/<?=$e->image?>"></li>
+                     </ul>                     
                      <?php endif;?>
                      <?php endforeach ?>
-                     </div>
+                     </div>                     
+                  </div>
+                  <div class="w-50 h-100 border">
+                     <div id="message-wrapper">
+                     
+                     
                      
    
                      </div>
-                     <form action="message_store.php" method="POST">
-                        <input type="text" name="message_content"><br>
-                        <input type="hidden" name="receive_user_id" value="<?=$receive_user_id?>">
-                        <button type="submit">投稿</button>
-                     </form>
+                     
                      <p><a href="top.php">トップページ</a></p>
                   </div>
                </div>

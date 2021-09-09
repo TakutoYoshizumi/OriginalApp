@@ -149,7 +149,7 @@
             
          try {
             $pdo = self::get_connection();
-            $stmt = $pdo -> prepare("SELECT * FROM profiles WHERE user_id=:user_id");//変数値を保持しているのでprepare
+            $stmt = $pdo -> prepare("SELECT profiles.user_id,profiles.age,profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image,users.name,users.created_at FROM profiles JOIN users ON profiles.user_id=users.id WHERE user_id=:user_id;");//変数値を保持しているのでprepare
             // バインド処理
             $stmt->bindParam(':user_id', $id, PDO::PARAM_INT);
             // 実行

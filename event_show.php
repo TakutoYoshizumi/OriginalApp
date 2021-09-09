@@ -31,10 +31,10 @@
   
   //このイベント投稿に対するいいね一覧を取得
    $favorites = $event->favorites();
+ 
    
    //このイベント投稿に対するコメント一覧を取得
    $comments = $event->comments();
-   // var_dump($comments);
  
 
  include_once 'views/event_show_view.php';
