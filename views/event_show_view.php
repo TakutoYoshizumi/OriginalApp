@@ -71,7 +71,9 @@
                   <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
                   <ul>
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
+                     <?php if($event->user_id == $login_user->id):?>
                      <li><a href="event_edit.php?id=<?=$event->id?>">イベントを編集</a></li>
+                     <?php endif;?>
                   </ul>
                </div>
                <div class="profile">

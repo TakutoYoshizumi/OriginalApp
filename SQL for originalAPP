@@ -112,20 +112,3 @@ create table message_relations(
     receive_user_id int not null,
     created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
-
-
-SELECT comments.id,users.name,comments.content,comments.created_at FROM comments JOIN users ON comments.user_id=users.id WHERE comments.event_id="1";
-SELECT comments.id,users.name,comments.content,comments.created_at FROM comments JOIN users ON comments.user_id=user_id where comments.event_id="1";       
-
-
-
-SELECT messagesFROM messages JOIN users ON messages.receive_user_id=users.id WHERE favorites.event_id=:event_id"
-
-
-
-select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image from messages JOIN profiles ON messages.receive_user_id = profiles.user_id where (send_user_id="1" and receive_user_id="3") or (send_user_id="3" and receive_user_id="1"); 
-
-select * from messages JOIN users where (send_user_id=:send_user_id and receive_user_id=:message_user) or (send_user_id=:message_user and receive_user_id=:send_user_id)');
-
-SELECT users.id,users.name,profiles.image FROM users JOIN profiles ON users.id = profiles.user_id WHERE users.id !=:send_user_id";

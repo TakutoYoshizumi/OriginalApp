@@ -44,7 +44,7 @@
                         self::close_connection($pdo, $stmp);
                         return "プロフィールの作成が成功しました";
                     }else{ //更新処理
-                        $stmt = $pdo -> prepare("UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE id=:id");//変数値を保持しているのでprepare
+                        $stmt = $pdo -> prepare("UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE user_id=:id");//変数値を保持しているのでprepare
                         
                         $stmt->bindParam(':age', $this->age, PDO::PARAM_INT);
                         $stmt->bindParam(':gender', $this->gender, PDO::PARAM_STR);
@@ -110,7 +110,7 @@
      public static function all_profiles(){
          try {
             $pdo = self::get_connection();
-                    $stmt = $pdo->query('SELECT profiles.user_id,users.name,profiles.age, profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image FROM profiles JOIN users ON profiles.user_id=users.id');
+                    $stmt = $pdo->query('SELECT profiles.id,profiles.user_id,users.name,profiles.age, profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image FROM profiles JOIN users ON profiles.user_id=users.id');
     
              // フェッチの結果を、Profileクラスのインスタンスにマッピングする
             $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Profile');
@@ -149,7 +149,7 @@
             
          try {
             $pdo = self::get_connection();
-            $stmt = $pdo -> prepare("SELECT profiles.user_id,profiles.age,profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image,users.name,users.created_at FROM profiles JOIN users ON profiles.user_id=users.id WHERE user_id=:user_id;");//変数値を保持しているのでprepare
+            $stmt = $pdo -> prepare("SELECT profiles.id,profiles.user_id,profiles.age,profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image,users.name,users.created_at FROM profiles JOIN users ON profiles.user_id=users.id WHERE user_id=:user_id;");//変数値を保持しているのでprepare
             // バインド処理
             $stmt->bindParam(':user_id', $id, PDO::PARAM_INT);
             // 実行

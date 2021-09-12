@@ -11,10 +11,11 @@
   //対象のユーザーをDBから引き出す
   $profile = Profile::find_by_user_id($id);
   
+  
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];
   $_SESSION["errors"] = null;
 
- include_once "views/profile_edit_view.php";
+include_once "views/profile_edit_view.php";
   
   

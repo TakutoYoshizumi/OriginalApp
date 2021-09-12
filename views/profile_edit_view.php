@@ -88,7 +88,7 @@
                         <label class="form-label mb-3" >仕事</label>
                         <input type="text" name="job" value="<?=$profile->job?>" class="form-control" id="inputAddress2" placeholder=<?=$profile->job?>>
                      </div>
-                     <input type="hidden" name="id" value="<?=$profile->id?>">
+                     <input type="hidden" name="id" value="<?=$profile->user_id?>">
                      <div class="col-6">
                         <input class="btn btn-primary my-4" type="submit" value="Submit">
                      </div>
