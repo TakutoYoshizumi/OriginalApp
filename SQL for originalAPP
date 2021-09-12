@@ -2,7 +2,7 @@
 
 //Profile
 //データベース
-create database originalApp;
+create database originalApp default character set utf8;
 
 //ユーザーテーブル
 create table users(
@@ -61,7 +61,7 @@ create table categories(
     id int auto_increment primary key,
     type varchar(100) not null,
     created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
-    default charset=sjis;
+
 
 inset into categories(type) value('アウトドア');
 
@@ -123,12 +123,9 @@ SELECT comments.id,users.name,comments.content,comments.created_at FROM comments
 SELECT messagesFROM messages JOIN users ON messages.receive_user_id=users.id WHERE favorites.event_id=:event_id"
 
 
-select * from messages JOIN users ON messsages where(send_user_id=3 and receive_user_id=1) or(send_user_id=1 and receive_user_id=3);     
-
-select * from profile where user_id="1";
-
-select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image  from messages where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id);   
-
-select * from messages JOIN profiles ON messages.receive_user_id = profiles.user_id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id); 
 
 select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image from messages JOIN profiles ON messages.receive_user_id = profiles.user_id where (send_user_id="1" and receive_user_id="3") or (send_user_id="3" and receive_user_id="1"); 
+
+select * from messages JOIN users where (send_user_id=:send_user_id and receive_user_id=:message_user) or (send_user_id=:message_user and receive_user_id=:send_user_id)');
+
+SELECT users.id,users.name,profiles.image FROM users JOIN profiles ON users.id = profiles.user_id WHERE users.id !=:send_user_id";

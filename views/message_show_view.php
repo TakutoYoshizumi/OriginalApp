@@ -12,36 +12,36 @@
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
    </head>
    <body>
-   <style>
-      main{
+      <style>
+         main{
          height:100%;
-      }
-      #message-wrapper{
+         }
+         #message-wrapper{
          padding: 80px 0;
-      }
-      .flex{
+         }
+         .flex{
          display:flex;
          flex-direction:column;
-      }
-      ul{
+         }
+         ul{
          padding: 20px 0;
          flex-direction: column;
-      }
-      .my{
+         }
+         .my{
          align-items: flex-end;
-      }
-      .other{
-             align-items: flex-start;
-      }
-      img{
+         }
+         .other{
+         align-items: flex-start;
+         }
+         img{
          width: 30px;
-    height: 30px;
-    border-radius: 50%;
-      }
-   </style>
-   <header>
-  <!-- ナビゲーションバー -->
-      <nav class="navbar navbar-light fixed-top">
+         height: 30px;
+         border-radius: 50%;
+         }
+      </style>
+      <header>
+         <!-- ナビゲーションバー -->
+         <nav class="navbar navbar-light fixed-top">
             <h1>Awesome&nbsp;<span>Meetup</span></h1>
             <ul class="nav d-flex">
                <li class="nav-item">
@@ -64,67 +64,78 @@
                   <img src="upload/<?=$user_icon?>">
                </div>
             </div>
-         </nav>          
-  </header>
-       <main>
-            <!--入力エラー表示-->
-            <?php if($errors !== null):?>
-            <ul>
-               <?php foreach($errors as $error): ?>
-               <li><?= $error?></li>
-               <?php endforeach;?>
-            </ul>
-            <?php endif; ?>
-               <?php if($flash_message !== null):?>
-               <ul>
-                  <li><?= $flash_message?></li>
-               </ul>
-               <?php endif; ?>                  
-           <div class="main-item h-100">
-               <h2>アカウント</h2>
-               
-               <div class="d-flex h-100 w-100 justify-content-between">
-                  <div class="w-25 h-100 border"></div>
-                  <div class="w-50 h-100 border">
-                     <div id="message-wrapper">
-                     <div class="flex">
-                     <?php foreach($messages as $message):?>
-                     <!--自分が送信するメッセージ-->
-                     <?php if($message->send_user_id === $login_user->id):?>
-                     <ul class="my">
-                        <li><?=$message->message_content?></li>
-                        <li><?=$message->created_at?></li>
-                        <li>自分</li>
-                        <li><img src="upload/<?=$user_icon?>"></li>
-                     </ul>
-                     <!-他のユーザーからのメッセージ--->
-                     <?php else:?>
-                     <ul class="other">
-                        <li><?=$message->message_content?></li>
-                        <li><?=$message->created_at?></li>
-                        <li>From<?=$message->name?>さん</li>
+         </nav>
+      </header>
+      <main>
+         <!--入力エラー表示-->
+         <?php if($errors !== null):?>
+         <ul>
+            <?php foreach($errors as $error): ?>
+            <li><?= $error?></li>
+            <?php endforeach;?>
+         </ul>
+         <?php endif; ?>
+         <?php if($flash_message !== null):?>
+         <ul>
+            <li><?= $flash_message?></li>
+         </ul>
+         <?php endif; ?>                  
+         <div class="main-item h-100">
+            <h2>アカウント</h2>
+            <div class="d-flex h-100 w-100 justify-content-between">
+               <div class="w-25 h-100 border">
+                  <div>
+                     <?php foreach($messages as $message): ?>
+                     <ul>
+                        <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
                         <li><img src="upload/<?=$message->image?>"></li>
+                        <li><?= $message->message_content?></li>
+                        <li><?= $message->created_at?></li>
                      </ul>
-                     <?php endif;?>
-                     <?php endforeach ?>
-                     </div>
-                     
-   
-                     </div>
-                     <form action="message_store.php" method="POST">
-                        <input type="text" name="message_content"><br>
-                        <input type="hidden" name="receive_user_id" value="<?=$receive_user_id?>">
-                        <button type="submit">投稿</button>
-                     </form>
-                     <p><a href="top.php">トップページ</a></p>
+                     <?php endforeach; ?>
                   </div>
+                  <ul>
+                     <?php foreach($users as $user):?>
+                     <li><a href="message_show.php?id=<=$user->id?>"><?=$user->name?></a></li>
+                     <?php endforeach;?>
+                  </ul>
                </div>
-           </div>
-
-           </div>
-       </main>
-       <footer></footer>
+               <div class="w-50 h-100 border">
+                  <div id="message-wrapper">
+                     <div class="flex">
+                        <!--<!-ーメッセージ表示-->
+                        <?php foreach($all as $message):?>
+                        <!--自分が送信するメッセージ-->
+                        <?php if($message->send_user_id === $login_user->id):?>
+                        <ul class="my">
+                           <li><?=$message->message_content?></li>
+                           <li><?=$message->created_at?></li>
+                           <li>自分</li>
+                           <li><img src="upload/<?=$user_icon?>"></li>
+                        </ul>
+                        <!--<!-他のユーザーからのメッセージ--->
+                        <?php else:?>
+                        <ul class="other">
+                           <li><?=$message->message_content?></li>
+                           <li><?=$message->created_at?></li>
+                           <li>From<?=$message->name?>さん</li>
+                           <li><img src="upload/<?=$message->image?>"></li>
+                        </ul>
+                        <?php endif;?>
+                        <?php endforeach ?>
+                     </div>
+                  </div>
+                  <form action="message_store.php" method="POST">
+                     <input type="text" name="message_content"><br>
+                     <input type="hidden" name="receive_user_id" value="<?=$receive_user_id?>">
+                     <button type="submit">投稿</button>
+                  </form>
+                  <p><a href="top.php">トップページ</a></p>
+               </div>
+            </div>
+         </div>
+         </div>
+      </main>
+      <footer></footer>
    </body>
 </html>
-
-       

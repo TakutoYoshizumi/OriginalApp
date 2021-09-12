@@ -85,42 +85,28 @@
                
                <div class="d-flex h-100 w-100 justify-content-between">
                   <div class="w-25 h-100 border">
-                    <div class="flex">
-                     <?php foreach($message_relations as $e):?>
-                     <!--自分が送信するメッセージ-->
+                     <div>
+                     <?php foreach($messages as $message): ?>
                      <ul>
-                     <?php if($e->send_user_id != $login_user->id):?>
-                        <li><?=$e->receive_user_id?></li>
-                        <li><?=$e->name?></li>
-                        <li><img src="upload/<?=$e->image?>"></li>
+                     <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
+                     <li><img src="upload/<?=$message->image?>"></li>
+                     <li><?= $message->message_content?></li>
+                     <li><?= $message->created_at?></li>
                      </ul>
-                   <?php elseif($e->send_user_id === $login->id):?>
-                     <ul class="other">
-                        <li><?=$e->receive_user_id?></li>
-                        <li><?=$e->name?></li>
-                        <li><img src="upload/<?=$e->image?>"></li>
-                     </ul>                     
-                     <?php endif;?>
-                     <?php endforeach ?>
-                     </div>                     
+                     <?php endforeach; ?>
+                        
+                     </div>
+                  </div>
                   </div>
                   <div class="w-50 h-100 border">
                      <div id="message-wrapper">
-                     
-                     
-                     
-   
                      </div>
-                     
                      <p><a href="top.php">トップページ</a></p>
                   </div>
                </div>
            </div>
-
            </div>
        </main>
        <footer></footer>
    </body>
 </html>
-
-       

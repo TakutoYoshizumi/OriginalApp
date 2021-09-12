@@ -87,9 +87,9 @@
             {
                 try {
                     $pdo = self::get_connection();
-                    $stmt = $pdo->prepare('select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image,users.name from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id)');
+                    $stmt = $pdo->prepare('select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image,users.name from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id) order by messages.id');
                         // バインド処理
-                        $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
+                    $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
                     $stmt->bindParam(':receive_user_id', $receive_user_id, PDO::PARAM_INT);
                         // 実行
                         $stmt->execute();
@@ -97,38 +97,82 @@
                         // フェッチの結果を、Messageクラスのインスタンスにマッピングする
                         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Message');
                         //クラスのインスタンス配列を返す
-                        $messages = $stmt->fetchAll();  //対象ユーザーのメッセージ情報を全て抜き出し
+                        $all = $stmt->fetchAll();  //対象ユーザーのメッセージ情報を全て抜き出し
                         self::close_connection($pdo, $stmp);
 
-                    return $messages;
+                    return $all;
                 } catch (PDOException $e) {
                     return 'PDO exception: '.$e->getMessage();
                 }
             }
-
-             //idから対象のユーザー情報を取得するメソッド
-             public static function message_relation($send_user_id)
-             {
-                 try {
-                     $pdo = self::get_connection();
-                     $stmt = $pdo->prepare('select messages.send_user_id,messages.receive_user_id,profiles.image,users.name from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user_id) or (receive_user_id=:send_user_id)');
-                    // バインド処理
+             //注目するユーザーに紐付い最後のメッセージを取得するメソッド
+            public static function get_last_message($send_user_id, $relation_user)
+            {
+                try {
+                    $pdo = self::get_connection();
+                    // $stmt = $pdo->prepare('select messages.message_content,messages.created_at,profiles.image,users.name,profiles.user_id from messages JOIN profiles ON messages.receive_user_id = profiles.user_id JOIN users ON messages.receive_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id) order by messages.id DESC');
+                    $stmt = $pdo->prepare('select *from messages where (send_user_id=:send_user_id and receive_user_id=:relation_user) or (send_user_id=:relation_user and receive_user_id=:send_user_id) order by messages.id DESC');
+                        // バインド処理
                     $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
+                    $stmt->bindParam(':relation_user', $relation_user, PDO::PARAM_INT);
+                        // 実行
+                        $stmt->execute();
 
-                    // 実行
-                    $stmt->execute();
-                    // フェッチの結果を、Userクラスのインスタンスにマッピングする
-                    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Message');
-                    // Userクラスのインスタンスを返す
-                    $messages_relations = $stmt->fetchAll();  //ひとり抜き出し
-                    self::close_connection($pdo, $stmp);
+                        // フェッチの結果を、Messageクラスのインスタンスにマッピングする
+                        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Message');
+                        //クラスのインスタンス配列を返す
+                        $last_message = $stmt->fetch();  //対象ユーザーのメッセージ情報を全て抜き出し
+                        self::close_connection($pdo, $stmp);
 
-                     return $messages_relations;
-                 } catch (PDOException $e) {
-                     return 'PDO exception: '.$e->getMessage();
-                 }
-             }
+                    return $last_message;
+                } catch (PDOException $e) {
+                    return 'PDO exception: '.$e->getMessage();
+                }
+            }
+             //注目するユーザーに紐付い最後のメッセージを取得するメソッド
+            public static function get_last_message_by_user($send_user_id, $receive_user)
+            {
+                try {
+                    $pdo = self::get_connection();
+                    $stmt = $pdo->prepare('select messages.id,messages.message_content,messages.created_at,profiles.image,users.name,profiles.user_id from messages JOIN profiles ON messages.receive_user_id = profiles.user_id JOIN users ON messages.receive_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user) or (send_user_id=:receive_user and receive_user_id=:send_user_id) order by messages.id DESC');
+                        // バインド処理
+                    $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
+                    $stmt->bindParam(':receive_user', $receive_user, PDO::PARAM_INT);
+                        // 実行
+                        $stmt->execute();
+
+                        // フェッチの結果を、Messageクラスのインスタンスにマッピarングする
+                        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Message');
+                        //クラスのインスタンス配列を返す
+                        $message = $stmt->fetch();  //対象ユーザーのメッセージ情報を全て抜き出し
+                        self::close_connection($pdo, $stmp);
+
+                    return $message;
+                } catch (PDOException $e) {
+                    return 'PDO exception: '.$e->getMessage();
+                }
+            }
+             //注目するユーザーに紐付い最後のメッセージを取得するメソッド
+            public static function get_last_message_by_other($send_user, $receive_user)
+            {
+                try {
+                    $pdo = self::get_connection();
+                    $stmt = $pdo->prepare('select messages.id,message_content,messages.created_at,profiles.image,users.name,profiles.user_id from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user and receive_user_id=:receive_user) or (send_user_id=:receive_user and receive_user_id=:send_user) order by messages.id DESC');
+                        // バインド処理
+                    $stmt->bindParam(':send_user', $send_user, PDO::PARAM_INT);
+                    $stmt->bindParam(':receive_user', $receive_user, PDO::PARAM_INT);
+                        // 実行
+                        $stmt->execute();
+
+                        // フェッチの結果を、Messageクラスのインスタンスにマッピングする
+                        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Message');
+                        //クラスのインスタンス配列を返す
+                        $message = $stmt->fetch();  //対象ユーザーのメッセージ情報を全て抜き出し
+                        self::close_connection($pdo, $stmp);
+
+                    return $message;
+                } catch (PDOException $e) {
+                    return 'PDO exception: '.$e->getMessage();
+                }
+            }
     }
-
-    
-    
