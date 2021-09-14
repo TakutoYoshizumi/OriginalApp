@@ -66,7 +66,8 @@
                </li>
                <li>
                   <a href="all_profile_top.php">ユーザー一覧ページ</a>
-               </li>               
+               </li>
+               <li><a href="type.php">イベントタイプ登録（insert用）</a></li>
             </ul>   
       </div>
       </div>

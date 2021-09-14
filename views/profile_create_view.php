@@ -15,14 +15,14 @@
             <h1>Awesome&nbsp;<span>Meetup</span></h1>
             <p><?= $login_user->name ?>さんようこそ</p>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-            
+ 
            <form action="profile_store.php" method="POST" enctype="multipart/form-data">
                年齢: <input type="text" name="age"><br>
                <label>

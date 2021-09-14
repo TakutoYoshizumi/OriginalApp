@@ -2,20 +2,20 @@
 
 //(M)
 require_once 'models/Model.php';
-require_once 'models/Message.php';
+require_once 'models/Event.php';
 //いいね設計図
-class Message_Relation extends Model
+class Event_Category_Relation extends Model
 {
     public $id;
     public $send_user_id;   //送信するユーザーid
     public $event_id;    //イベントのid
-    public $created_at;  
+    public $created_at;
     public function __construct($event_id = '', $category_id = '')
-  {
-      $this->event_id = $event_id;
-      $this->category_id = $category_id;
-  }
-  //いいね登録メソッド
+    {
+        $this->event_id = $event_id;
+        $this->category_id = $category_id;
+    }
+  
   public function save()
   {
       try {
@@ -28,7 +28,6 @@ class Message_Relation extends Model
           $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
           $stmt->execute();
           self::close_connection($pdo, $stmp);
-
       } else { //更新処理
         $stmt = $pdo->prepare('UPDATE posts SET title=:title, content=:content,image=:image WHERE id=:id'); //変数値を保持しているのでprepare
         $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
@@ -45,21 +44,5 @@ class Message_Relation extends Model
           return 'PDO exception: '.$e->getMessage();
       }
   }
-  //user_id,event_idを指定していいね削除するメソッド
-  public static function destroy($user_id, $event_id)
-  {
-      try {
-          $pdo = self::get_connection();
-          $stmt = $pdo->prepare('DELETE FROM favorites WHERE user_id=:user_id AND event_id=:event_id'); //変数値を保持しているのでprepare
-      // バインド処理
-      $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-          $stmt->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-          $stmt->execute();
-          self::close_connection($pdo, $stmp);
 
-          return 'いいねを削除しました';
-      } catch (PDOException $e) {
-          return 'PDO exception: '.$e->getMessage();
-      }
-  }
 }

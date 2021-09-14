@@ -68,14 +68,14 @@
       </header>
       <main>
          <!--入力エラー表示-->
-         <?php if($errors !== null):?>
+         <?php if ($errors !== null):?>
          <ul>
-            <?php foreach($errors as $error): ?>
+            <?php foreach ($errors as $error): ?>
             <li><?= $error?></li>
             <?php endforeach;?>
          </ul>
          <?php endif; ?>
-         <?php if($flash_message !== null):?>
+         <?php if ($flash_message !== null):?>
          <ul>
             <li><?= $flash_message?></li>
          </ul>
@@ -85,7 +85,7 @@
             <div class="d-flex h-100 w-100 justify-content-between">
                <div class="w-25 h-100 border">
                   <div>
-                     <?php foreach($messages as $message): ?>
+                     <?php foreach ($messages as $message): ?>
                      <ul>
                         <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
                         <li><img src="upload/<?=$message->image?>"></li>
@@ -95,7 +95,7 @@
                      <?php endforeach; ?>
                   </div>
                   <ul>
-                     <?php foreach($users as $user):?>
+                     <?php foreach ($users as $user):?>
                      <li><a href="message_show.php?id=<=$user->id?>"><?=$user->name?></a></li>
                      <?php endforeach;?>
                   </ul>
@@ -104,9 +104,9 @@
                   <div id="message-wrapper">
                      <div class="flex">
                         <!--<!-ーメッセージ表示-->
-                        <?php foreach($all as $message):?>
+                        <?php foreach ($all as $message):?>
                         <!--自分が送信するメッセージ-->
-                        <?php if($message->send_user_id === $login_user->id):?>
+                        <?php if ($message->send_user_id === $login_user->id):?>
                         <ul class="my">
                            <li><?=$message->message_content?></li>
                            <li><?=$message->created_at?></li>

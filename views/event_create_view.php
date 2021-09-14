@@ -15,19 +15,19 @@
             <h1>Awesome&nbsp;<span>Meetup</span></h1>
             <p><?= $login_user->name ?>さんようこそ</p>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-            
+ 
            <form action="event_store.php" method="POST" enctype="multipart/form-data">
                イベント名: <input type="text" name="name"><br>
                            <p>
-                           <?php foreach($categories as $category): ?>
-                           <input type ="checkbox" name="category_id[]" value="<?=$category->id?>"><?=$category->type?>
+                           <?php foreach ($categories as $category): ?>
+                           <input type ="checkbox" name="category_id[ ]" value="<?=$category->id?>"><?=$category->type?>
                            <?php endforeach; ?>
                            </p>               
                イベント内容: <input type="textarea" name="content"><br>
@@ -36,6 +36,10 @@
                開催日: <input type="date" name="day"><br>
                開催時間: <input type="time" name="time"><br>
                参加人数: <input type="number" name="participants"><br>
+                         <label>
+               イベントタイプ: <input type="radio" name="type" value="オンライン" checked>オンライン
+                     <input type="radio" name="type" value="対面">対面
+                     </label><br>
                <button type="submit">投稿</button>
            </form>
             <ul>

@@ -29,14 +29,14 @@
       <main>
          <div class="grid">
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-                       
+ 
             <div class="grid-item-left">
                <img src="upload/<?=$profile->image?>" class="icon">
                <input type="hidden" name="id" value="<?=$profile->id?>">
@@ -46,15 +46,15 @@
                   <h2>ユーザー名：&nbsp;<?=$profile->name?>さん</h2>
                   <ul>
                      <li><?=$profile->created_at?>からユーザーサービスを利用してます</li>
-                     <?php if($profile->user_id == $login_user->id):?>
+                     <?php if ($profile->user_id == $login_user->id):?>
                      <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
                      <?php endif;?>
-                     <?php if($profile->user_id !== $login_user->id):?>
+                     <?php if ($profile->user_id !== $login_user->id):?>
                      <li><a href="message_show.php?id=<?=$profile->user_id?>">メッセージ送信</a></li>
                      <?php endif;?>
                   </ul>
-   
-               <?php if($flash_message !== null):?>
+ 
+               <?php if ($flash_message !== null):?>
                <ul>
                   <li class="flash_message"><?= $flash_message?></li>
                </ul>

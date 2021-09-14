@@ -24,19 +24,12 @@
                     
                     //新規登録の時
                     if($this->id === null){
-                        $stmt = $pdo -> prepare("INSERT INTO events (user_id,name,content,place,day,time,image,participants) VALUES (:user_id,:name,:content,:place,:day,:time,:image,:participants)");//変数値を保持しているのでprepare
+                        $stmt = $pdo -> prepare("INSERT INTO categories (type) VALUES (:type)");//変数値を保持しているのでprepare
                         // バインド処理
-                        $stmt->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-                        $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
-                        $stmt->bindParam(':content', $this->content, PDO::PARAM_STR);
-                        $stmt->bindParam(':place', $this->place, PDO::PARAM_STR);
-                        $stmt->bindParam(':day', $this->day, PDO::PARAM_STR);
-                        $stmt->bindParam(':time', $this->time, PDO::PARAM_STR);
-                        $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                        $stmt->bindParam(':participants', $this->participants, PDO::PARAM_INT);
+                        $stmt->bindParam(':type', $this->type, PDO::PARAM_STR);
                         $stmt->execute();
                         self::close_connection($pdo, $stmp);
-                        return "イベントの作成が成功しました";
+                        return "イベントタイプの登録に成功しました";
                     }else{ //更新処理
                         $stmt = $pdo -> prepare("UPDATE events SET name=:name, content=:content, place=:place, day=:day, time=:time, image=:image, participants=:participants WHERE id=:id");//変数値を保持しているのでprepare
                         // バインド処理
@@ -121,7 +114,7 @@
             return 'PDO exception: ' . $e->getMessage();
                 }
             }     
-             //注目する投稿に紐付いたいいね一覧を取得するメソッド
+    //注目する投稿に紐付いたいいね一覧を取得するメソッド
     public function is_favorite($user_id){
             try {
                         $pdo = self::get_connection();
@@ -149,8 +142,8 @@
                     }                 
                  }
 
-             //注目する投稿に紐付いたいいね一覧を取得するメソッド
-            public function favorites(){
+    //注目する投稿に紐付いたいいね一覧を取得するメソッド
+    public function favorites(){
                     try {
                         $pdo = self::get_connection();
                         $stmt = $pdo -> prepare("SELECT favorites.user_id,users.name FROM favorites JOIN users ON favorites.user_id=users.id WHERE favorites.event_id=:event_id");

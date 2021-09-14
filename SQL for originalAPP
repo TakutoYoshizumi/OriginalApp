@@ -18,7 +18,7 @@ create table profiles(
     id int auto_increment primary key,
     user_id int not null,
     age int not null,
-    gender varchar(50) ,
+    gender varchar(50) not null,
     job varchar(50) not null,
     country varchar(50) not null,
     introduction varchar(255) not null,
@@ -37,9 +37,24 @@ create table events(
     day varchar(50) not null,
     time varchar(50) not null,
     participants int not null,
+    type varchar(50) not null,
     image varchar(255) ,
     created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     foreign key(user_id) references users(id)
+);
+
+//イベント参加テーブル
+create table participants(
+    id int auto_increment primary key,
+    user_id int not null,
+    event_id int not null,
+    created_at timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(event_id) references events(id)
+    on delete cascade
+    on update cascade
 );
 
 //いいねテーブル

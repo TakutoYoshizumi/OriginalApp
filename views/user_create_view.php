@@ -15,14 +15,14 @@
             <h1>新規ユーザー登録</h1>
             <p>Welcome</p>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul class =flash_message>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-            
+ 
             <form action="singup.php" class="my-5 w-50" method="POST">
                <div class="form-floating mb-4">
                   <input type="text"class="form-control col-6"id="floatingInput" name="name" placeholder="ユーザーネーム">
@@ -48,4 +48,3 @@
       </div>
    </body>
 </html>
-

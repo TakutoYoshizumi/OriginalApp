@@ -16,14 +16,14 @@
             <h1>Awesome&nbsp;<span>Meetup</span></h1>
             <p>Welcome</p>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-            <?php if($flash_message !== null):?>
+            <?php if ($flash_message !== null):?>
             <ul>
                <li><?= $flash_message?></li>
             </ul>

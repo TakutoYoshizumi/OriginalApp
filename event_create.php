@@ -16,7 +16,6 @@
   $_SESSION["errors"] = null;
   
   $categories=Category::all();
-  // var_dump($categories);
   
   //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];

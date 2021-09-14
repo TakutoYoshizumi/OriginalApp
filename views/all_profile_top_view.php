@@ -9,25 +9,25 @@
         table, tr, th, td{
     border:solid 1px black;
 }
-
+ 
 table img{
     width:100px;
 }
-
+ 
 ul img{
     width:100px;
-    
-    
+ 
+ 
 }
     </style>
     <body>
         <!--ビュー(V)-->
         <h1>ユーザー一覧</h1>
-        
-        <?php if($flash_message !== null): ?>
+ 
+        <?php if ($flash_message !== null): ?>
         <p><?= $flash_message ?></p>
         <?php endif; ?>
-        
+ 
         <h2>ユーザー一覧</h2>
         <table>
             <tr>
@@ -39,7 +39,7 @@ ul img{
                 <th>自己紹介</th>
                 <th>アイコン</th>
             </tr>
-            <?php foreach($all_profiles as $profile):?>
+            <?php foreach ($all_profiles as $profile):?>
             <tr>
                 <td><a href="profile_show.php?id=<?=$profile->user_id?>"><?=$profile->name?></a></td>
                 <td><?=$profile->age?></a></td>
@@ -50,7 +50,7 @@ ul img{
                 <td><img src="upload/<?=$profile->image?>"></td>
             </tr>
             <?php endforeach;?>
-            
+ 
         </table>
         <p><a href="top.php">トップページ</a></p>
     </body>

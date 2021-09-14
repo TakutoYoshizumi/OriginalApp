@@ -68,25 +68,25 @@
   </header>
        <main>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-               <?php if($flash_message !== null):?>
+               <?php if ($flash_message !== null):?>
                <ul>
                   <li><?= $flash_message?></li>
                </ul>
                <?php endif; ?>                  
            <div class="main-item h-100">
                <h2>アカウント</h2>
-               
+ 
                <div class="d-flex h-100 w-100 justify-content-between">
                   <div class="w-25 h-100 border">
                      <div>
-                     <?php foreach($messages as $message): ?>
+                     <?php foreach ($messages as $message): ?>
                      <ul>
                      <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
                      <li><img src="upload/<?=$message->image?>"></li>
@@ -94,7 +94,7 @@
                      <li><?= $message->created_at?></li>
                      </ul>
                      <?php endforeach; ?>
-                        
+ 
                      </div>
                   </div>
                   </div>

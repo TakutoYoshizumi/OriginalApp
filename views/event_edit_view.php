@@ -28,21 +28,21 @@
       </header>
       <main>
             <!--入力エラー表示-->
-            <?php if($errors !== null):?>
+            <?php if ($errors !== null):?>
             <ul>
-               <?php foreach($errors as $error): ?>
+               <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
-            <?php if($flash_message !== null):?>
+            <?php if ($flash_message !== null):?>
             <ul>
                <li><?= $flash_message?></li>
             </ul>
             <?php endif; ?>                     
-         
+ 
             <div class="grid">
-
+ 
                </div>
                <div class="grid-item-right">
                   <div class="items">
@@ -59,6 +59,10 @@
                                  開催日: <input type="date" name="day" value="<?= $event->day?>"><br>
                                  開催時間: <input type="time" name="time" value="<?= $event->time?>"><br>
                                  参加人数: <input type="number" name="participants" value="<?= $event->participants ?>"><br>
+                                 <label>
+                                イベントタイプ: <input type="radio" name="type" value="オンライン" checked>オンライン
+                                                <input type="radio" name="type" value="対面">対面
+                                 </label><br>
                                  <input type="hidden" name="id" value="<?=$event->id?>">
                                  <button type="submit">投稿</button>
                                  <!--<input type="submit" value="登録">-->
