@@ -87,7 +87,7 @@
             {
                 try {
                     $pdo = self::get_connection();
-                    $stmt = $pdo->prepare('select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image,users.name from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id) order by messages.id');
+                    $stmt = $pdo->prepare('select messages.send_user_id,messages.receive_user_id,messages.message_content,messages.created_at,profiles.image,users.name from messages JOIN profiles ON messages.send_user_id = profiles.user_id JOIN users ON messages.send_user_id=users.id where (send_user_id=:send_user_id and receive_user_id=:receive_user_id) or (send_user_id=:receive_user_id and receive_user_id=:send_user_id) order by messages.id desc');
                         // バインド処理
                     $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
                     $stmt->bindParam(':receive_user_id', $receive_user_id, PDO::PARAM_INT);

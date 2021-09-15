@@ -22,12 +22,11 @@
   $participants = $_POST["participants"];
   $type = $_POST["type"];
   $image = $_FILES["image"]["name"];
- 
   //イベントidから対象のイベント情報を取得
   $event = Event::find($id);
  
- 
-  //インスタンス情報を更新する
+ var_dump($event);
+  // //インスタンス情報を更新する
   $event->name = $name;
   $event->content = $content;
   $event->place = $place;
@@ -35,9 +34,9 @@
   $event->time = $time;
   $event->participants = $participants;
   $event->type = $type;
-  $event->image = $image;
   
-  //入力エラーチェック
+  var_dump($imge);
+  // //入力エラーチェック
   $errors = $event->validate();
  
   // 入力エラーが１つもなければ
@@ -45,6 +44,7 @@
  
       //画像が選択されている時
       if (empty($image) !== true) {
+             $event->image = $image;
           $file = 'upload/' . $image;
           // 画像をuploadディレクトリにファイル保存
           move_uploaded_file($_FILES['image']['tmp_name'], $file);

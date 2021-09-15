@@ -65,7 +65,7 @@
                                  </label><br>
                                  <input type="hidden" name="id" value="<?=$event->id?>">
                                  <button type="submit">投稿</button>
-                                 <!--<input type="submit" value="登録">-->
+      
                   </form>
                      <ul>
                         <li>トップページへ戻りますか？</li>
