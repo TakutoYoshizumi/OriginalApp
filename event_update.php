@@ -36,7 +36,7 @@
   $event->participants = $participants;
   $event->type = $type;
   $event->image = $image;
- 
+  
   //入力エラーチェック
   $errors = $event->validate();
  

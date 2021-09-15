@@ -29,7 +29,8 @@
  
   //イベント情報を取得
   $event = Event::find($id);
- 
+  //イベントホスト情報を取得
+  $event_host = Event::find_host($id);
   //このイベント投稿に対するいいね一覧を取得
    $favorites = $event->favorites();
  

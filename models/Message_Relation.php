@@ -9,13 +9,15 @@ class Message_Relation extends Model
     public $id;
     public $send_user_id;   //送信するユーザーid
     public $receive_user_id;    //イベントのid
+    public $message_count;
     public $created_at;
-    public function __construct($send_user_id = '', $receive_user_id = '')
+    public function __construct($send_user_id = '', $receive_user_id = '',$message_count="")
     {
         $this->send_user_id = $send_user_id;
         $this->receive_user_id = $receive_user_id;
+        $this->message_content = $message_count;
     }
-    //いいね登録メソッド
+    
     public function save()
     {
         try {
@@ -67,4 +69,21 @@ class Message_Relation extends Model
             return 'PDO exception: '.$e->getMessage();
         }
     }
+    
+    // public static function insert_message_count($send_user_id,$receive_user_id){
+    //     try {
+    //         $pdo = self::get_connection();
+    //         $stmt = $pdo->prepare('UPDATE message_relations SET message_count = message_count + "1" WHERE(send_user_id = :send_user_id and receive_user_id = :receive_user_id) or (send_user_id = :receive_user_id and receive_user_id =:send_user_id)');
+    //         // バインド処理
+    //         $stmt->bindParam(':send_user_id', $send_user_id, PDO::PARAM_INT);
+    //         $stmt->bindParam(':receive_user_id', $send_user_id, PDO::PARAM_INT);
+ 
+    //         // 実行
+    //         $stmt->execute();
+    //         self::close_connection($pdo, $stmp);
+    //         return $stmt->fetch();
+    //     } catch (PDOException $e) {
+    //         return 'PDO exception: '.$e->getMessage();
+    //     }        
+    // }
 }

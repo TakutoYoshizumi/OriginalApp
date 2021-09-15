@@ -152,6 +152,48 @@
              return 'PDO exception: '.$e->getMessage();
          }
      }
+     //idから対象のEventオブジェクトを取得するメソッド
+     public static function find_host_event($user_id)
+     {
+         try {
+             $pdo = self::get_connection();
+             $stmt = $pdo->prepare('select * from events where user_id=:user_id order by created_at desc');//変数値を保持しているのでprepare
+            // バインド処理
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            // 実行
+            $stmt->execute();
+            // フェッチの結果を、Userクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Event');
+            // Userクラスのインスタンスを返す
+            $events = $stmt->fetchAll();  //ひとり抜き出し
+            self::close_connection($pdo, $stmp);
+
+             return $events;
+         } catch (PDOException $e) {
+             return 'PDO exception: '.$e->getMessage();
+         }
+     }     
+     //idから対象のEvent,ホスト情報を取得するメソッド
+     public static function find_host($id)
+     {
+         try {
+             $pdo = self::get_connection();
+             $stmt = $pdo->prepare('select events.id,events.user_id,users.name from events join users on events.user_id = users.id where events.id=:id');//変数値を保持しているのでprepare
+            // バインド処理
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            // 実行
+            $stmt->execute();
+            // フェッチの結果を、Userクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Event');
+            // Userクラスのインスタンスを返す
+            $event = $stmt->fetch();  //ひとり抜き出し
+            self::close_connection($pdo, $stmp);
+
+             return $event;
+         } catch (PDOException $e) {
+             return 'PDO exception: '.$e->getMessage();
+         }
+     }     
      
      //注目する投稿に紐付いたいいね一覧を取得するメソッド
      public function is_favorite($user_id)

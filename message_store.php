@@ -30,7 +30,8 @@
   $_SESSION["flash_message"] = $flash_message;
   $message_relaltion = new Message_Relation($send_user_id,$receive_user_id);
   $message_relaltion=$message_relaltion->save();
-   
+  // $message_content=Message_Relation::insert_message_count($send_user_id,$receive_user_id);
+  
   header("Location:message_show.php?id=".$message->receive_user_id);
   exit;
   //   //入力エラーが１つでもあれば

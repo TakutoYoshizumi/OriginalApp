@@ -37,8 +37,6 @@
     $flash_message = $profile->save();
     $_SESSION["flash_message"] = $flash_message;
 
-    // アイコンをセッションに保存
-    $_SESSION["user_icon"] = $user_icon;    
     header("Location: profile_show.php?id=" . $login_user->id);
     exit;
     

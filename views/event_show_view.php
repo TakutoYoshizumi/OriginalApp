@@ -64,15 +64,15 @@
               <p><?= count($favorites)?>いいね</p>
               <P>いいねした人の一覧</P>
                  <ul>
-                     <?php foreach ($favorites as $favorite): ?>
-                       <li><a href="profile_show.php?id=<?=$favorite->user_id?>"><?= $favorite->name ?></a></li>
-                       <?php endforeach; ?>
+                <?php for ($i=0; $i<5; $i++) { ?>
+                       <li><a href="profile_show.php?id=<?=$favorites[$i]->user_id?>"><?= $favorites[$i]->name ?></a></li>
+                <?php } ?>
                  </ul>      
               </div>
             </div>
             <div class="grid-item-right h-100">
                <div class="items">
-                  <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
+                  <h2>ホストユーザー&nbsp;<a href="profile_show.php?id=<?=$event_host->user_id?>"><?=$event_host->name?></a>さん</h2>
                   <ul>
                      <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
                      <?php if ($event->user_id == $login_user->id):?>
@@ -119,10 +119,14 @@
  
                      <h2>イベントに参加する</h2>
                      <?php if (! $event->is_participant($login_user->id)): ?>
+                     <?php if(($event->participants) != (count($participants))):?>
                   　 <form action="participant_store.php" method="POST">
                         <input type="hidden" name="event_id" value="<?=$event->id?>">
                         <button type="subbmit">イベントに参加</button>
                      </form>
+                     <?php else :?>
+                     <p>募集人数に達しました</p>
+                     <?php endif;?>
                      <?php else :?>
                     <form action="participant_destroy.php" method="POST">
                         <input type="hidden" name="event_id" value="<?=$event->id?>">
@@ -130,9 +134,13 @@
                     </form>
                     <?php endif;?>
                     <div>
-                    <P>イベント参加者の一覧</P>
                     <p>参加予定人数:<?= count($participants)?>人</p>
+                    <?php if(($event->participants) == (count($participants))):?>
+                    <p>募集人数:満員</p>
+                    <?php else:?>
                     <p>募集人数:残り<?=($event->participants) - (count($participants))?>人</p>
+                    <?php endif;?>
+                    <P>イベント参加者の一覧</P>
                        <ul>
                            <?php foreach ($participants as $participant): ?>
                            <div class="d-flex align-items-center">

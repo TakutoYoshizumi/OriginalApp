@@ -67,4 +67,26 @@
             return 'PDO exception: '.$e->getMessage();
         }
     }
+
+    //いいね一覧から対象のいいね一覧を取得するメソッド
+    public static function find($user_id)
+    {
+         try {
+             $pdo = self::get_connection();
+             $stmt = $pdo->prepare('SELECT * FROM participants WHERE user_id=:user_id order by created_at desc');//変数値を保持しているのでprepare
+            // バインド処理
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            // 実行
+            $stmt->execute();
+            // フェッチの結果を、Favoriteクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Participant');
+            // Favoriteクラスのインスタンスを返す
+            $participants = $stmt->fetchAll();  //ひとり抜き出し
+            self::close_connection($pdo, $stmp);
+
+             return $participants;
+         } catch (PDOException $e) {
+             return 'PDO exception: '.$e->getMessage();
+         }
+     }          
   }

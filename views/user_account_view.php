@@ -40,14 +40,38 @@
                <div class="grid-item">
                    <ul>
                        <li><i class="fas fa-user-cog fa-2x"></i></li>
-                       <li>個人情報&nbsp;<span>&gt;</span></li>
+                       <li><a href ="user_show.php?id=<?=$login_user->id?>">個人情報&nbsp;<span>&gt;</span></a></li>
                        <li>個人情報を参照する</li>
                    </ul>
                </div>
-               <div class="grid-item"></div>
-               <div class="grid-item"></div>
-               <div class="grid-item"></div>
-               <div class="grid-item"></div>
+               <div class="grid-item">
+                   <ul>
+                       <li><i class="fas fa-user-cog fa-2x"></i></li>
+                       <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り&nbsp;<span>&gt;</span></a></li>
+                       <li>お気に入りのイベントを参照する</li>
+                   </ul>
+               </div>
+               <div class="grid-item">
+                   <ul>
+                       <li><i class="fas fa-user-cog fa-2x"></i></li>
+                       <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ&nbsp;<span>&gt;</span></a></li>
+                       <li>メッセージを参照する</li>
+                   </ul>                  
+               </div>
+               <div class="grid-item">
+                   <ul>
+                       <li><i class="fas fa-user-cog fa-2x"></i></li>
+                       <li><a href ="event_participant_show.php?id=<?=$login_user->id?>">参加予定&nbsp;<span>&gt;</span></a></li>
+                       <li>参加予定イベントを参照する</li>
+                   </ul>                     
+               </div>
+               <div class="grid-item">
+                   <ul>
+                       <li><i class="fas fa-user-cog fa-2x"></i></li>
+                       <li><a href ="host_event_show.php?id=<?=$login_user->id?>">ホストイベント&nbsp;<span>&gt;</span></a></li>
+                       <li>ホストしているイベントを参照する</li>
+                   </ul>                        
+               </div>
                <div class="grid-item"></div>
            </div>
        </main>
