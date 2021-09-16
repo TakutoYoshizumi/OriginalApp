@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>イベント一覧ページ</title>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
     </head>
     <style>
         table, tr, th, td{
@@ -23,6 +24,10 @@ ul img{
     <body>
         <!--ビュー(V)-->
         <h1>イベント</h1>
+        <?php foreach ($categories as $category):?>
+        <button value="<?=$category->type?>"><?=$category->type?></button>
+        <?php endforeach; ?>
+        <button value="all">all</button>
  
         <?php if ($flash_message !== null): ?>
         <p><?= $flash_message ?></p>
@@ -30,7 +35,7 @@ ul img{
  
         <h2>イベント一覧</h2>
         <table>
-            <tr>
+           <tr>
                 <th>イベント名</th>
                 <th>カテゴリー</th>
                 <th>内容</th>
@@ -43,7 +48,9 @@ ul img{
                 <th>投稿日時</th>
             </tr>
             <?php foreach ($event as $event):?>
-            <tr>
+            <?php foreach ($event->categories() as $category):?>
+              <tr class="<?=$category->type?>">
+            <?php endforeach; ?>                
                 <td><a href="event_show.php?id=<?=$event->id?>"><?=$event->name?></a></td>
                 <td>
                     <ul>
@@ -66,5 +73,6 @@ ul img{
         </table>
         <p><a href="event_create.php">イベント作成</a></p>
         <p><a href="top.php">トップページ</a></p>
+        <script src="js/filter.js"></script>
     </body>
 </html>
