@@ -2,7 +2,9 @@
 $cWhite:#00000033;
 $cNavy:#484848;
 $cGreen:#008489;
-$cGray:#717171;
+$cGray:#71717191;
+$cBlack:#0000009c;
+$cLgreen:var(--color-text-link, #008489);
 @mixin font($size,$weight,$height){
     font-size:$size;
     font-weight:$weight;
@@ -75,51 +77,127 @@ main{
     max-width: 1080px;
     margin: 0 auto;
     padding: 0 24px;
-    margin-top: 60px;
+    margin-top: 20px;
     margin-bottom: 80px;
+    @media screen and (max-width: 896px) {
+        margin-bottom:60px;
+    }
+      
+    
+    & .tab{
+        margin-bottom:80px;
+        @media screen and (max-width: 896px) {
+            margin-bottom:60px;
+        }    
+        
+        & li{
+            margin-right: 10px;
+            color:$cBlack;
+            @include font(15px,600,1.2);
+            & a{
+                color:$cBlack;
+                &:hover{
+                    @include borderB;
+                }
+            }
+        }
+    }
     
     & .grid {
        display: grid;
         gap: 40px;
         grid-template-columns: 1fr 2fr;
-        
+        @media screen and (max-width: 896px) {
+            grid-template-columns: 1.3fr 4fr;
+            gap: 20px;
+        }
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }        
+
         & .grid-item-left{
             height: 500px;
-            padding: 40px 20px;
+            padding: 40px 0;
             border-radius: 8px;   
             box-shadow: 0 2px 8px $cWhite;
             text-align: center;
-            
-            & .icon{
-                width: 150px;
+            @media screen and (max-width: 896px) {
+                height: 400px;
+            } 
+            @media screen and (max-width: 768px) {
                 height: 150px;
+                padding:0;
+                box-shadow:none;
+            }               
+            & .icon{
+                width: 200px;
+                height: 200px;
                 object-fit: cover;
                 border-radius: 50%;
                 border: 1px solid #00000029;
-                padding: 10px;                
+                padding: 10px;
+                @media screen and (max-width: 896px) {
+                  height: 150px;
+                  width: 150px;
+                }                    
+            }
+            
+            & ul{
+                font-size:14px;
+                & li:nth-child(1){
+                    color:$cNavy;
+                }
+                & li:nth-child(2){
+                    color:$cGray;
+                    font-size:12px;
+                }
             }
                     
         }
     
         & .grid-item-right{
-            height: 800px;
+            height: 750px;
             padding: 25px 40px;
+            @media screen and (max-width: 768px) {
+                padding:25px;
+                height:100%;
+            }    
+            @media screen and (max-width: 480px) {
+                padding:25px 10px;
+            }                
         
             & .items{
                 margin-bottom:50px;
                 
-                & h2{
-                @include font(32px,400,2);
-                letter-spacing:3px;
-                color:$cNavy;
-                margin-bottom: 10px;                
+                & .user_name{
+                    @media screen and (max-width: 480px) {
+                        flex-direction:column;
+                    }                        
+                    & li{
+                    @include font(32px,400,1.5);
+                    color:$cBlack;
+                    margin-bottom: 10px;
+                    padding-right: 10px;
+                    @media screen and (max-width: 768px) {
+                        @include font(26px,400,1.5);
+                    } 
+                    @media screen and (max-width: 568px) {
+                        @include font(22px,400,1.5);
+                    }                       
+                }
                 }
                 
-                & ul{
-                    font-size:12px;
+                & .user_info{
+                    font-size:14px;
                     & li:nth-child(1){
-                        margin-bottom:15px;
+                        margin-bottom:20px;
                         color:$cGray;
+                        @media screen and (max-width: 568px) {
+                            font-size:12px;
+                        }                         
+                    }
+                    & li a {
+                        color:$cLgreen;
                     }
                     & .flash_message{
                       color:red !important;
@@ -129,26 +207,43 @@ main{
             
             & .profile{
                 margin-bottom: 50px;
+                & section{
+                @media screen and (max-width: 480px) {
+                    margin-bottom:50px;
+                }                     
+                }
                 
                 & h2{
                 @include font(20px,400,20px);
                 letter-spacing:2px;
                 color:$cNavy; 
                 margin-bottom:30px;
+                @media screen and (max-width: 768px) {
+                    @include font(18px,400,20px);
+                }                   
                 }
+                
                 & P{
-                    @include font(16px,400,1);
+                    @include font(18px,400,1);
                     @include section;
+                    @media screen and (max-width: 768px) {
+                        @include font(16px,400,20px);
+                    }                        
                 }
                 & .flex{
                     display: grid;
                     grid-template-columns: 35% 35%;
                     gap: 80px;
+                    @media screen and (max-width: 480px) {
+                        display:block;
+                    }                    
                 }
             }
             & ul{
-                font-size:12px;
-                
+                font-size:14px;
+                & li a{
+                    color:$cLgreen;
+                }
             }
         }
     }

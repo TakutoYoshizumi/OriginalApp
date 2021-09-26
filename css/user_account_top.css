@@ -1,0 +1,145 @@
+@charset "UTF-8";
+header {
+  height: 90px; }
+
+.navbar {
+  padding: 20px 40px;
+  box-shadow: 5px 3px 10px 0px #00000052;
+  cursor: pointer; }
+  .navbar h1 {
+    font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff385c; }
+  .navbar #nav {
+    width: 90px;
+    height: 45px;
+    border: 1px solid #DDDDDD;
+    border-radius: 25px;
+    justify-content: space-around;
+    display: flex;
+    align-items: center; }
+    .navbar #nav .menu-btn {
+      background: transparent;
+      border: none;
+      position: relative; }
+      .navbar #nav .menu-btn > span {
+        background: black;
+        width: 22px;
+        height: 2px;
+        display: block;
+        position: absolute; }
+        .navbar #nav .menu-btn > span:nth-child(1) {
+          top: -6px; }
+        .navbar #nav .menu-btn > span:nth-child(3) {
+          top: 6px; }
+    .navbar #nav .user-icon {
+      width: 30px;
+      height: 30px; }
+      .navbar #nav .user-icon img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%; }
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 30px;
+  margin-top: 60px;
+  margin-bottom: 80px; }
+  @media screen and (max-width: 5680px) {
+    main {
+      padding: 0 50px; } }
+  main .main-item {
+    margin-bottom: 60px; }
+    @media screen and (max-width: 800px) {
+      main .main-item {
+        text-align: center; } }
+    main .main-item h2 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #484848;
+      margin-bottom: 10px; }
+    main .main-item ul {
+      display: flex; }
+      @media screen and (max-width: 800px) {
+        main .main-item ul {
+          justify-content: center; } }
+      main .main-item ul li {
+        padding-right: 10px; }
+        main .main-item ul li:nth-child(2) {
+          font-weight: bold; }
+          main .main-item ul li:nth-child(2) a {
+            color: #008489; }
+  main .grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr); }
+    @media screen and (max-width: 800px) {
+      main .grid {
+        grid-template-columns: repeat(2, 1fr); } }
+    @media screen and (max-width: 568px) {
+      main .grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px; } }
+    main .grid .grid-item {
+      height: 200px;
+      padding: 25px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #00000033; }
+      @media screen and (max-width: 568px) {
+        main .grid .grid-item {
+          padding: 40px;
+          text-align: center; } }
+      main .grid .grid-item ul li:nth-child(1) {
+        margin-bottom: 20px; }
+        main .grid .grid-item ul li:nth-child(1) a .green:hover {
+          color: #06d8e0;
+          transition: 0.4s; }
+        main .grid .grid-item ul li:nth-child(1) a .blue:hover {
+          color: #03a9f4;
+          transition: 0.4s; }
+        main .grid .grid-item ul li:nth-child(1) a .pink:hover {
+          color: #ef0051;
+          transition: 0.4s; }
+        main .grid .grid-item ul li:nth-child(1) a .yellow:hover {
+          color: #ffe821;
+          transition: 0.4s; }
+      main .grid .grid-item ul li:nth-child(2) {
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.5;
+        margin-bottom: 8px; }
+        @media screen and (max-width: 568px) {
+          main .grid .grid-item ul li:nth-child(2) {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.5; } }
+        main .grid .grid-item ul li:nth-child(2) a {
+          color: #484848; }
+          main .grid .grid-item ul li:nth-child(2) a:hover {
+            opacity: 0.6;
+            transition: 0.6s; }
+      main .grid .grid-item ul li:nth-child(3) {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.3; }
+        @media screen and (max-width: 568px) {
+          main .grid .grid-item ul li:nth-child(3) {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5; } }
+      main .grid .grid-item .green {
+        color: #008489; }
+      main .grid .grid-item .pink {
+        color: #e91e638a; }
+      main .grid .grid-item .yellow {
+        color: #c79e23a8; }
+      main .grid .grid-item .blue {
+        color: #394baf; }
+    main .grid span {
+      font-weight: normal; }
+
+/*# sourceMappingURL=user_account_top.css.map */

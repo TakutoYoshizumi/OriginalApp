@@ -1,6 +1,6 @@
 @import 'model.scss';
 $cWhite:#fff;
-$cGray:#717171;
+$cGray:#71717191;
 $cNavy:#484848;
 $cGreen:#008489;
 @mixin font($size,$weight,$height){
@@ -8,15 +8,48 @@ $cGreen:#008489;
     font-weight:$weight;
     line-height:$height;
 }
-
-
+// message_show_view 
+.flex{
+  display:flex;
+  flex-direction:column;    
+ul{
+     padding: 20px 0;
+     flex-direction: column;
+     display:flex;
+      & .d-flex{
+      & .account_icon{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;                
+       }
+      } 
+      & li{
+        padding-right: 10px;
+        &:nth-child(2){
+        font-weight:bold;
+          & a{
+            color:$cGreen;
+          }
+        }              
+      }
+        }
+}
+img{
+    width: 30px;
+         height: 30px;
+         border-radius: 50%;
+         }
+#wrapper{
+    background:#9e9e9e14;
+}
 header{
-    height:90px;
+    height:120px;
 }
 .navbar{
         padding: 20px 40px;
         box-shadow: 5px 3px 10px 0px #00000052;
         cursor: pointer;
+        background:white;
         
         & h1{
             @include title(20px,1px);
@@ -65,71 +98,197 @@ header{
             }
         }
 }
-
 main{
     max-width: 1080px;
     margin: 0 auto;
-    padding: 0 24px;
-    margin-top: 60px;
+    padding: 0 50px;
     margin-bottom: 80px;
-    
+    @media screen and (max-width: 896px) {
+    padding:0 25px;
+    }
     & .main-item {
         margin-bottom: 50px;
-        & h2{
-        @include font(32px,800,1.2);
-        color:$cNavy;
-        margin-bottom: 10px;
-        }
-        & ul{
-            display:flex;
-            & li{
-              padding-right: 10px;
-            &:nth-child(2){
-                font-weight:bold;
-                & a{
-                    color:$cGreen;
-                }
-            }              
+        & .d-grid{
+            grid-template-columns:1fr 2fr;
+            grid-template-rows: 680px;
+            @media screen and (max-width: 480px) {
+              grid-template-columns:1fr 4fr;
             }
-        }
+                & #account_list{
+                    overflow:scroll;
+                    background:white;
+                    & .user_mess_icons.d-flex {
+                        padding:0;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        height: 60px;
+                        & li:nth-child(2){
+                            @media screen and (max-width: 480px) {
+                              display:none;
+                            }                            
+                        }
+                    }
+                    & .user_icons {
+                      & ul{
+                          padding:20px 0;
+                          & .d-flex{
+                            @media screen and (max-width: 480px) {
+                              flex-direction: column;
+                              align-items: center;
+                            & li{
+                                padding-bottom:10px;
+                            }
+                            }
+                          }
+                        & li{
+                            color:$cGray;
+                            font-size:12px;
+                        }
+                        & .messages li{
+                           padding-top:8px;
+                            @media screen and (max-width: 480px) {
+                                display:none;
+                            }                           
+                        }
+                        }
+                      }
+                            & .name{
+                                @include font(14px,600,0);
+                            & a{
+                                color:$cNavy;
+                            }
+                           
+                        }
+                        }
+                }
+                & #message_list{
+                    background:white;
+                    position: relative;
+                    & .user_mess_icons.d-flex {
+                        padding:0;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        height: 60px;
+                    }
+                    & .mess_scroll{
+                      overflow: scroll;
+                      height: 85%;
+                    }
+                    & #message-wrapper .my_mess{
+                        margin:0 20px;
+                        align-items:flex-end;
+                        
+                        @media screen and (max-width: 568px) {
+                          align-items: center;
+                          margin: 15px 20px;
+                        }
+                      & li:nth-child(1){
+                        width: 60%;
+                        height: 70px;
+                        background: #80808036;
+                        padding: 16px 25px;
+                        border-radius: 20px;
+                        overflow: scroll;
+                        resize: both;
+                        font-size:14px;
+                        @media screen and (max-width: 568px) {
+                          width: 80%;
+                          height: 80px;
+                        }                              
+                      }
+                      & li:nth-child(2){
+                        font-size:12px;
+                        color:$cGray;
+                        margin-top: 10px;
+                        @media screen and (max-width: 568px) {
+                          font-size:10px;
+                        } 
+                        }
+                    }
+                    & #message-wrapper .other{
+                        margin:0 20px;
+                        padding-top:0;
+                        @media screen and (max-width: 568px) {
+                          align-items: center;
+                          margin: 15px 20px;
+                        }                        
+                      & li:nth-child(1){
+                        width: 60%;
+                        height: 70px;
+                        background:white;
+                        padding: 16px 25px;
+                        border-radius: 20px;
+                        border:1px solid #80808036;
+                        overflow: scroll;
+                        resize: both;
+                        font-size:14px;
+                        @media screen and (max-width: 568px) {
+                          width: 80%;
+                          height: 80px;
+                        }                          
+                      }
+                      & li:nth-child(2){
+                            font-size:12px;
+                            color:$cGray;
+                            margin-top: 10px;
+                        }
+                    }
+                    & .form{
+                        right: 0;
+                        width: 85%;
+                        margin: 0 auto;
+                        display: block;
+                        height: 50px;
+                        border-radius: 40px;
+                        border: 1px solid #8080803b;
+                        box-shadow: 5px 3px 10px 0px #00000052;
+                        padding: 0 15px;
+                        position: absolute;
+                        bottom: 15px;
+                        left: 0;
+                    }
+                    & button.position-absolute {
+                        right: 11%;
+                        bottom: 27px;
+                        border: none;
+                        background: white;
+                    }
+                    
+                }
+        }    
     }
-    & .grid {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(3,1fr);
-    
-    & .grid-item {
-    height: 200px;
-    padding: 25px 40px;
-    border-radius: 8px;   
-    box-shadow: 0 2px 8px #00000033;
-    
-      & ul li:nth-child(1){
-          margin-bottom:20px;
-          color:$cGreen;
-      }    
-    
-      & ul li:nth-child(2){
-          color:$cNavy;
-          @include font(18px,800,1.5);
-          margin-bottom:8px;
-      }
-      
-      & ul li:nth-child(3){
-            @include font(16px,400,1.3);          
-}
-      }
-}
-    
-    span{
-        font-weight:normal;
-    }
+
+// message_top_view 
+.section-wrapper{
+   & .section_img{
+      color:#ad1347;
+      margin-bottom:10px;
+   }
+   & .section-title{
+     @include font(32px,800,1.2);
+     color:$cNavy;
+     margin-bottom: 10px;
+      @media screen and (max-width: 480px) {
+           @include font(26px,800,1.2);
+        }    
+   }
+   & P{
+    font-size: 16px;
+    margin: 10px 25px;
+    color: #71717191;
+    text-align: left;
+    @media screen and (max-width: 480px) {
+      font-size:12px;
+    }    
+   }
 }
 
-footer{
-    background: #F7F7F7;
-    height: 100px;
-    width:100%;
-}
-    
+
+
+
+
+
+
 

@@ -162,10 +162,10 @@
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             // 実行
             $stmt->execute();
-            // フェッチの結果を、Userクラスのインスタンスにマッピングする
+            // フェッチの結果を、Eventクラスのインスタンスにマッピングする
             $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Event');
             // Userクラスのインスタンスを返す
-            $events = $stmt->fetchAll();  //ひとり抜き出し
+            $events = $stmt->fetchAll();  
             self::close_connection($pdo, $stmp);
 
              return $events;

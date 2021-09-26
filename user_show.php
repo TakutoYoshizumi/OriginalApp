@@ -14,6 +14,10 @@
  //セッションからメーセージを取得
  $flash_message = $_SESSION['flash_message'];
  $_SESSION['flash_message'] = null;
+ 
+   //入力エラーを受け取る
+  $errors = $_SESSION["errors"];
+  $_SESSION["errors"] = null;
 
  //ユーザーidからユーザーのプロフィール情報を取得
  $user= User::find_user_info($id);

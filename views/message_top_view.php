@@ -12,48 +12,10 @@
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
    </head>
    <body>
-   <style>
-      main{
-         height:100%;
-      }
-      #message-wrapper{
-         padding: 80px 0;
-      }
-      .flex{
-         display:flex;
-         flex-direction:column;
-      }
-      ul{
-         padding: 20px 0;
-         flex-direction: column;
-      }
-      .my{
-         align-items: flex-end;
-      }
-      .other{
-             align-items: flex-start;
-      }
-      img{
-         width: 30px;
-    height: 30px;
-    border-radius: 50%;
-      }
-   </style>
-   <header>
-  <!-- ナビゲーションバー -->
-      <nav class="navbar navbar-light fixed-top">
-            <h1>Awesome&nbsp;<span>Meetup</span></h1>
-            <ul class="nav d-flex">
-               <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="user_account.php?id=<?=$login_user->id?>">アカウント</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="message_top.php?id=<?=$login_user->id?>">メッセージ</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="logout">ログアウト</a>
-               </li>
-            </ul>
+      <div id="wrapper">
+      <header>
+         <!-- ナビゲーションバー -->
+         <nav class="navbar navbar-light fixed-top justify-content-end">
             <div id="nav">
                <div class="menu-btn">
                   <span></span>
@@ -64,49 +26,84 @@
                   <img src="upload/<?=$user_icon?>">
                </div>
             </div>
-         </nav>          
-  </header>
-       <main>
-            <!--入力エラー表示-->
-            <?php if ($errors !== null):?>
+         </nav>
+      <div id="nav_menu">
+                  <ul class="nav d-flex">
+                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="user_account.php?id=<?=$login_user->id?>">アカウント</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="message_top.php?id=<?=$login_user->id?>">メッセージ</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="logout">ログアウト</a>
+                     </li>
+                     <li>
+                        <a href="top.php">トップページ</a>
+                     </li>
+                  </ul>
+            </div>
+      </header>
+      <main>
+         <!--入力エラー表示-->
+         <?php if ($errors !== null):?>
             <ul>
                <?php foreach ($errors as $error): ?>
                <li><?= $error?></li>
                <?php endforeach;?>
             </ul>
-            <?php endif; ?>
-               <?php if ($flash_message !== null):?>
-               <ul>
-                  <li><?= $flash_message?></li>
-               </ul>
-               <?php endif; ?>                  
-           <div class="main-item h-100">
-               <h2>アカウント</h2>
- 
-               <div class="d-flex h-100 w-100 justify-content-between">
-                  <div class="w-25 h-100 border">
-                     <div>
+         <?php endif; ?>
+         <?php if ($flash_message !== null):?>
+            <ul>
+               <li><?= $flash_message?></li>
+            </ul>
+         <?php endif; ?>                  
+         <div class="main-item h-100">
+            <div class="d-grid">
+               <div id="account_list"class="border">
+                  <ul class="border user_mess_icons d-flex">
+                        <li><img src="upload/<?=$user_icon?>"></li>
+                        <li><?=$login_user->name?></li>
+                     </ul>                  
+                  <div class="user_icons">
                      <?php foreach ($messages as $message): ?>
                      <ul>
-                     <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
-                     <li><img src="upload/<?=$message->image?>"></li>
-                     <li><?= $message->message_content?></li>
-                     <li><?= $message->created_at?></li>
+                        <div class="d-flex justify-content-center">
+                           <li class="px-2"><a href="message_show.php?id=<?= $message->user_id ?>"><img class="account_icon" src="upload/<?=$message->image?>"></a></li>
+                           <div class="d-flex flex-column justify-content-center">
+                              <li class="name"><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
+                               <div class="d-flex mt-2 flex-column messages">
+                                 <li><?= $message->message_content?></li>
+                                 <li><?= $message->created_at?></li>
+                              </div>
+                           </div>
+                        </div>
                      </ul>
                      <?php endforeach; ?>
- 
-                     </div>
                   </div>
-                  </div>
-                  <div class="w-50 h-100 border">
-                     <div id="message-wrapper">
-                     </div>
-                     <p><a href="top.php">トップページ</a></p>
-                  </div>
+                  <ul>
+                     <?php foreach ($users as $user):?>
+                        <li><a href="message_show.php?id=<=$user->id?>"><?=$user->name?></a></li>
+                     <?php endforeach;?>
+                  </ul>
                </div>
-           </div>
-           </div>
-       </main>
-       <footer></footer>
+               <div id="section" class="border d-flex align-items-center justify-content-center bg-white">
+                  <div class="section-wrapper text-center">
+                     <div class="section_img">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-chat-right-text-fill" viewBox="0 0 16 16">
+                        <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z"/>
+                        </svg>
+                     </div>
+                     <h2 class="section-title">メッセージ</h2>
+                     <P>友達やグループに非公開で写真やメッセージを送信できます。</P>
+                  </div>
+               </div>   
+               
+               </div>
+            </div>
+         </div>
+         </div>
+      </main>
+      </div>
    </body>
 </html>

@@ -43,14 +43,23 @@
          <form action = "profile_update.php" method="POST" enctype="multipart/form-data" class="row g-3 form">
             <div class="grid">
                <div class="grid-item-left">
-                  <img src="upload/<?=$profile->image?>" class="icon">
-                  <input type="file" name="image"><br>
+                  <img src="upload/<?=$profile->image?>" class="icon" id="result">
+                  <div class="label">
+                  <label class="file_label">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                     </svg>
+                     <input id="file" type="file" name="image" style="display:none">
+                  </label>
+                  <p id="file_desc">写真をアップロード</p>
+                  </div>
                </div>
                <div class="grid-item-right">
                   <div class="items">
                      <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
-                     <ul>
+                     <ul class="user_info">
                         <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
+                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ戻る&#8599;</a></li>
                      </ul>
                   </div>
                   <div class="mb-4">
@@ -58,7 +67,7 @@
                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="introduction" value="<?=$profile->introduction?>"><?=$profile->introduction?>
                      </textarea>
                   </div>
-                  <div class="col-md-8 mb-4">
+                  <div class="col-lg-6 mb-4">
                      <label class="form-label mb-3">滞在国</label>
                      <input type="text" name="country" value="<?=$profile->country?>" class="form-control" id="inputAddress" placeholder=<?=$profile->country?>>
                   </div>
@@ -66,7 +75,7 @@
                      <!--値がセットされていたらchecked-->
                      <label class="form-label mb-3">性別</label>
                      　　　　　　　　　　
-                     <div class="form-check form-check-inline ml-3">
+                     <div class="form-check ml-3 mb-3">
                         <div class="form-check form-check-inline ml-3">
                            <input type="radio" name="gender" value="男性"
                               <?php if($profile->gender === "男性"):?>
@@ -80,11 +89,11 @@
                            <label class="form-check-label " for="inlineRadio2">女性</label>                          
                         </div>
                      </div>
-                     <div class="col-md-6">
+                     <div class="col-lg-6 mb-3">
                         <label for="inputPassword4" class="form-label mb-3">年齢</label>
                         <input type="number" name="age" value="<?=$profile->age?>" class="form-control" id="inputPassword4" placeholder=<?=$profile->age?>歳>
                      </div>
-                     <div class="col-md-8">
+                     <div class="col-lg-6 mb-3">
                         <label class="form-label mb-3" >仕事</label>
                         <input type="text" name="job" value="<?=$profile->job?>" class="form-control" id="inputAddress2" placeholder=<?=$profile->job?>>
                      </div>
@@ -101,6 +110,6 @@
             </div>
          </form>
       </main>
-      <footer></footer>
+      <script src="js/file.js"></script>      
    </body>
 </html>

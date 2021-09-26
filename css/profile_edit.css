@@ -46,44 +46,107 @@ main {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 24px;
-  margin-top: 60px;
+  margin-top: 80px;
   margin-bottom: 80px; }
+  @media screen and (max-width: 896px) {
+    main {
+      margin-bottom: 60px; } }
   main .grid {
     display: grid;
     gap: 40px;
     grid-template-columns: 1fr 2fr; }
+    @media screen and (max-width: 896px) {
+      main .grid {
+        grid-template-columns: 1.3fr 4fr;
+        gap: 20px; } }
+    @media screen and (max-width: 768px) {
+      main .grid {
+        grid-template-columns: 90%;
+        justify-content: center; } }
     main .grid .grid-item-left {
       height: 500px;
-      padding: 40px 20px;
+      padding: 40px 0;
       border-radius: 8px;
       box-shadow: 0 2px 8px #00000033;
       text-align: center; }
+      @media screen and (max-width: 896px) {
+        main .grid .grid-item-left {
+          height: 400px; } }
+      @media screen and (max-width: 768px) {
+        main .grid .grid-item-left {
+          height: 150px;
+          padding: 0;
+          box-shadow: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column; } }
       main .grid .grid-item-left .icon {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
         object-fit: cover;
         border-radius: 50%;
         border: 1px solid #00000029;
         padding: 10px; }
+        @media screen and (max-width: 896px) {
+          main .grid .grid-item-left .icon {
+            height: 150px;
+            width: 150px; } }
+      main .grid .grid-item-left ul {
+        font-size: 14px; }
+        main .grid .grid-item-left ul li:nth-child(1) {
+          color: #484848; }
+        main .grid .grid-item-left ul li:nth-child(2) {
+          color: #71717191;
+          font-size: 12px; }
+      main .grid .grid-item-left .file_label {
+        padding: 10px 40px;
+        cursor: pointer;
+        margin: 5px;
+        color: #e6af09;
+        transition: color 0.6s; }
+      main .grid .grid-item-left #file_desc {
+        font-size: 13px; }
     main .grid .grid-item-right {
-      height: 800px;
+      height: 750px;
       padding: 25px 40px; }
+      @media screen and (max-width: 896px) {
+        main .grid .grid-item-right {
+          padding: 25px;
+          height: 100%; } }
+      @media screen and (max-width: 480px) {
+        main .grid .grid-item-right {
+          padding: 25px 10px; } }
       main .grid .grid-item-right .items {
         margin-bottom: 50px; }
         main .grid .grid-item-right .items h2 {
           font-size: 32px;
           font-weight: 400;
-          line-height: 2;
-          letter-spacing: 3px;
-          color: #484848;
+          line-height: 1.5;
+          color: #0000009c;
           margin-bottom: 10px; }
-        main .grid .grid-item-right .items ul {
-          font-size: 12px; }
-          main .grid .grid-item-right .items ul li:nth-child(1) {
-            margin-bottom: 15px;
-            color: #717171; }
+          @media screen and (max-width: 568px) {
+            main .grid .grid-item-right .items h2 {
+              font-size: 22px;
+              font-weight: 400;
+              line-height: 1.5; } }
+        main .grid .grid-item-right .items .user_info {
+          font-size: 14px; }
+          main .grid .grid-item-right .items .user_info li:nth-child(1) {
+            margin-bottom: 20px;
+            color: #71717191; }
+            @media screen and (max-width: 568px) {
+              main .grid .grid-item-right .items .user_info li:nth-child(1) {
+                font-size: 12px; } }
+          main .grid .grid-item-right .items .user_info li a {
+            color: var(--color-text-link, #008489); }
+          main .grid .grid-item-right .items .user_info .flash_message {
+            color: red !important; }
       main .grid .grid-item-right .profile {
         margin-bottom: 50px; }
+        @media screen and (max-width: 480px) {
+          main .grid .grid-item-right .profile section {
+            margin-bottom: 50px; } }
         main .grid .grid-item-right .profile h2 {
           font-size: 20px;
           font-weight: 400;
@@ -91,23 +154,41 @@ main {
           letter-spacing: 2px;
           color: #484848;
           margin-bottom: 30px; }
+          @media screen and (max-width: 768px) {
+            main .grid .grid-item-right .profile h2 {
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 20px; } }
         main .grid .grid-item-right .profile P {
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 400;
           line-height: 1;
           margin-bottom: 32px;
           padding-bottom: 20px;
           border-bottom: 1px solid #00000033; }
+          @media screen and (max-width: 768px) {
+            main .grid .grid-item-right .profile P {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 20px; } }
         main .grid .grid-item-right .profile .flex {
           display: grid;
           grid-template-columns: 35% 35%;
           gap: 80px; }
+          @media screen and (max-width: 480px) {
+            main .grid .grid-item-right .profile .flex {
+              display: block; } }
       main .grid .grid-item-right ul {
-        font-size: 12px; }
+        font-size: 14px; }
+        main .grid .grid-item-right ul li a {
+          color: var(--color-text-link, #008489); }
 
-footer {
-  background: #F7F7F7;
-  height: 100px;
-  width: 100%; }
+.btn-primary {
+  background-color: var(--color-text-link, #008489);
+  border-color: var(--color-text-link, #008489); }
+  .btn-primary:hover {
+    background-color: #07c0c7;
+    border-color: #07c0c7;
+    transition: all 0.4s; }
 
 /*# sourceMappingURL=profile_edit.css.map */

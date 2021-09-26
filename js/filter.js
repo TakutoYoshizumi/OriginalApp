@@ -3,7 +3,7 @@ $(function(){
         //value属性の値取得
         let target =$(this).attr("value");
         
-        $("table tr").each(function(){
+        $(".grid_wrapper").each(function(){
             //一度全て非表示にする
             $(this).animate({"opacity":0},300,function(){
                 $(this).hide();

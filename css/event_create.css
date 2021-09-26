@@ -1,0 +1,85 @@
+html, body {
+  height: 100%; }
+
+#wrapper {
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%; }
+  @media screen and (max-width: 768px) {
+    #wrapper {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr; } }
+  #wrapper .content {
+    color: white;
+    background-image: linear-gradient(to bottom, #d2235f, #673ab7);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+    @media screen and (max-width: 768px) {
+      #wrapper .content {
+        height: 400px; } }
+    #wrapper .content h1 {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1px;
+      margin-bottom: 40px;
+      letter-spacing: 5px; }
+      @media screen and (max-width: 896px) {
+        #wrapper .content h1 {
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 1px; } }
+      @media screen and (max-width: 480px) {
+        #wrapper .content h1 {
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 1px; } }
+    #wrapper .content .section_info p {
+      font-size: 20px;
+      margin-bottom: 20px; }
+      @media screen and (max-width: 896px) {
+        #wrapper .content .section_info p {
+          font-size: 16px; } }
+      @media screen and (max-width: 480px) {
+        #wrapper .content .section_info p {
+          font-size: 14px; } }
+  @media screen and (max-width: 768px) {
+    #wrapper .forms {
+      height: 800px; } }
+  #wrapper .forms .form {
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 80%;
+    margin: 0 auto;
+    top: 20%; }
+    @media screen and (max-width: 768px) {
+      #wrapper .forms .form {
+        top: 10%; } }
+    #wrapper .forms .form .label {
+      align-items: center; }
+      #wrapper .forms .form .label .file_label {
+        color: #d29f08;
+        margin-right: 30px; }
+    #wrapper .forms .form #result {
+      margin-top: 30px;
+      width: 100%;
+      height: 300px;
+      border: 2px solid #9e9e9e47; }
+  #wrapper .forms .form2 {
+    top: 10%;
+    font-size: 20px; }
+  #wrapper .forms .d-flex.btn_wrapper {
+    position: absolute;
+    bottom: 0px;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid #71717191; }
+
+.btn .btn-outline-dark :hover {
+  background-image: linear-gradient(to bottom, #d2235f, #673ab7); }
+
+/*# sourceMappingURL=event_create.css.map */

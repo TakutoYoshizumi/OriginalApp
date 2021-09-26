@@ -31,10 +31,10 @@
   $favorites = Favorite::find($user_id);
   //いいねしたイベントから情報を取得
   foreach ($favorites as $favorite) {
-    $id = $favorite->id;
-    $events[]=Event::find($id);
-
+    
+    $event[]=Event::find($favorite->event_id);
+    
   }
-  
+
  
  include_once 'views/favorite_show_view.php';

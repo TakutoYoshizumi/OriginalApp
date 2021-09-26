@@ -9,7 +9,6 @@
       <link rel="stylesheet" href="css/loader.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
-      <script src="js/pace.js"></script>
    </head>
    <style>
       #global-container{
@@ -59,17 +58,29 @@
       </header>
       <div class="wrapper">
          <div class="example"></div>
-         <ul class="nav">
-               <li>
+         <ul class="nav d-flex flex-column">
+               <li class="my-5">
                   <a href="event_create.php?id=<?=$login_user->id?>">イベント作成</a>
                   <a href="event_top.php">イベント一覧ページ</a>
                </li>
-               <li>
+               <li class="my-5">
                   <a href="all_profile_top.php">ユーザー一覧ページ</a>
-               </li>
-               <li><a href="type.php">イベントタイプ登録（insert用）</a></li>
+               </li> 
+           <?php if ($flash_message !== null): ?>
+           <p><?= $flash_message ?></p>
+           <?php endif; ?>               
+           <form action="event_find.php" method="POST">
+              <select name ="category_id">
+                 <?php foreach ($categories as $category): ?>
+                 <option value="<?=$category->id?>"><?=$category->type?></option>
+                 <?php endforeach;?>
+              </select>
+               <button type="submit">検索</button>
+           </form>               
+               <!--<li><a href="type.php">イベントタイプ登録（insert用）</a></li>-->
             </ul>   
       </div>
       </div>
+      <script src="js/pace.js"></script>
    </body>
 </html>

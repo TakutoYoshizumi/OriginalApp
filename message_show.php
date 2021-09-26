@@ -26,7 +26,8 @@
  
    //メッセージ情報を取得
   $all = Message::get_message($send_user_id, $receive_user_id);
- 
+  //対象のユーザーのプロフィールを取得
+  $profile=Profile::find_by_user_id($receive_user_id);
  //メッセージ履歴のあるユーザーを一覧を取得
   $message_relation_users = Message_Relation::get_message_relations($send_user_id);
  

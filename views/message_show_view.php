@@ -12,48 +12,10 @@
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
    </head>
    <body>
-      <style>
-         main{
-         height:100%;
-         }
-         #message-wrapper{
-         padding: 80px 0;
-         }
-         .flex{
-         display:flex;
-         flex-direction:column;
-         }
-         ul{
-         padding: 20px 0;
-         flex-direction: column;
-         }
-         .my{
-         align-items: flex-end;
-         }
-         .other{
-         align-items: flex-start;
-         }
-         img{
-         width: 30px;
-         height: 30px;
-         border-radius: 50%;
-         }
-      </style>
+      <div id="wrapper">
       <header>
          <!-- ナビゲーションバー -->
-         <nav class="navbar navbar-light fixed-top">
-            <h1>Awesome&nbsp;<span>Meetup</span></h1>
-            <ul class="nav d-flex">
-               <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="user_account.php?id=<?=$login_user->id?>">アカウント</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="message_top.php?id=<?=$login_user->id?>">メッセージ</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="logout">ログアウト</a>
-               </li>
-            </ul>
+         <nav class="navbar navbar-light fixed-top justify-content-end">
             <div id="nav">
                <div class="menu-btn">
                   <span></span>
@@ -65,77 +27,113 @@
                </div>
             </div>
          </nav>
+      <div id="nav_menu">
+                  <ul class="nav d-flex">
+                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="user_account.php?id=<?=$login_user->id?>">アカウント</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="message_top.php?id=<?=$login_user->id?>">メッセージ</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="logout">ログアウト</a>
+                     </li>
+                     <li>
+                        <a href="top.php">トップページ</a>
+                     </li>
+                  </ul>
+            </div>
       </header>
       <main>
          <!--入力エラー表示-->
          <?php if ($errors !== null):?>
-         <ul>
-            <?php foreach ($errors as $error): ?>
-            <li><?= $error?></li>
-            <?php endforeach;?>
-         </ul>
+            <ul>
+               <?php foreach ($errors as $error): ?>
+               <li><?= $error?></li>
+               <?php endforeach;?>
+            </ul>
          <?php endif; ?>
          <?php if ($flash_message !== null):?>
-         <ul>
-            <li><?= $flash_message?></li>
-         </ul>
+            <ul>
+               <li><?= $flash_message?></li>
+            </ul>
          <?php endif; ?>                  
          <div class="main-item h-100">
-            <h2>アカウント</h2>
-            <div class="d-flex h-100 w-100 justify-content-between">
-               <div class="w-25 h-100 border">
-                  <div>
+            <div class="d-grid">
+               <div id="account_list"class="border">
+                  <ul class="border user_mess_icons d-flex">
+                        <li><img src="upload/<?=$user_icon?>"></li>
+                        <li><?=$login_user->name?></li>
+                     </ul>                  
+                  <div class="user_icons">
                      <?php foreach ($messages as $message): ?>
                      <ul>
-                        <li><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
-                        <li><img src="upload/<?=$message->image?>"></li>
-                        <li><?= $message->message_content?></li>
-                        <li><?= $message->created_at?></li>
+                        <div class="d-flex justify-content-center">
+                           <li class="px-2"><a href="message_show.php?id=<?= $message->user_id ?>"><img class="account_icon" src="upload/<?=$message->image?>"></a></li>
+                           <div class="d-flex flex-column justify-content-center">
+                              <li class="name"><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
+                               <div class="d-flex mt-2 flex-column messages">
+                                 <li><?= $message->message_content?></li>
+                                 <li><?= $message->created_at?></li>
+                              </div>
+                           </div>
+                        </div>
                      </ul>
                      <?php endforeach; ?>
                   </div>
                   <ul>
                      <?php foreach ($users as $user):?>
-                     <li><a href="message_show.php?id=<=$user->id?>"><?=$user->name?></a></li>
+                        <li><a href="message_show.php?id=<=$user->id?>"><?=$user->name?></a></li>
                      <?php endforeach;?>
                   </ul>
                </div>
-               <div class="w-50 h-100 border">
-                  <div id="message-wrapper">
-                     <div class="flex">
-                        <!--<!-ーメッセージ表示-->
+               <div id="message_list" class="border others">
+                  <ul class="border user_mess_icons d-flex">
+                        <li class="px-2"><a href="message_show.php?id=<?= $profile->user_id ?>"><img class="account_icon" src="upload/<?=$profile->image?>"></a></li>
+                        <li><?=$profile->name?></li>
+                     </ul>
+                  <div class="mess_scroll position-relative">
+                  <div id="message-wrapper" class="py-4">
                         <?php foreach ($all as $message):?>
+                        <!--<!-ーメッセージ表示-->
                         <!--自分が送信するメッセージ-->
                         <?php if ($message->send_user_id === $login_user->id):?>
-                        <ul class="my">
-                           <li><?=$message->message_content?></li>
-                           <li><?=$message->created_at?></li>
-                           <li>自分</li>
-                           <li><img src="upload/<?=$user_icon?>"></li>
-                        </ul>
+                        <div class="flex">
+                           <ul class="my_mess">
+                              <li><?=$message->message_content?></li>
+                              <li><?=$message->created_at?></li>
+                           </ul>
+                        </div>
                         <!--<!-他のユーザーからのメッセージ--->
                         <?php else:?>
-                        <ul class="other">
-                           <li><?=$message->message_content?></li>
-                           <li><?=$message->created_at?></li>
-                           <li>From<?=$message->name?>さん</li>
-                           <li><img src="upload/<?=$message->image?>"></li>
-                        </ul>
+                           <div class="other_icons"><img src="upload/<?=$message->image?>"></div>
+                           <div class="flex">
+                              <ul class="other">
+                                 <li><?=$message->message_content?></li>
+                                 <li><?=$message->created_at?></li>
+                              </ul>
+                        </div>
                         <?php endif;?>
                         <?php endforeach ?>
-                     </div>
                   </div>
-                  <form action="message_store.php" method="POST">
-                     <input type="text" name="message_content"><br>
-                     <input type="hidden" name="receive_user_id" value="<?=$receive_user_id?>">
-                     <button type="submit">投稿</button>
-                  </form>
-                  <p><a href="top.php">トップページ</a></p>
+               </div>
+               <form action="message_store.php" method="POST">
+                 <input class="form" type="text" name="message_content" placeholder="メッセージを入力してください">
+                 <input type="hidden" name="receive_user_id" value="<?=$receive_user_id?>">
+                 <button class="position-absolute"type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cursor" viewBox="0 0 16 16">
+                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z"/>
+                  </svg>
+                 </button>
+                 </div>
+               </form>
+               </div>   
+               
                </div>
             </div>
          </div>
          </div>
       </main>
-      <footer></footer>
+      </div>
    </body>
 </html>

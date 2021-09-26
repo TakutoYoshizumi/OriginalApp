@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>アカウントページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/profile_edit.css">
+      <link rel="stylesheet" href="css/user_account.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
    </head>
@@ -66,7 +66,7 @@
                      <input type="hidden" name="id" value="<?=$user->id?>">
                      <div class="col-6">
                            <input class="btn btn-primary my-4" type="submit" value="Submit">
-                        </div>
+                      </div>
                   </form>
                   <ul>
                      <li>トップページへ戻りますか？</li>

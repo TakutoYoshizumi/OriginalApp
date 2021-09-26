@@ -2,69 +2,75 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>イベント一覧ページ</title>
-        <link rel="stylesheet" href="css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>お気に入りイベント一覧ページ</title>
+        <link rel="stylesheet" href="css/event.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+        <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
     </head>
-    <style>
-        table, tr, th, td{
-    border:solid 1px black;
-}
- 
-table img{
-    width:100px;
-}
- 
-ul img{
-    width:100px;
- 
- 
-}
-    </style>
     <body>
         <!--ビュー(V)-->
-        <h1>イベント</h1>
- 
+        <div class="scroll_wrapper">
+        <div class="mb-5">
+        <h1>お気に入りイベント</h1>
+        <?php foreach ($categories as $category):?>
+        <button value="<?=$category->type?>"><?=$category->type?></button>
+        <?php endforeach; ?>
+        <button value="all">all</button>
         <?php if ($flash_message !== null): ?>
         <p><?= $flash_message ?></p>
         <?php endif; ?>
- 
-        <h2>お気に入りイベント一覧</h2>
-        <table>
-            <tr>
-                <th>イベント名</th>
-                <th>カテゴリー</th>
-                <th>内容</th>
-                <th>開催日</th>
-                <th>開始時間</th>
-                <th>開催場所</th>
-                <th>参加人数</th>
-                <th>イベントタイプ</th>
-                <th>画像</th>
-                <th>投稿日時</th>
-            </tr>
-            <?php foreach ($events as $event):?>
-            <tr>
-                <td><a href="event_show.php?id=<?=$event->id?>"><?=$event->name?></a></td>
-                <td>
-                    <ul>
-                    <?php foreach ($event->categories() as $category):?>
-                    <li><?=$category->type ?></li>
-                    <?php endforeach; ?>
+        </div>
+            <?php foreach ($event as $event):?>
+                <div class="grid_wrapper <?php foreach ($event->categories() as $category):?><?=$category->type?> <?php endforeach; ?> ">
+                <div class="grid_img position-relative"><a href="event_show.php?id=<?=$event->id?>"><img src="upload/<?=$event->image?>">
+                </a></li>
+                <svg class="position-absolute hurt"xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+                </svg>
+                </div>
+                <div class="grid_items">
+                    <div class="d-grid">
+                        <h2><?=$event->name?></h2>
+                    </div>
+                    <ul class="d-grid grid_item">
+                        <li>イベントカテゴリー</li>
+                        <ul class="d-flex flex_categories p-0">
+                            <?php foreach ($event->categories() as $category):?>
+                            <li class="<?=$category->type?>"><?=$category->type ?><li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </ul>                    
+                    <ul class="d-grid grid_item">
+                        <li>内容</li>
+                        <li><?=$event->content?></li>
+                    </ul>                    
+                    <ul id="none" class="d-grid grid_item">
+                        <li>開催日</li>
+                        <li><?=$event->day?></li>
                     </ul>
-                </td>
-                <td><?=$event->content?></td>
-                <td><?=$event->day?></td>
-                <td><?=$event->time?></td>
-                <td><?=$event->place?></td>
-                <td><?=$event->participants?>人</td>
-                <td><?=$event->type?></td>
-                <td><img src="upload/<?=$event->image?>"></td>
-                <td><?=$event->created_at?></td>
-            </tr>
-            <?php endforeach;?>
- 
-        </table>
-        <p><a href="user_account.php?id=<?=$login_user->id?>">アカウントページ</a></p>
+                    <ul id="none" class="d-grid grid_item">
+                        <li>開始時間</li>
+                        <li><?=$event->time?></li>
+                    </ul>   
+                    <ul class="d-grid grid_item">
+                        <li>開催場所</li>
+                        <li><?=$event->place?></li>
+                    </ul>
+                    <ul class="d-grid grid_item">
+                        <li>イベントタイプ</li>
+                        <li><?=$event->type?></li>
+                    </ul>                        
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <p><a href="event_create.php">イベント作成</a></p>
         <p><a href="top.php">トップページ</a></p>
+        <script src="js/filter.js"></script>
     </body>
 </html>
+
+

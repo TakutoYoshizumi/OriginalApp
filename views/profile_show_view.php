@@ -27,6 +27,13 @@
          </nav>
       </header>
       <main>
+         <div class="tab">
+            <ul class="d-flex">
+               <li><a href="user_account.php?id=<?=$login_user->id?>">アカウント</a></li>
+               <li>&gt;</li>
+               <li>プロフィール</li>
+            </ul>
+         </div>         
          <div class="grid">
             <!--入力エラー表示-->
             <?php if ($errors !== null):?>
@@ -43,8 +50,11 @@
             </div>
             <div class="grid-item-right">
                <div class="items">
-                  <h2>ユーザー名：&nbsp;<?=$profile->name?>さん</h2>
-                  <ul>
+                  <ul class="user_name d-flex">
+                     <li>ユーザー名:&nbsp;</li>
+                     <li><?=$profile->name?>さん</li>
+                  </ul>
+                  <ul class="user_info">
                      <li><?=$profile->created_at?>からユーザーサービスを利用してます</li>
                      <?php if ($profile->user_id == $login_user->id):?>
                      <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
@@ -91,6 +101,5 @@
             </div>
          </div>
       </main>
-      <footer></footer>
    </body>
 </html>
