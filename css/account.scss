@@ -36,73 +36,19 @@ ul{
 }
 img{
     width: 30px;
-         height: 30px;
-         border-radius: 50%;
+    height: 30px;
+    border-radius: 50%;
          }
 #wrapper{
     background:#9e9e9e14;
 }
-header{
-    height:120px;
-}
-.navbar{
-        padding: 20px 40px;
-        box-shadow: 5px 3px 10px 0px #00000052;
-        cursor: pointer;
-        background:white;
-        
-        & h1{
-            @include title(20px,1px);
-            @include pink;
-            
-        }        
-        & #nav{
-                width: 90px;
-                height: 45px;
-                border: 1px solid #DDDDDD;
-                border-radius: 25px;
-                justify-content: space-around;
-                display: flex;
-                align-items: center;
-            
-            & .menu-btn{
-                background:transparent;
-                border:none;
-                position:relative;
-                
-                & > span{
-                    background: black;
-                    width: 22px;
-                    height: 2px;
-                    display: block;
-                    position: absolute;
-                    
-                    &:nth-child(1){
-                        top: -6px;
-                    }
-                    &:nth-child(3){
-                        top: 6px;
-                    }                    
-                }
-            }            
-        
-            & .user-icon {
-                width: 30px;
-                height: 30px;
-            
-                & img{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                }
-            }
-        }
-}
+
 main{
     max-width: 1080px;
     margin: 0 auto;
     padding: 0 50px;
     margin-bottom: 80px;
+    margin-top:60px;
     @media screen and (max-width: 896px) {
     padding:0 25px;
     }

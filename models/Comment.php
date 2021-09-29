@@ -123,29 +123,6 @@
                 return 'PDO exception: '.$e->getMessage();
             }
         }
-        
-        // ログインメソッド
-        public static function login($email, $password)
-        {
-                    try {
-                        $pdo = self::get_connection();
-                        $stmt = $pdo->prepare('SELECT * FROM users WHERE email=:email AND password=:password');//変数値を保持しているのでprepare
-                    // バインド処理
-                    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-                    // 実行
-                    $stmt->execute();
 
-                    // フェッチの結果を、Userクラスのインスタンスにマッピングする
-                    $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Post');
-                    // Userクラスのインスタンスを返す
-                    $user = $stmt->fetch();  //ひとり抜き出し
-                    self::close_connection($pdo, $stmp);
-
-                        return $user;
-                    } catch (PDOException $e) {
-                        return 'PDO exception: '.$e->getMessage();
-                    }
-                }
     }
 

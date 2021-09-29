@@ -1,0 +1,90 @@
+#global-container {
+  width: 100%;
+  height: 100%; }
+
+#main {
+  height: 100%;
+  padding: 40px 60px; }
+  @media screen and (max-width: 667px) {
+    #main {
+      padding: 40px 70px; } }
+  @media screen and (max-width: 480px) {
+    #main {
+      padding: 40px; } }
+  #main .section-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 350px;
+    gap: 40px;
+    margin-bottom: 40px; }
+    @media screen and (max-width: 1024px) {
+      #main .section-wrapper {
+        gap: 23px; } }
+    @media screen and (max-width: 736px) {
+      #main .section-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 60px; } }
+    #main .section-wrapper .section {
+      width: 100%; }
+      #main .section-wrapper .section .section-title {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 20px; }
+      #main .section-wrapper .section img {
+        height: 300px !important; }
+  #main .section-event-wrapper {
+    margin-bottom: 80px; }
+    #main .section-event-wrapper .section-main-title {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 20px; }
+    #main .section-event-wrapper .section-events {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 300px;
+      gap: 23px;
+      margin-bottom: 40px; }
+      @media screen and (max-width: 1024px) {
+        #main .section-event-wrapper .section-events {
+          grid-template-columns: repeat(2, 1fr); } }
+      @media screen and (max-width: 736px) {
+        #main .section-event-wrapper .section-events {
+          gap: 40px; } }
+      @media screen and (max-width: 667px) {
+        #main .section-event-wrapper .section-events {
+          grid-template-columns: repeat(1, 1fr); } }
+      #main .section-event-wrapper .section-events .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 20px; }
+      #main .section-event-wrapper .section-events img {
+        height: 250px !important; }
+  #main .section-create {
+    padding-bottom: 40px; }
+    #main .section-create .section-title {
+      top: 20px;
+      left: 25px;
+      color: white;
+      text-shadow: 2px 2px 1px black;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.5; }
+      @media screen and (max-width: 667px) {
+        #main .section-create .section-title {
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 1.5; } }
+    #main .section-create img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover; }
+
+img {
+  width: 100%;
+  border-radius: 25px; }
+  @media screen and (max-width: 567px) {
+    img {
+      object-fit: cover !important; } }
+
+/*# sourceMappingURL=top.css.map */

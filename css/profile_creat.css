@@ -1,0 +1,58 @@
+/*
+Error: Invalid CSS after "... 255 255 / 80%)": expected "{", was ";"
+        on line 87 of swiper.scss
+
+82:       
+83:   }
+84:       &_scrolltext{
+85:         position:absolute;
+86:         transform: rotate(90deg);
+87:         rgb(255 255 255 / 80%);
+88:         left: -2px;
+89:         top: 20px;
+90:         font-size: 1.3em;
+91:     }
+92: }
+
+Backtrace:
+swiper.scss:87
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:688:in `block'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:294:in `watch'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin.rb:109:in `method_missing'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:358:in `watch_or_update'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/sass:23:in `load'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/sass:23:in `<main>'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `eval'
+/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"... 255 255 / 80%)\": expected \"{\", was \";\"\A         on line 87 of swiper.scss\A \A 82:       \A 83:   }\A 84:       &_scrolltext{\A 85:         position:absolute;\A 86:         transform: rotate(90deg);\A 87:         rgb(255 255 255 / 80%);\A 88:         left: -2px;\A 89:         top: 20px;\A 90:         font-size: 1.3em;\A 91:     }\A 92: }"; }

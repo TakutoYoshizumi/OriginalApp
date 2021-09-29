@@ -37,7 +37,6 @@
                  $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
                  $stmt->bindParam(':account', $this->account, PDO::PARAM_STR);
                  $stmt->bindParam(':password', $this->password, PDO::PARAM_STR);
-                 $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
                  $stmt->execute();
                  self::close_connection($pdo, $stmp);
 

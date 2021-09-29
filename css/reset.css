@@ -55,3 +55,7 @@ a{
 p, h2, ul ,li{
 	font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
 }
+
+.errors{
+	color: #da4175;
+}

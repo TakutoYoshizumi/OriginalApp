@@ -5,6 +5,7 @@
  require_once 'models/User.php';
  require_once "models/Profile.php";
  require_once "models/Favorite.php";
+ require_once "models/Category.php";
 
  
  session_start();
@@ -26,6 +27,9 @@
  
  // //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];
+  
+   //全てのカテゴリー情報を取得
+   $categories = Category::all();
  
  //  //いいね情報を取得
   $favorites = Favorite::find($user_id);

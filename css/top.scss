@@ -1,0 +1,118 @@
+@import 'model.scss';
+$cWhite:#fff;
+$cGray:#71717191;
+$cNavy:#484848;
+$cGreen:#008489;
+$cBlack:#0000009c;
+@mixin font($size,$weight,$height){
+    font-size:$size;
+    font-weight:$weight;
+    line-height:$height;
+}
+
+
+#global-container{
+    width: 100%;
+    height: 100%;
+}
+
+#main{
+    height:100%;
+    padding: 40px 60px;
+    @media screen and (max-width: 667px) {
+        padding: 40px 70px;
+    }
+    @media screen and (max-width: 480px) {
+        padding: 40px;
+    }      
+    
+    & .section-wrapper{
+        grid-template-columns:repeat(2,1fr);
+        grid-auto-rows: 350px;
+        gap: 40px;
+        margin-bottom:40px;
+        @media screen and (max-width: 1024px) {
+            gap:23px
+        } 
+        @media screen and (max-width: 736px) {
+            grid-template-columns:repeat(1,1fr);
+            margin-bottom:60px;
+        }           
+        
+        & .section{
+            width:100%;
+            
+            & .section-title{
+                @include font(32px,600,1.5);
+                margin-bottom:20px;
+            }
+            
+            & img{
+                height: 300px!important;
+            }
+        
+        }
+    }
+        
+    & .section-event-wrapper{
+        margin-bottom: 80px;
+        & .section-main-title{
+            @include font(32px,600,1.5);
+            margin-bottom:20px;
+        }
+        & .section-events{
+            grid-template-columns:repeat(4,1fr);
+            grid-auto-rows: 300px;
+            gap: 23px;
+            margin-bottom:40px;
+            @media screen and (max-width: 1024px) {
+                grid-template-columns:repeat(2,1fr);
+            }
+            @media screen and (max-width: 736px) {
+                gap: 40px;
+            }  
+            @media screen and (max-width: 667px) {
+                grid-template-columns:repeat(1,1fr);
+            }               
+            & .section-title{
+                @include font(20px,600,1.5);
+                margin-bottom:20px;
+            }
+            & img{
+                height:250px!important;
+            }
+        }
+    }
+    
+    & .section-create{
+        padding-bottom: 40px;
+        & .section-title{
+            top: 20px;
+            left: 25px;
+            color: white;
+            text-shadow: 2px 2px 1px black;
+            @include font(32px,600,1.5);
+            @media screen and (max-width: 667px) {
+                @include font(20px,600,1.5);
+            }                
+                   
+        }
+        & img{
+            width:100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+        
+    
+
+}
+
+
+img{
+    width:100%;
+    border-radius:25px;
+        @media screen and (max-width: 567px) {
+        object-fit: cover!important;     
+}
+}

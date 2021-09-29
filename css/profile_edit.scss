@@ -20,58 +20,6 @@ $cLgreen:var(--color-text-link, #008489);
 header{
     height:90px;
 }
-.navbar{
-        padding: 20px 40px;
-        box-shadow: 5px 3px 10px 0px #00000052;
-        cursor: pointer;
-        
-        & h1{
-            @include title(20px,1px);
-            @include pink;
-            
-        }        
-        & #nav{
-                width: 90px;
-                height: 45px;
-                border: 1px solid #DDDDDD;
-                border-radius: 25px;
-                justify-content: space-around;
-                display: flex;
-                align-items: center;
-            
-            & .menu-btn{
-                background:transparent;
-                border:none;
-                position:relative;
-                
-                & > span{
-                    background: black;
-                    width: 22px;
-                    height: 2px;
-                    display: block;
-                    position: absolute;
-                    
-                    &:nth-child(1){
-                        top: -6px;
-                    }
-                    &:nth-child(3){
-                        top: 6px;
-                    }                    
-                }
-            }            
-        
-            & .user-icon {
-                width: 30px;
-                height: 30px;
-            
-                & img{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                }
-            }
-        }
-}
 
 main{
     max-width: 1080px;
@@ -189,6 +137,7 @@ main{
                       color:red !important;
                 }
                 }
+                
             }
             
             & .profile{
@@ -243,4 +192,8 @@ main{
         border-color: #07c0c7;
         transition:all 0.4s;
     }
+}
+
+.errors .my-2 {
+    color: #da4175!important;
 }

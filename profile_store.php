@@ -8,7 +8,7 @@
   
   //セッションからログインしているログイン情報を取得
   $login_user = $_SESSION["login_user"];
-  
+  var_dump($_POST);
   //プロフィール情報を取得
   $age = $_POST["age"];
   $gender = $_POST["gender"];
@@ -17,7 +17,7 @@
   $introduction = $_POST["introduction"];
   $image = $_FILES["image"]["name"];
   
-  //入力情報から新規プロフィールインスタンスを作成
+  // 入力情報から新規プロフィールインスタンスを作成
   $profile = new Profile($login_user->id,$age,$gender,$job,$country,$introduction,$image);
   
   //入力項目に誤りがないかチェック

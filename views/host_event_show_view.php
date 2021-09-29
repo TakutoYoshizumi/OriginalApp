@@ -5,13 +5,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ホストイベント一覧ページ</title>
         <link rel="stylesheet" href="css/event.css">
+        <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/reset.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
         <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
     </head>
     <body>
-        <!--ビュー(V)-->
+        <header>
+         <!-- ナビゲーションバー -->
+         <nav class="navbar navbar-light fixed-top">
+            <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
+            <div class="d-flex position-relative">
+               <div class="user-icon">
+                  <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
+              </div>
+               <div id="nav_menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </div>
+               <div class="slider-menu">
+                  <ul class="menu">
+                     <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
+                     <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                     <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
+                     <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
+                     <li><a href="logout.php">ログアウト</a></li>
+                  </ul>
+             </div>               
+            </div>   
+            </div>
+            </div>
+         </nav>
+      </header>
         <div class="scroll_wrapper">
         <div class="mb-5">
         <h1>イベント</h1>
@@ -67,12 +94,9 @@
             </div>
             <?php endforeach; ?>
         </div>
-        <!---->
-
-
-        <p><a href="user_account.php?id=<?=$login_user->id?>">アカウントページ</a></p>
-        <p><a href="top.php">トップページ</a></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/filter.js"></script>
+        <script src="js/nav.js"></script> 
     </body>
 </html>
 

@@ -12,6 +12,13 @@
    //ログインユーザーを送信ユーザーとする
   $login_user = $_SESSION['login_user'];
   $send_user_id = $login_user->id;
+  
+  //セッションからメッセージを取得
+  $flash_message = $_SESSION['flash_message'];
+  $_SESSION['flash_message'] = null;
+  //エラーがあればエラーを取得
+  $errors = $_SESSION['errors'];
+  $_SESSION['errors'] = null;
  
   //メッセージ履歴のあるユーザーを一覧を取得
   $message_relation_users = Message_Relation::get_message_relations($send_user_id);

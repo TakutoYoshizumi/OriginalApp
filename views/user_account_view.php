@@ -6,6 +6,7 @@
       <title>プロフィールページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="css/user_account_top.css">
+      <link rel="stylesheet" href="css/nav.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
@@ -13,26 +14,40 @@
    </head>
    <body>
    <header>
-  <!-- ナビゲーションバー -->
-      <nav class="navbar navbar-light fixed-top">
-           <h1>Awesome&nbsp;<span>Meetup</span></h1>
-           <div id="nav">
-           <div class="menu-btn">
-               <span></span>
-               <span></span>
-               <span></span>
-           </div>
-           <div class="user-icon">
-              <img src="upload/<?=$user_icon?>">
-           </div>
-       </div>
-      </nav>           
-  </header>
+         <!-- ナビゲーションバー -->
+         <nav class="navbar navbar-light fixed-top">
+            <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
+            <div class="d-flex position-relative">
+               
+                  <div class="user-icon">
+                     <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
+                  </div>
+
+               <div id="nav_menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </div>
+            
+            <div class="slider-menu">
+                    <ul class="menu">
+                        <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
+                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                        <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
+                        <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
+                        <li><a href="logout.php">ログアウト</a></li>
+                    </ul>
+             </div>               
+            </div>   
+            </div>
+            </div>
+         </nav>
+      </header>
        <main>
            <div class="main-item">
                <h2>アカウント</h2>
                <ul>
-                   <li><?=$login_user->name?></li>
+                   <li><?=$login_user->name?>さん</li>
                    <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
                </ul>
            </div>
@@ -81,5 +96,7 @@
                </div>
            </div>
        </main>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="js/nav.js"></script>       
    </body>
 </html>

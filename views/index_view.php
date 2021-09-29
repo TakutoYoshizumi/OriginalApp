@@ -13,21 +13,40 @@
    <body>
       <div id="global-container" class="wrapper">
          <div class="content">
-            <h1>Awesome&nbsp;<span>Meetup</span></h1>
+            <div class="animation-title inview">
+               <span class="char">A</span>
+               <span class="char">w</span>
+               <span class="char">s</span>
+               <span class="char">o</span>
+               <span class="char">m</span>
+               <span class="char">e</span>
+               <div class="next">
+               <span class="char">&nbsp;</span>
+               <span class="char">M</span>
+               <span class="char">e</span>
+               <span class="char">e</span>
+               <span class="char">t</span>
+               <span class="char">u</span>
+               <span class="char">p</span>
+               </div>
+            </div>
             <p>Welcome</p>
             <!--入力エラー表示-->
-            <?php if ($errors !== null):?>
-            <ul>
+            <div class="flesh_message my-2">
+               <?php if ($errors !== null):?>
+               <ul class="errors">
                <?php foreach ($errors as $error): ?>
-               <li><?= $error?></li>
+                  <li><?= $error?></li>
                <?php endforeach;?>
-            </ul>
+               </ul>
+               <?php endif; ?> 
+            <!--フラッシュメッセージ表示-->
+               <?php if ($flash_message !== null):?>
+               <ul>
+                  <li class="flash_message"><?= $flash_message?></li>
+               </ul>
             <?php endif; ?>
-            <?php if ($flash_message !== null):?>
-            <ul>
-               <li><?= $flash_message?></li>
-            </ul>
-            <?php endif; ?>            
+               </div>         
             <form action="login_check.php" class="my-5 w-50" method="POST">
                <div class="form-floating mb-4">
                   <input type="text"class="form-control col-6"id="floatingInput" name="account" placeholder="ユーザーID">

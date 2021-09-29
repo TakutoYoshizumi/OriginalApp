@@ -38,7 +38,7 @@
   }else{
     //セッションにエラーを保存
     $_SESSION["errors"] = $errors;
-    header("Location:message_show.php?receive_user_id=".$message->receive_user_id);
+    header("Location:message_top.php?receive_user_id=".$message->receive_user_id);
     exit;
 
   }

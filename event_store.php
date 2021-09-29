@@ -45,7 +45,6 @@
  
       // イベントインスタンスを作成
       $event_id = $event->save();
-      var_dump($event_id);
  
  
       foreach ($category_ids as $category_id) {

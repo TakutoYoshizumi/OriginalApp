@@ -1,4 +1,5 @@
 @import 'model.scss';
+
 $img_path:'../images/';
 $cWhite:#fff;
 $cGray: #dee0e1;
@@ -29,8 +30,9 @@ html{
         width: 600px;
         height: 600px;
         background-color:$cWhite;
-            border-radius: 30px;
+        border-radius: 30px;
         display: flex;
+        position:relative;
         flex-direction: column;
         padding: 50px 0;
         align-items: center;
@@ -55,22 +57,69 @@ html{
             width: 80%;
             padding:20px 0;
             height:500px;
+
         }          
     
-    & h1{
-        @include title(30px,2px);
-        @include pink;
-        margin-bottom: 30px;
+    & .animation-title{
+        @include title(36px,2px);;
+        color: #e91e63;
+        text-shadow: 4px 0px 2px #8f2ba0;
+        letter-spacing:5px;
+        position: absolute;
+        top:8%;
+        text-align: center;
+        opacity:0;
+        
         @media screen and (max-width: 568px) {
           @include title(25px,1px);
-          margin-bottom: 25px;
+          
         }
         @media screen and (max-width: 488px) {
           @include title(22px,1px);
         }
         @media screen and (max-width: 360px) {
           @include title(20px,1px);
-        }             
+        }
+        
+        & .next{
+            @include title(25px,2px);
+            padding-top:5px;
+            @media screen and (max-width: 568px) {
+              @include title(23px,1px);
+              
+            }
+            @media screen and (max-width: 488px) {
+              @include title(20px,1px);
+            }
+            @media screen and (max-width: 360px) {
+              @include title(18px,1px);
+            }            
+        }
+        
+
+         &.inview {
+            opacity: 1;
+        
+            & .char {
+              display: inline-block;
+        
+              @include animation(
+                $name: animation-frame,
+                $duration: 0.5s,
+                $timing-function: cubic-bezier(0.39, 1.57, 0.58, 1),
+                $fill-mode: both
+              );
+        
+              @for $i from 1 through 13 {
+                  &:nth-child(#{$i}) {
+                      animation-delay: $i * 0.04s;
+                  }
+              }
+            }
+  }
+    }
+    & p{
+        padding-top: 80px;
     }
     form.my-5.w-50 {
         @media screen and (max-width: 896px) {        
@@ -107,9 +156,9 @@ html{
     }
 }
 
-span{
-    color: #03a9f4;
-}
+// span{
+//     color: #03a9f4;
+// }
 .form-floating>label{
     padding: 0.7rem .75rem;
     & span{
@@ -125,3 +174,19 @@ span{
         height: calc(3.5rem + 15px);
     }          
 }
+
+@keyframes animation-frame{
+    //初期状態
+    0%{
+        opacity: 0;
+        transform:translateY(-50%);
+    }
+    
+    100%{
+        opacity: 1;
+        transform:translateY(0);
+    }
+    
+}
+
+

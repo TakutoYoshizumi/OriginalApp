@@ -6,6 +6,7 @@
       <title>アカウントページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="css/user.css">
+      <link rel="stylesheet" href="css/nav.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
    </head>
@@ -13,27 +14,34 @@
       <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
-            <h1>Awesome&nbsp;<span>Meetup</span></h1>
-            <div id="nav">
-               <div class="menu-btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+            <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
+            <div class="d-flex position-relative">
+               
+                  <div class="user-icon">
+                     <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
+                  </div>
+
+               <div id="nav_menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
                </div>
-               <div class="user-icon">
-                  <img src="upload/<?=$user_icon?>">
-               </div>
+            
+            <div class="slider-menu">
+                    <ul class="menu">
+                        <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
+                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                        <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
+                        <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
+                        <li><a href="logout.php">ログアウト</a></li>
+                    </ul>
+             </div>               
+            </div>   
+            </div>
             </div>
          </nav>
       </header>
       <main>
-         <div class="tab">
-            <ul class="d-flex">
-               <li><a href="user_account.php?id=<?=$login_user->id?>">アカウント</a></li>
-               <li>&gt;</li>
-               <li>個人情報</li>
-            </ul>
-         </div>
          <h1 class="page-title">個人情報</h1>
          <div class="grid">
             <div class="grid-item-left">
@@ -128,6 +136,8 @@
          </div>
       </main>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAihpdE_KRvc_OoRa4uvsGYSip3fgTFDQQ"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="js/tab.js"></script>
+      <script src="js/nav.js"></script>      
    </body>
 </html>

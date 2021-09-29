@@ -1,25 +1,96 @@
-/*
-Errno::ENOENT: No such file or directory @ rb_sysopen - profile_create.scss
+html, body {
+  height: 100%; }
 
-Backtrace:
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:454:in `read'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:454:in `update_stylesheet'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:294:in `watch'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/plugin.rb:109:in `method_missing'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:358:in `watch_or_update'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/sass:23:in `load'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/sass:23:in `<main>'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `eval'
-/home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Errno::ENOENT: No such file or directory @ rb_sysopen - profile_create.scss"; }
+#wrapper {
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%; }
+  @media screen and (max-width: 768px) {
+    #wrapper {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr; } }
+  #wrapper .content {
+    color: white;
+    background-image: url(../images/profile.jpg);
+    align-items: center;
+    display: flex;
+    background-size: cover;
+    flex-direction: column;
+    background-position: center;
+    padding-top: 180px; }
+    @media screen and (max-width: 768px) {
+      #wrapper .content {
+        height: 400px;
+        padding-top: 100px; } }
+    #wrapper .content h1 {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1px;
+      text-shadow: 1px 1px #100603;
+      margin-bottom: 40px;
+      letter-spacing: 5px; }
+      @media screen and (max-width: 896px) {
+        #wrapper .content h1 {
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 1px; } }
+      @media screen and (max-width: 480px) {
+        #wrapper .content h1 {
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 1px; } }
+    #wrapper .content .section_info p {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px #100603; }
+      @media screen and (max-width: 896px) {
+        #wrapper .content .section_info p {
+          font-size: 16px; } }
+      @media screen and (max-width: 480px) {
+        #wrapper .content .section_info p {
+          font-size: 14px; } }
+    #wrapper .content .flash_message li {
+      text-shadow: 1px 1px #100603;
+      font-size: 16px; }
+  @media screen and (max-width: 768px) {
+    #wrapper .forms {
+      height: 800px; } }
+  #wrapper .forms .form {
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 80%;
+    margin: 0 auto;
+    top: 20%; }
+    @media screen and (max-width: 768px) {
+      #wrapper .forms .form {
+        top: 10%; } }
+    #wrapper .forms .form .label {
+      align-items: center; }
+      #wrapper .forms .form .label .file_label {
+        color: #d29f08;
+        margin-right: 30px; }
+    #wrapper .forms .form #result {
+      margin-top: 30px;
+      width: 100%;
+      height: 300px;
+      border: 2px solid #9e9e9e47; }
+  #wrapper .forms .form2 {
+    top: 10%;
+    font-size: 20px; }
+  #wrapper .forms .d-flex.btn_wrapper {
+    position: absolute;
+    bottom: 0px;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid #71717191; }
+
+.btn .btn-outline-dark :hover {
+  background-image: linear-gradient(to bottom, #d2235f, #673ab7); }
+
+#edit_backColor {
+  background-image: linear-gradient(to bottom, #3f51b5, #9c27b0) !important; }
+
+/*# sourceMappingURL=profile_create.css.map */

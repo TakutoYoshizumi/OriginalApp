@@ -5,7 +5,7 @@
  require_once 'models/User.php';
  require_once "models/Profile.php";
  require_once "models/Participant.php";
-
+ require_once "models/Category.php";
  
  session_start();
  
@@ -26,6 +26,9 @@
  // //セッションからユーザーアイコンを取得
   $user_icon = $_SESSION["user_icon"];
  
+   //全てのカテゴリー情報を取得
+   $categories = Category::all();
+   
  //  //参加予定イベント情報を取得
   $participants = Participant::find($user_id);
   

@@ -13,16 +13,30 @@
       <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
-            <h1>Awesome&nbsp;<span>Meetup</span></h1>
-            <div id="nav">
-               <div class="menu-btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+            <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
+            <div class="d-flex position-relative">
+               
+                  <div class="user-icon">
+                     <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
+                  </div>
+
+               <div id="nav_menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
                </div>
-               <div class="user-icon">
-                  <img src="upload/<?=$user_icon?>">
-               </div>
+            
+            <div class="slider-menu">
+                    <ul class="menu">
+                        <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
+                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                        <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
+                        <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
+                        <li><a href="logout.php">ログアウト</a></li>
+                    </ul>
+             </div>               
+            </div>   
+            </div>
             </div>
          </nav>
       </header>

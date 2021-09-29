@@ -20,3 +20,40 @@
     font-weight:$weight;
     line-height:$height;
 }
+
+
+//フラッシュメッセージスタイル
+@mixin flashMessage($size){
+    position: absolute;
+    font-size: $size;
+    color: #da4175;
+   
+}
+
+//アニメーション
+@mixin animation(
+  $name,
+  $duration: 1s,
+  //↑デフォルト
+  $timing-function: ease,
+  //↑デフォルト
+  $delay: 0s,
+  //↑デフォルト
+  $iteration-count: 1,
+  //↑デフォルト
+  $direction: normal,
+  //↑デフォルト
+  $fill-mode: forwards
+  //↑デフォルト
+) {
+  animation: {
+    // ↑プロパティのネスト
+    name: $name;
+    duration: $duration;
+    timing-function: $timing-function;
+    delay: $delay;
+    iteration-count: $iteration-count;
+    direction: $direction;
+    fill-mode: $fill-mode;
+  }
+}

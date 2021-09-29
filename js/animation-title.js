@@ -1,0 +1,1 @@
+<button onclick="document.querySelector('.animation-title').classList.toggle('inview');">Animation</button>

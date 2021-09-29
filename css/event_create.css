@@ -82,4 +82,7 @@ html, body {
 .btn .btn-outline-dark :hover {
   background-image: linear-gradient(to bottom, #d2235f, #673ab7); }
 
+#edit_backColor {
+  background-image: linear-gradient(to bottom, #3f51b5, #9c27b0) !important; }
+
 /*# sourceMappingURL=event_create.css.map */

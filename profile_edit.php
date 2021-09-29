@@ -11,6 +11,8 @@
   //対象のユーザーをDBから引き出す
   $profile = Profile::find_by_user_id($id);
   
+   //セッションからユーザーアイコンを取得
+    $user_icon = $_SESSION['user_icon'];
   
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];

@@ -25,7 +25,7 @@
             <?php if ($errors !== null):?>
             <ul>
                <?php foreach ($errors as $error): ?>
-               <li><?= $error?></li>
+               <li class="my-2"><?= $error?></li>
                <?php endforeach;?>
             </ul>
             <?php endif; ?>
@@ -90,10 +90,8 @@
                   <li><a class="btn btn-dark" href="top.php">トップへ&#8599;</a></li>
                   <li><a class="next btn btn-dark" href="#">次へ</a></li>
                </ul>
-               
            </form>
           </section> 
-
          </div>
       </div>
       <script src="js/form.js"></script>

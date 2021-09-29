@@ -114,12 +114,12 @@
          return $errors;
      }
      
-     //全プロフィール情報　取得メソッド
+     //全イベント情報　取得メソッド
      public static function all()
      {
          try {
              $pdo = self::get_connection();
-             $stmt = $pdo->query('SELECT id,name, content,place,day,time,participants,image,type,created_at FROM events');
+             $stmt = $pdo->query('SELECT * FROM events order by created_at desc');
                     // フェッチの結果を、Postクラスのインスタンスにマッピングする
                     $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Event');
              $event = $stmt->fetchAll();
@@ -178,7 +178,7 @@
      {
          try {
              $pdo = self::get_connection();
-             $stmt = $pdo->prepare('select events.id,events.user_id,users.name from events join users on events.user_id = users.id where events.id=:id');//変数値を保持しているのでprepare
+             $stmt = $pdo->prepare('select profiles.image,events.id,events.user_id,users.name from events join users on events.user_id = users.id join profiles on events.user_id = profiles.user_id where events.id=:id');//変数値を保持しているのでprepare
             // バインド処理
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             // 実行
@@ -359,4 +359,5 @@
                   return 'PDO exception: '.$e->getMessage();
               }
           }
+          
  }

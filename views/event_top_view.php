@@ -23,7 +23,6 @@
         <p><?= $flash_message ?></p>
         <?php endif; ?>
         </div>
-
             <?php foreach ($event as $event):?>
                 <div class="grid_wrapper <?php foreach ($event->categories() as $category):?><?=$category->type?> <?php endforeach; ?> ">
                 <div class="grid_img"><a href="event_show.php?id=<?=$event->id?>"><img src="upload/<?=$event->image?>">
@@ -59,6 +58,7 @@
         </div>
         <p><a href="event_create.php">イベント作成</a></p>
         <p><a href="top.php">トップページ</a></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/filter.js"></script>
     </body>
 </html>

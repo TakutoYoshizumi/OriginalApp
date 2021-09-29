@@ -12,18 +12,27 @@
    <body>
       <div class="wrapper">
          <div class="content">
-            <h1>新規ユーザー登録</h1>
-            <p>Welcome</p>
-            <!--入力エラー表示-->
-            <?php if ($errors !== null):?>
-            <ul class =flash_message>
-               <?php foreach ($errors as $error): ?>
-               <li><?= $error?></li>
-               <?php endforeach;?>
-            </ul>
-            <?php endif; ?>
+               <h1>新規ユーザー登録</h1>
+               <p>Welcome</p>
+               <!--入力エラー表示-->
+               <div class="flesh_message my-2">
+                  <?php if ($errors !== null):?>
+                  <ul class="errors d-flex flex-column">
+                  <?php foreach ($errors as $error): ?>
+                     <li><?= $error?></li>
+                  <?php endforeach;?>
+                  </ul>
+                  <?php endif; ?> 
+               <!--フラッシュメッセージ表示-->
+                  <?php if ($flash_message !== null):?>
+                  <ul>
+                     <li class="flash_message"><?= $flash_message?></li>
+                  </ul>
+                  <?php endif; ?>
+               </div>         
+         
  
-            <form action="singup.php" class="my-5 w-50" method="POST">
+            <form action="singup.php" class="my-3 w-50" method="POST">
                <div class="form-floating mb-4">
                   <input type="text"class="form-control col-6"id="floatingInput" name="name" placeholder="ユーザーネーム">
                   <label for="floatingInput">ユーザー名</label>

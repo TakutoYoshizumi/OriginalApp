@@ -25,21 +25,19 @@ class Event_Category_Relation extends Model
       if ($this->id === null) {
           $stmt = $pdo->prepare('INSERT INTO event_category_relations (event_id, category_id) VALUES (:event_id, :category_id)'); //変数値を保持しているのでprepare
         // バインド処理
-        $stmt->bindParam(':event_id', $this->event_id, PDO::PARAM_INT);
+          $stmt->bindParam(':event_id', $this->event_id, PDO::PARAM_INT);
           $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
           $stmt->execute();
           self::close_connection($pdo, $stmp);
       } else { //更新処理
-        $stmt = $pdo->prepare('UPDATE posts SET title=:title, content=:content,image=:image WHERE id=:id'); //変数値を保持しているのでprepare
-        $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-          $stmt->bindParam(':content', $this->content, PDO::PARAM_STR);
-          $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-          $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $stmt = $pdo->prepare('UPDATE  event_category_relations SET event_id=:event_id, category_id=:catch WHERE event_id=:id'); //変数値を保持しているのでprepare
+          $stmt->bindParam(':event_id', $this->event_id, PDO::PARAM_INT);
+          $stmt->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
         // 実行
-        $stmt->execute();
+          $stmt->execute();
           self::close_connection($pdo, $stmp);
 
-          return $this->id.'番目の投稿情報を更新しました';
+          return 'イベント情報を更新しました';
       }
       } catch (PDOException $e) {
           return 'PDO exception: '.$e->getMessage();
@@ -50,7 +48,7 @@ class Event_Category_Relation extends Model
     {
          try {
              $pdo = self::get_connection();
-             $stmt = $pdo->prepare('SELECT * FROM event_category_relations WHERE category_id =:category_id');//変数値を保持しているのでprepare
+             $stmt = $pdo->prepare("SELECT * FROM event_category_relations WHERE category_id =:category_id order by created_at desc");//変数値を保持しているのでprepare
             // バインド処理
             $stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
             // 実行
@@ -65,5 +63,28 @@ class Event_Category_Relation extends Model
          } catch (PDOException $e) {
              return 'PDO exception: '.$e->getMessage();
          }
-     }    
+     }   
+    public static function find_category($category_id,$id)
+    {
+         try {
+             $pdo = self::get_connection();
+             $stmt = $pdo->prepare('SELECT * FROM event_category_relations WHERE category_id =:category_id AND event_id=:id');//変数値を保持しているのでprepare
+            // バインド処理
+            $stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $e, PDO::PARAM_INT);
+            // 実行
+            $stmt->execute();
+            // フェッチの結果を、Event_Category_relationsクラスのインスタンスにマッピングする
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Event_Category_Relation');
+            // Event_Category_relationsクラスのインスタンスを返す
+            $event_category_relation = $stmt->fetch();  //該当のイベントを全て取得
+            self::close_connection($pdo, $stmp);
+
+             return $event_category_relation;
+         } catch (PDOException $e) {
+             return 'PDO exception: '.$e->getMessage();
+         }
+     }   
+     
 }
+

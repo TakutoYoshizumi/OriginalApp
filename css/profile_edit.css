@@ -1,46 +1,5 @@
-@charset "UTF-8";
 header {
   height: 90px; }
-
-.navbar {
-  padding: 20px 40px;
-  box-shadow: 5px 3px 10px 0px #00000052;
-  cursor: pointer; }
-  .navbar h1 {
-    font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-    letter-spacing: 1px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff385c; }
-  .navbar #nav {
-    width: 90px;
-    height: 45px;
-    border: 1px solid #DDDDDD;
-    border-radius: 25px;
-    justify-content: space-around;
-    display: flex;
-    align-items: center; }
-    .navbar #nav .menu-btn {
-      background: transparent;
-      border: none;
-      position: relative; }
-      .navbar #nav .menu-btn > span {
-        background: black;
-        width: 22px;
-        height: 2px;
-        display: block;
-        position: absolute; }
-        .navbar #nav .menu-btn > span:nth-child(1) {
-          top: -6px; }
-        .navbar #nav .menu-btn > span:nth-child(3) {
-          top: 6px; }
-    .navbar #nav .user-icon {
-      width: 30px;
-      height: 30px; }
-      .navbar #nav .user-icon img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%; }
 
 main {
   max-width: 1080px;
@@ -190,5 +149,8 @@ main {
     background-color: #07c0c7;
     border-color: #07c0c7;
     transition: all 0.4s; }
+
+.errors .my-2 {
+  color: #da4175 !important; }
 
 /*# sourceMappingURL=profile_edit.css.map */

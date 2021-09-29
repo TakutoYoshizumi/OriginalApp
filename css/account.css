@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .flex {
   display: flex;
   flex-direction: column; }
@@ -25,55 +24,12 @@ img {
 #wrapper {
   background: #9e9e9e14; }
 
-header {
-  height: 120px; }
-
-.navbar {
-  padding: 20px 40px;
-  box-shadow: 5px 3px 10px 0px #00000052;
-  cursor: pointer;
-  background: white; }
-  .navbar h1 {
-    font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-    letter-spacing: 1px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff385c; }
-  .navbar #nav {
-    width: 90px;
-    height: 45px;
-    border: 1px solid #DDDDDD;
-    border-radius: 25px;
-    justify-content: space-around;
-    display: flex;
-    align-items: center; }
-    .navbar #nav .menu-btn {
-      background: transparent;
-      border: none;
-      position: relative; }
-      .navbar #nav .menu-btn > span {
-        background: black;
-        width: 22px;
-        height: 2px;
-        display: block;
-        position: absolute; }
-        .navbar #nav .menu-btn > span:nth-child(1) {
-          top: -6px; }
-        .navbar #nav .menu-btn > span:nth-child(3) {
-          top: 6px; }
-    .navbar #nav .user-icon {
-      width: 30px;
-      height: 30px; }
-      .navbar #nav .user-icon img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%; }
-
 main {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 50px;
-  margin-bottom: 80px; }
+  margin-bottom: 80px;
+  margin-top: 60px; }
   @media screen and (max-width: 896px) {
     main {
       padding: 0 25px; } }
