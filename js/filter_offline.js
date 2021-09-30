@@ -14,6 +14,13 @@ $(function(){
                     });
                   
     })
+    //ボタンホバー
+    $("button").hover(function(){
+        $(this).addClass("hover_btn");
+    })
+    $("button").mouseleave(function(){
+        $(this).removeClass("hover_btn");
+    })    
     
     // ボタンフィルター
     $("button").click(function(){

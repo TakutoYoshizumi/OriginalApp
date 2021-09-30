@@ -18,17 +18,14 @@
          <nav class="navbar navbar-light fixed-top">
             <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
             <div class="d-flex position-relative">
-               
                   <div class="user-icon">
                      <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
                   </div>
-
                <div id="nav_menu">
                    <span></span>
                    <span></span>
                    <span></span>
                </div>
-            
             <div class="slider-menu">
                     <ul class="menu">
                         <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
@@ -45,11 +42,13 @@
       </header>         
         <div class="scroll_wrapper">
         <div class="mb-5">
-        <h1>オフラインのイベント</h1>
-        <?php foreach ($categories as $category):?>
-        <button value="<?=$category->type?>"><?=$category->type?></button>
-        <?php endforeach; ?>
-        <button value="all">all</button>
+        <h1 class="Ltitle">オフラインの<span>イベント</span></h1>
+        <div id="buttons">
+            <?php foreach ($categories as $category):?>
+            <button value="<?=$category->type?>"><?=$category->type?></button>
+            <?php endforeach; ?>
+            <button value="all">all</button>
+        </div>
         <?php if ($flash_message !== null): ?>
         <p><?= $flash_message ?></p>
         <?php endif; ?>

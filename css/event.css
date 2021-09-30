@@ -4,6 +4,44 @@
   @media screen and (max-width: 1023px) {
     .scroll_wrapper {
       padding: 50px 25px; } }
+  .scroll_wrapper h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 5px;
+    margin-bottom: 30px; }
+    @media screen and (max-width: 668px) {
+      .scroll_wrapper h1 {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1; } }
+  .scroll_wrapper .Ltitle {
+    display: flex; }
+    @media screen and (max-width: 480px) {
+      .scroll_wrapper .Ltitle {
+        flex-direction: column; } }
+  .scroll_wrapper #buttons button {
+    cursor: pointer !important;
+    text-align: center !important;
+    border: 1px solid #b0b0b0 !important;
+    background-color: white;
+    outline: none !important;
+    margin: 5px;
+    border-radius: 30px !important;
+    color: #222222;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    padding: 10px 20px !important;
+    font-size: 12px !important;
+    line-height: 16px !important; }
+    @media screen and (max-width: 668px) {
+      .scroll_wrapper #buttons button {
+        font-size: 10px !important; } }
+    @media screen and (max-width: 480px) {
+      .scroll_wrapper #buttons button {
+        padding: 10px 20px !important; } }
+  .scroll_wrapper #buttons .hover_btn {
+    transition: all 0.3s;
+    background: #b0b0b038; }
   .scroll_wrapper .grid_wrapper {
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 250px;

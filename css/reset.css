@@ -49,7 +49,7 @@ img{
     cursor: pointer;
 }
 a{
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 p, h2, ul ,li{

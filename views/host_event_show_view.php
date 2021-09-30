@@ -41,11 +41,13 @@
       </header>
         <div class="scroll_wrapper">
         <div class="mb-5">
-        <h1>イベント</h1>
-        <?php foreach ($categories as $category):?>
-        <button value="<?=$category->type?>"><?=$category->type?></button>
-        <?php endforeach; ?>
-        <button value="all">all</button>
+        <h1 class="Ltitle">ホストイベント</span></h1>
+        <div id="buttons">
+            <?php foreach ($categories as $category):?>
+            <button value="<?=$category->type?>"><?=$category->type?></button>
+            <?php endforeach; ?>
+            <button value="all">all</button>
+        </div>
         <?php if ($flash_message !== null): ?>
         <p><?= $flash_message ?></p>
         <?php endif; ?>

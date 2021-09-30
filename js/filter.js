@@ -19,6 +19,13 @@ $(function(){
         })
     })
     
+    //ボタンホバー
+    $("button").hover(function(){
+        $(this).addClass("hover_btn");
+    })
+    $("button").mouseleave(function(){
+        $(this).removeClass("hover_btn");
+    })
     //検索フィルター 
     $("#search_btn").click(function(){
         //value属性の値取得

@@ -84,7 +84,7 @@
              <h2 class="section-main-title">好みのイベントを探す</h2>
              <div class="section-events d-grid">
                 <div class="section">
-                    <h2 class="section-title">対面のイベント</h2>
+                    <h2 class="section-title">オフラインのイベント</h2>
                     <a href="event_top_offline.php"><img src="images/top3.jpg"></a>
                  </div>
                 <div class="section">

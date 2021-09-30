@@ -10,11 +10,18 @@
   @media screen and (max-width: 768px) {
     .scroll_wrapper {
       padding: 60px; } }
+  @media screen and (max-width: 480px) {
+    .scroll_wrapper {
+      padding: 60px 20px; } }
   .scroll_wrapper h1 {
     font-size: 28px;
     font-weight: 600;
     line-height: 1;
     letter-spacing: 5px; }
+    @media screen and (max-width: 480px) {
+      .scroll_wrapper h1 {
+        padding: 10px 20px !important;
+        letter-spacing: 0px; } }
   .scroll_wrapper h3 {
     font-size: 20px;
     font-weight: 600;
@@ -41,6 +48,25 @@
       .scroll_wrapper .content {
         grid-template-columns: 1fr;
         column-gap: 30px; } }
+  .scroll_wrapper #buttons button {
+    cursor: pointer !important;
+    text-align: center !important;
+    border: 1px solid #b0b0b0 !important;
+    background-color: white;
+    outline: none !important;
+    margin: 5px;
+    border-radius: 30px !important;
+    color: #222222;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    padding: 10px 30px !important;
+    font-size: 12px !important;
+    line-height: 16px !important; }
+    @media screen and (max-width: 480px) {
+      .scroll_wrapper #buttons button {
+        padding: 10px 20px !important; } }
+  .scroll_wrapper #buttons .hover_btn {
+    transition: all 0.3s;
+    background: #b0b0b038; }
   .scroll_wrapper .grid_wrapper .grid_img {
     margin-bottom: 10px; }
     .scroll_wrapper .grid_wrapper .grid_img img {
