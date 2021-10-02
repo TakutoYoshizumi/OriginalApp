@@ -76,7 +76,7 @@
                     </ul>                    
                     <ul id="none" class="d-grid grid_item">
                         <li>開催日</li>
-                        <li><?=$event->day?></li>
+                        <li><?=set_time($event->day)?></li>
                     </ul>
                     <ul id="none" class="d-grid grid_item">
                         <li>開始時間</li>

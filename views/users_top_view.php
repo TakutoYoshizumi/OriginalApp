@@ -13,8 +13,7 @@
     </head>
     <body>
     <header>
-             <!-- ナビゲーションバー -->
-             <nav class="navbar navbar-light fixed-top">
+        <nav class="navbar navbar-light fixed-top">
                 <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
                 <div class="d-flex position-relative">
                    <div class="user-icon">
@@ -35,11 +34,8 @@
                       </ul>
                  </div>               
                 </div>   
-                </div>
-                </div>
              </nav>
-          </header>        
-        <!--ビュー(V)-->
+    </header>        
         <div class="scroll_wrapper">
             <div class="mb-5">
                 <h1><span class="me-2"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -66,7 +62,7 @@
             <div class="content d-grid">
                 <?php foreach ($users as $user):?>
                 <div class="grid_wrapper <?=$user->gender?> <?=$user->country?>">
-                    <div class="grid_img"><a href="profile_show.php?id=<?=$user->id?>"><img src="upload/<?=$user->image?>">
+                    <div class="grid_img"><a href="profile_all_show.php?id=<?=$user->id?>"><img src="upload/<?=$user->image?>">
                         </a></li>
                         </div>
                     <div class="grid_items">

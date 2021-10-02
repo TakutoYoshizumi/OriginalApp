@@ -19,28 +19,23 @@
          <nav class="navbar navbar-light fixed-top">
             <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
             <div class="d-flex position-relative">
-               
                   <div class="user-icon">
-                     <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
-                  </div>
-
-               <div id="nav_menu">
-                   <span></span>
-                   <span></span>
-                   <span></span>
-               </div>
-            
-            <div class="slider-menu">
-                    <ul class="menu">
-                        <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
-                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
-                        <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
-                        <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
-                        <li><a href="logout.php">ログアウト</a></li>
-                    </ul>
-             </div>               
-            </div>   
-            </div>
+                        <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
+                     </div>
+                  <div id="nav_menu">
+                         <span></span>
+                         <span></span>
+                         <span></span>
+                     </div>
+                  <div class="slider-menu">
+                       <ul class="menu">
+                           <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
+                           <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                           <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
+                           <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
+                           <li><a href="logout.php">ログアウト</a></li>
+                       </ul>
+                   </div>               
             </div>
          </nav>
       </header>
@@ -77,7 +72,7 @@
                               <li class="name"><a href="message_show.php?id=<?= $message->user_id ?>"><?= $message->name ?></a></li>
                                <div class="d-flex mt-2 flex-column messages">
                                  <li><?= $message->message_content?></li>
-                                 <li><?= $message->created_at?></li>
+                                 <li><?= convert_to_fuzzy_time($message->created_at)?></li>
                               </div>
                            </div>
                         </div>
@@ -92,7 +87,7 @@
                </div>
                <div id="message_list" class="border others">
                   <ul class="border user_mess_icons d-flex">
-                        <li class="px-2"><a href="message_show.php?id=<?= $profile->user_id ?>"><img class="account_icon" src="upload/<?=$profile->image?>"></a></li>
+                        <li class="px-2"><a href="profile_all_show.php?id=<?= $profile->user_id ?>"><img class="account_icon" src="upload/<?=$profile->image?>"></a></li>
                         <li><?=$profile->name?></li>
                      </ul>
                   <div class="mess_scroll position-relative">
@@ -104,7 +99,7 @@
                         <div class="flex">
                            <ul class="my_mess">
                               <li><?=$message->message_content?></li>
-                              <li><?=$message->created_at?></li>
+                              <li><?= convert_to_fuzzy_time($message->created_at)?></li>
                            </ul>
                         </div>
                         <!--<!-他のユーザーからのメッセージ--->
@@ -113,7 +108,7 @@
                            <div class="flex">
                               <ul class="other">
                                  <li><?=$message->message_content?></li>
-                                 <li><?=$message->created_at?></li>
+                                 <li><?= convert_to_fuzzy_time($message->created_at)?></li>
                               </ul>
                         </div>
                         <?php endif;?>

@@ -3,16 +3,13 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>イベント作成ページ</title>
+      <title>プロフィール作成ページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="css/profile_create.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
    </head>
-   <style>
-      
-   </style>
    <body>
       <div id="wrapper" class="d-grid">
          <section class="content">
@@ -33,14 +30,13 @@
          <section class="forms position-relative">
             <form action="profile_store.php" method="POST" enctype="multipart/form-data">
                <div class="form form1 current">
-                  <div class="form-floating mb-5">
-                    <input type="number" name="age" class="form-control" id="inputPassword4" placeholder="年齢">
-                    <label for="floatingInput">年齢</label>
-                  </div>
+                  <select class="form-select form-select-lg mb-3" name="age" id="age" aria-label=".form-select-lg example">
+                    <option selected id="php_age" value="">年齢</option> 
+                  </select>                
                   <div class="form-floating mb-5">
                     <input type="text"name="country" class="form-control my-3" id="floatingInput" placeholder="滞在国">
                     <label for="floatingInput">滞在国</label>
-                  </div>
+               </div>
                   <div class="gender my-5">
                      <label>
                   性別: <input type="radio" name="gender" value="男性" checked>男性
@@ -59,7 +55,6 @@
                   <p id="file_desc">写真をアップロード</p>
                   </div>
                   <img src="" class="icon" id="result">
-                  
                </div>
                <div class="form form3">
                   <div class="form-floating mb-4">

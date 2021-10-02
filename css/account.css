@@ -30,7 +30,7 @@ main {
   padding: 0 50px;
   margin-bottom: 80px;
   margin-top: 60px; }
-  @media screen and (max-width: 896px) {
+  @media screen and (max-width: 1024px) {
     main {
       padding: 0 25px; } }
   main .main-item {
@@ -38,7 +38,7 @@ main {
     main .main-item .d-grid {
       grid-template-columns: 1fr 2fr;
       grid-template-rows: 680px; }
-      @media screen and (max-width: 480px) {
+      @media screen and (max-width: 568px) {
         main .main-item .d-grid {
           grid-template-columns: 1fr 4fr; } }
       main .main-item .d-grid #account_list {
@@ -50,29 +50,42 @@ main {
           align-items: center;
           justify-content: center;
           height: 60px; }
-          @media screen and (max-width: 480px) {
-            main .main-item .d-grid #account_list .user_mess_icons.d-flex li:nth-child(2) {
-              display: none; } }
-        main .main-item .d-grid #account_list .user_icons ul {
-          padding: 20px 0; }
-          @media screen and (max-width: 480px) {
-            main .main-item .d-grid #account_list .user_icons ul .d-flex {
-              flex-direction: column;
-              align-items: center; }
-              main .main-item .d-grid #account_list .user_icons ul .d-flex li {
-                padding-bottom: 10px; } }
-          main .main-item .d-grid #account_list .user_icons ul li {
-            color: #71717191;
-            font-size: 12px; }
-          main .main-item .d-grid #account_list .user_icons ul .messages li {
-            padding-top: 8px; }
+          main .main-item .d-grid #account_list .user_mess_icons.d-flex li:nth-child(2) {
+            font-size: 16px;
+            margin-left: 10px; }
             @media screen and (max-width: 480px) {
-              main .main-item .d-grid #account_list .user_icons ul .messages li {
+              main .main-item .d-grid #account_list .user_mess_icons.d-flex li:nth-child(2) {
                 display: none; } }
+        main .main-item .d-grid #account_list .user_icons {
+          text-align: center;
+          display: grid;
+          grid-auto-columns: 1fr; }
+          main .main-item .d-grid #account_list .user_icons ul {
+            padding: 20px 0; }
+            @media screen and (max-width: 480px) {
+              main .main-item .d-grid #account_list .user_icons ul .d-flex {
+                flex-direction: column;
+                align-items: center; }
+                main .main-item .d-grid #account_list .user_icons ul .d-flex li {
+                  padding-bottom: 10px; } }
+            main .main-item .d-grid #account_list .user_icons ul li {
+              color: #71717191;
+              font-size: 12px; }
+            main .main-item .d-grid #account_list .user_icons ul .messages {
+              align-items: flex-start; }
+              main .main-item .d-grid #account_list .user_icons ul .messages li {
+                padding-top: 8px; }
+                @media screen and (max-width: 568px) {
+                  main .main-item .d-grid #account_list .user_icons ul .messages li {
+                    display: none; } }
         main .main-item .d-grid #account_list .name {
           font-size: 14px;
           font-weight: 600;
-          line-height: 0; }
+          line-height: 0;
+          text-align: start; }
+          @media screen and (max-width: 568px) {
+            main .main-item .d-grid #account_list .name {
+              display: none; } }
           main .main-item .d-grid #account_list .name a {
             color: #484848; }
     main .main-item #message_list {
@@ -86,11 +99,12 @@ main {
         height: 60px; }
       main .main-item #message_list .mess_scroll {
         overflow: scroll;
-        height: 85%; }
+        height: 85%;
+        padding: 0 10px; }
       main .main-item #message_list #message-wrapper .my_mess {
         margin: 0 20px;
         align-items: flex-end; }
-        @media screen and (max-width: 568px) {
+        @media screen and (max-width: 667px) {
           main .main-item #message_list #message-wrapper .my_mess {
             align-items: center;
             margin: 15px 20px; } }
@@ -103,9 +117,9 @@ main {
           overflow: scroll;
           resize: both;
           font-size: 14px; }
-          @media screen and (max-width: 568px) {
+          @media screen and (max-width: 667px) {
             main .main-item #message_list #message-wrapper .my_mess li:nth-child(1) {
-              width: 80%;
+              width: 90%;
               height: 80px; } }
         main .main-item #message_list #message-wrapper .my_mess li:nth-child(2) {
           font-size: 12px;
@@ -117,7 +131,7 @@ main {
       main .main-item #message_list #message-wrapper .other {
         margin: 0 20px;
         padding-top: 0; }
-        @media screen and (max-width: 568px) {
+        @media screen and (max-width: 667px) {
           main .main-item #message_list #message-wrapper .other {
             align-items: center;
             margin: 15px 20px; } }

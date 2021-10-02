@@ -4,7 +4,6 @@
  
   session_start();
  
- 
   //全てのイベント一覧情報を取得
    $event =Event::all();
    
@@ -15,6 +14,6 @@
    $_SESSION['flash_message'] = null;
    
      //セッションからユーザーアイコンを取得
-  $user_icon = $_SESSION["user_icon"];
+   $user_icon = $_SESSION["user_icon"];
  
    include_once "views/event_top_view.php";

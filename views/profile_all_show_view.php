@@ -49,7 +49,7 @@
                      <li><?=$profile->name?>さん</li>
                   </ul>
                   <ul class="user_info">
-                     <li><?=set_time($profile->created_at)?>からユーザーサービスを利用してます</li>
+                     <li><?=$profile->created_at?>からユーザーサービスを利用してます</li>
                      <?php if ($profile->user_id == $login_user->id):?>
                      <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
                      <?php endif;?>

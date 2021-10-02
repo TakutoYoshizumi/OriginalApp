@@ -11,7 +11,6 @@
  
   //取得した値をもとにログインをチェック
   $user = User::login($account, $password);
-  var_dump($user);
   
   // 条件分岐でユーザーが登録してあるかをチェック
   //ユーザーが登録していればtrue。

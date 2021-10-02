@@ -49,7 +49,7 @@ main{
     padding: 0 50px;
     margin-bottom: 80px;
     margin-top:60px;
-    @media screen and (max-width: 896px) {
+    @media screen and (max-width: 1024px) {
     padding:0 25px;
     }
     & .main-item {
@@ -57,7 +57,7 @@ main{
         & .d-grid{
             grid-template-columns:1fr 2fr;
             grid-template-rows: 680px;
-            @media screen and (max-width: 480px) {
+            @media screen and (max-width: 568px) {
               grid-template-columns:1fr 4fr;
             }
                 & #account_list{
@@ -70,12 +70,17 @@ main{
                         justify-content: center;
                         height: 60px;
                         & li:nth-child(2){
+                            font-size:16px;
+                            margin-left:10px;
                             @media screen and (max-width: 480px) {
                               display:none;
                             }                            
                         }
                     }
                     & .user_icons {
+                        text-align: center;
+                        display: grid;
+                        grid-auto-columns: 1fr;
                       & ul{
                           padding:20px 0;
                           & .d-flex{
@@ -91,21 +96,28 @@ main{
                             color:$cGray;
                             font-size:12px;
                         }
-                        & .messages li{
-                           padding-top:8px;
-                            @media screen and (max-width: 480px) {
-                                display:none;
-                            }                           
+                        & .messages{
+                            align-items: flex-start;
+                            & li{
+                               padding-top:8px;
+                                @media screen and (max-width:568px) {
+                                    display:none;
+                                }                           
+                        }
                         }
                         }
                       }
                             & .name{
                                 @include font(14px,600,0);
+                                text-align: start;
+                                @media screen and (max-width: 568px) {
+                                    display:none;
+                                }                                 
                             & a{
                                 color:$cNavy;
                             }
                            
-                        }
+                            }
                         }
                 }
                 & #message_list{
@@ -121,12 +133,13 @@ main{
                     & .mess_scroll{
                       overflow: scroll;
                       height: 85%;
+                      padding: 0 10px;
                     }
                     & #message-wrapper .my_mess{
                         margin:0 20px;
                         align-items:flex-end;
                         
-                        @media screen and (max-width: 568px) {
+                        @media screen and (max-width: 667px) {
                           align-items: center;
                           margin: 15px 20px;
                         }
@@ -139,8 +152,8 @@ main{
                         overflow: scroll;
                         resize: both;
                         font-size:14px;
-                        @media screen and (max-width: 568px) {
-                          width: 80%;
+                        @media screen and (max-width: 667px) {
+                          width: 90%;
                           height: 80px;
                         }                              
                       }
@@ -156,7 +169,7 @@ main{
                     & #message-wrapper .other{
                         margin:0 20px;
                         padding-top:0;
-                        @media screen and (max-width: 568px) {
+                        @media screen and (max-width: 667px) {
                           align-items: center;
                           margin: 15px 20px;
                         }                        

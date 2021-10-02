@@ -10,7 +10,6 @@
   //セッションからログインユーザー情報を取得
   $login_user = $_SESSION["login_user"];
   
-  
     //入力エラーを受け取る
   $errors = $_SESSION["errors"];
   $_SESSION["errors"] = null;

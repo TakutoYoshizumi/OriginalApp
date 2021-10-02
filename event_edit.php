@@ -6,18 +6,17 @@
   
   session_start();
   
-  // var_dump($_GET);
   $id = $_GET["id"];
   
   //対象のイベントをDBから引き出す
   $event = Event::find($id);
   
-  //対象のイベントに紐ずくカテゴリーを取得
+  //対象のイベントに紐ずくカテゴリーを全て取得
   $event_category=$event->categories();
-  
+
   //入力エラーを受け取る
   $errors = $_SESSION["errors"];
-  // var_dump($errors);
+  
   $_SESSION["errors"] = null;
   
   $categories=Category::all();

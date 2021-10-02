@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>アカウントページ</title>
+      <title>個人情報ページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <link rel="stylesheet" href="css/user.css">
       <link rel="stylesheet" href="css/nav.css">
@@ -16,17 +16,14 @@
          <nav class="navbar navbar-light fixed-top">
             <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
             <div class="d-flex position-relative">
-               
                   <div class="user-icon">
                      <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
                   </div>
-
                <div id="nav_menu">
                    <span></span>
                    <span></span>
                    <span></span>
                </div>
-            
             <div class="slider-menu">
                     <ul class="menu">
                         <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
@@ -37,8 +34,6 @@
                     </ul>
              </div>               
             </div>   
-            </div>
-            </div>
          </nav>
       </header>
       <main>
@@ -49,7 +44,7 @@
                <input type="hidden" name="id" value="<?=$profile->id?>">
                 <ul class="my-4">
                    <li class="mb-3"><?=$user->name?>さん</li>
-                   <li><?=$user->created_at?>から<br>サービスを利用してます</li>
+                   <li><?=set_time($user->created_at)?>から<br>サービスを利用してます</li>
                 </ul>
             </div>
             <div class="grid-item-right">
@@ -83,14 +78,13 @@
                               <label class="form-label mb-3">ユーザー名</label>
                               <input type="text" name="name" value="<?=$user->name?>" class="form-control" id="inputAddress" placeholder=<?=$user->name?>>
                            </div>
-               　　　　　  　　　 <input type="hidden" name="id" value="<?=$user->id?>">
+                           <input type="hidden" name="id" value="<?=$user->id?>">
                           <div class="col-6">
                               <input class="btn btn-primary mb-2" type="submit" value="保存">
                          </div>                           
                      </div> 
                      </form>
                   </section>
-                  
                   <section class="section_userid">
                      <ul class="d-flex justify-content-between">
                         <li>ユーザーID</li>

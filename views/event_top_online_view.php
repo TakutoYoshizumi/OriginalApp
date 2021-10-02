@@ -12,7 +12,6 @@
         <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
     </head>
     <body>
-        <!--ビュー(V)-->
         <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
@@ -79,7 +78,11 @@
                     </ul>                    
                     <ul id="none" class="d-grid grid_item">
                         <li>開催日</li>
-                        <li><?=$event->day?></li>
+                    <?php if((current_time()) <= (set_time($event->day))):?>
+                        <li><?=set_time($event->day)?></li>
+                    <?php else :?>
+                        <li style="color: #da4175;">終了したイベントです</li>
+                    <?php endif;?>  
                     </ul>
                     <ul class="d-grid grid_item">
                         <li>開催場所</li>

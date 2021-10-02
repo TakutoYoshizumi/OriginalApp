@@ -15,19 +15,16 @@
         <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
-            <div class="nav_title"><div<a href="top.php"><h1><span>Awesome</span><span class="xs">Meetup</span></h1></a></div>
+            <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
             <div class="d-flex position-relative">
-               
                   <div class="user-icon">
                      <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
                   </div>
-
                <div id="nav_menu">
                    <span></span>
                    <span></span>
                    <span></span>
                </div>
-            
             <div class="slider-menu">
                     <ul class="menu">
                         <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
@@ -53,7 +50,7 @@
             <button value="all">all</button>
         </div>
         <?php if ($flash_message !== null): ?>
-        <p><?= $flash_message ?></p>
+        <p class="flash_message"><?= $flash_message ?></p>
         <?php endif; ?>
         </div>
             <?php foreach ($event as $event):?>
@@ -79,7 +76,11 @@
                     </ul>                    
                     <ul id="none" class="d-grid grid_item">
                         <li>開催日</li>
-                        <li><?=$event->day?></li>
+                    <?php if((current_time()) <= (set_time($event->day))):?>
+                        <li><?=set_time($event->day)?></li>
+                    <?php else :?>
+                        <li style="color: #da4175;">終了したイベントです</li>
+                    <?php endif;?>    
                     </ul>
                     <ul class="d-grid grid_item">
                         <li>開催場所</li>

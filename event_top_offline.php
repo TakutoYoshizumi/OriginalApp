@@ -4,7 +4,6 @@
  
   session_start();
  
- 
   //全てのオンラインイベント一覧情報を取得
    $event =Event::all();
    

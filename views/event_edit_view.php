@@ -57,7 +57,14 @@
                   <h2>イベントカテゴリー</h2>
                   <?php foreach ($categories as $category): ?>
                   <div class="my-3">
-                  <input type ="checkbox" name="category_id[ ]" value="<?=$category->id?>"><?=$category->type?>
+                  <!--対象のイベントに紐ずくカテゴリーを＄eとし対象のカテゴリーにはチェックを入れる-->
+                  <input type ="checkbox" name="category_id[ ]" value="<?=$category->id?>"
+                  <?php foreach ($event_category as $e): ?> 
+                  <?php if($category->type === $e->type) :?>
+                  checked
+                  <?php endif;?>
+                  <?php endforeach; ?>>
+                  <?=$category->type?>
                   </div>
                   <?php endforeach; ?>
                </p>          
@@ -97,7 +104,7 @@
                </div>
                <ul class="d-flex btn_wrapper">
                   <li><a class="back btn btn-dark" href="#">戻る</a></li>
-                  <li><a class="btn btn-dark" href="top.php">トップへ&#8599;</a></li>
+                  <li><a class="btn btn-dark" href="event_show.php?id=<?=$event->id?>">イベントページへ&#8599;</a></li>
                   <li><a class="next btn btn-dark" href="#">次へ</a></li>
                </ul>
            </form>

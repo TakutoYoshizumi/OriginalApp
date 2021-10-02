@@ -17,9 +17,8 @@
       <header>
          <!-- ナビゲーションバー -->
          <nav class="navbar navbar-light fixed-top">
-            <div class="nav_title"><div<a href="top.php"><h1><span>Awesome</span><span class="xs">Meetup</span></h1></a></div>
+             <div class="nav_title"><a href="top.php"><h1 class="d-flex">Awesome&nbsp;<span>Meetup</span></h1></a></div>
             <div class="d-flex position-relative">
-               
                   <div class="user-icon">
                      <a href="user_account.php?id=<?=$login_user->id?>"><img src="upload/<?=$user_icon?>"></a>
                   </div>
@@ -40,15 +39,12 @@
                     </ul>
              </div>               
             </div>   
-            </div>
-            </div>
          </nav>
       </header>
       <div id="global-container">
       <div id="content">
             <div class="hero">
                 <div class="swiper">
-                   
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="hero_title">Welcome To Awesome MeetUp</div><img src="images/slider_top1.jpg" alt="">
@@ -59,13 +55,11 @@
                     <div class="swiper-slide">
                         <div class="hero_title">Enjoy Excellent  Experience </div><img src="images/slider_top3.jpg" alt="">
                     </div>
-                    
                   </div>
                   <div class="hero_footer">
                       <img class="hero_downarrow" src="images/arrow.svg">
                       <span class="hero_scrolltext">scroll</span>
                  </div>
-
                 </div>    
             </div>
         </div>
@@ -107,8 +101,6 @@
                 <a href="event_create.php"><img src="images/top7.jpg"></a>
              </div>             
          </div>
-         
-         
       </div>
       </div>
       <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

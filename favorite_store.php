@@ -7,7 +7,6 @@
   
   //POSTからevent_idを取得
   $event_id = $_POST["event_id"];
-  var_dump($event_id);
   //セッションからログインユーザー情報取得
   $login_user=$_SESSION["login_user"];
   

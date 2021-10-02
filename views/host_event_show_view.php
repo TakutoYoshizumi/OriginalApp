@@ -77,7 +77,7 @@
                     </ul>                    
                     <ul id="none" class="d-grid grid_item">
                         <li>開催日</li>
-                        <li><?=$event->day?></li>
+                        <li><?=set_time($event->day)?></li>
                     </ul>
                     <ul id="none" class="d-grid grid_item">
                         <li>開始時間</li>
@@ -89,9 +89,8 @@
                     </ul>   
                     <ul id="none"class="d-grid grid_item">
                         <li>イベント投稿日</li>
-                        <li><?=$event->created_at?></li>
+                        <li><?=set_time($event->created_at)?></li>
                     </ul>                       
-                                    
                 </div>
             </div>
             <?php endforeach; ?>

@@ -125,11 +125,11 @@
                   <div class="mx-1"><svg xmlns="http://www.w3.org/2000/svg"width="18" height="18" style="color:#ffc516;" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                   </svg></div>
-                  <h2 class="user_name"><a href="profile_show.php?id=<?=$event_host->user_id?>"><?=$event_host->name?></a>さんがホストするイベント</h2>
-                 <div class="user_img"><a href="profile_show.php?id=<?=$event_host->user_id?>"><img src="upload/<?=$event_host->image?>"></a></div>
+                  <h2 class="user_name"><a href="profile_all_show.php?id=<?=$event_host->user_id?>"><?=$event_host->name?></a>さんがホストするイベント</h2>
+                 <div class="user_img"><a href="profile_all_show.php?id=<?=$event_host->user_id?>"><img src="upload/<?=$event_host->image?>"></a></div>
                </div>
                <ul class="created">
-                  <li><?=$event->created_at?>に投稿されました</li>
+                  <li><?=set_time($event->created_at)?>に投稿されました</li>
                 </ul>
                <div class="event_content">
                   <section>
@@ -147,7 +147,7 @@
                   <section class="flex">
                      <div class="section-item">
                         <h2>イベント開催日</h2>
-                        <P><?=$event->day?></P>
+                        <P><?=set_time($event->day)?></P>
                      </div>
                      <div class="section-item">
                         <h2>イベント開始時間</h2>
@@ -170,6 +170,8 @@
                       　   </div>
                         <div class="event_join">
                         <h2>イベントに参加する</h2>
+                        <!--開催日が過ぎていない場合-->
+                        <?php if((current_time()) <= (set_time($event->day))):?>
                         <?php if (! $event->is_participant($login_user->id)): ?>
                         <?php if(($event->participants) != (count($participants))):?>
                      　 <form action="participant_store.php" method="POST">
@@ -199,6 +201,10 @@
                            <p class="mt-2">参加をキャンセルする</p>
                        </form>
                        <?php endif;?>
+                       <?php else :?>
+                       <!--開催日が過ぎている場合-->
+                       <p style="color: #da4175;">終了したイベントです</p>
+                       <?php endif;?>
                     </div>
                     
                      </div>
@@ -218,12 +224,17 @@
                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                      </svg>
    
-                       <h3>参加者数:(<?= count($participants)?>)</h3>
+                       <h3>参加者数:(<?= 1 + count($participants)?>)</h3>
                      </div>  
                      <ul class="d-flex flex-wrap">
+                        <div class="addHover d-flex align-items-center mx-2 member_icons">
+                           <li class="mb-2"><a href="profile_all_show.php?id=<?=$event_host->user_id?>"><img style="width:50px;height:50px;" src="upload/<?=$event_host->image?>" class="member_icons_img"></a></li>
+                           <li><?= $event_host->name ?></li>
+                           <li class="mt-2">ホストユーザー</li>
+                        </div>   
                         <?php foreach ($participants as $participant): ?>
                        <div class="addHover d-flex align-items-center mx-2 member_icons">
-                           <li class="mb-2"><a href="profile_show.php?id=<?=$participant->user_id?>"><img style="width:50px;height:50px;" src="upload/<?=$participant->image?>" class="user-icon"></a></li>
+                           <li class="mb-2"><a href="profile_all_show.php?id=<?=$participant->user_id?>"><img style="width:50px;height:50px;" src="upload/<?=$participant->image?>" class="member_icons_img"></a></li>
                            <li><?= $participant->name ?></li>
                         </div>
                         <?php endforeach; ?>
@@ -241,33 +252,35 @@
                      <ul class="comments_wrapper">
                         <?php foreach ($comments as $comment): ?>
                         <div class="d-flex flex-column mb-5 comments">
+                           <ul class="mb-3 fs-4"><li><?=$comment->content?></li></ul>
                            <ul class ="d-grid comment_users">
-                              <li class="me-3"><?=$comment->name?>さん</li>
-                              <li><?=$comment->created_at?></li>
-                              <div class="d-flex flex-column nav">
-                                  <div class="nav_btn"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                   <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                 </svg></a></div>
-                                 <div id="hide" class="hide toggle d-flex">
-                                  <div class="me-2"><a href="comment_destroy.php?id=<?=$comment->id?> & event_id=<?=$comment->event_id?>"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                 </svg></a></div>
-                                 <form action="comment_update.php" method="POST">
-                                    <label>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" style="color: #186db1;"class="bi bi-pencil-square"viewBox="0 0 16 16">
-                                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>                              
-                                       <input type="hidden" name="id" value="<?=$comment->id?>">
-                                       <button type="submit" style="display:none;"></button>
-                                    </label>
-                                       <input type="text" name="content" placeholder="<?=$comment->content?>"><br>
-                                 </form>
+                              <li class="me-3 mb-3 fs-6"><?=$comment->name?>さん</li>
+                              <li><?= convert_to_fuzzy_time($comment->created_at)?></li>
+                              <?php if($login_user->id === $comment->user_id):?>
+                                 <div class="d-flex flex-column nav">
+                                     <div class="nav_btn"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                    </svg></a></div>
+                                    <div id="hide" class="hide toggle d-flex">
+                                     <div class="me-2"><a href="comment_destroy.php?id=<?=$comment->id?> & event_id=<?=$comment->event_id?>"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg></a></div>
+                                    <form action="comment_update.php" method="POST">
+                                       <label style="cursor: pointer;">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" style="color: #186db1"class="bi bi-pencil-square"viewBox="0 0 16 16">
+                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                       </svg>                              
+                                          <input type="hidden" name="id" value="<?=$comment->id?>">
+                                          <button type="submit" style="display:none;"></button>
+                                       </label>
+                                          <input type="text" name="content" placeholder="<?=$comment->content?>"><br>
+                                    </form>
+                                    </div>
                                  </div>
-                              </div>                              
+                              <?php endif;?>
                            </ul>
-                           <ul><li><?=$comment->content?></li></ul>
                         </div>
                         <?php endforeach ;?>
                      </ul>

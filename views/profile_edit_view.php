@@ -34,8 +34,6 @@
                   </ul>
              </div>               
             </div>   
-            </div>
-            </div>
          </nav>
       </header>
       <main>
@@ -57,7 +55,7 @@
                   <div class="items">
                      <h2>Hello&nbsp;<?=$login_user->name?>さん</h2>
                      <ul class="user_info">
-                        <li><?=$login_user->created_at?>からユーザーサービスを利用してます</li>
+                        <li><?=set_time($profile->created_at)?>からユーザーサービスを利用してます</li>
                         <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ戻る&#8599;</a></li>
                      </ul>
                   <!--入力エラー表示-->
@@ -104,10 +102,9 @@
                            <label class="form-check-label " for="inlineRadio2">女性</label>                          
                         </div>
                      </div>
-                     <div class="col-lg-6 mb-3">
-                        <label for="inputPassword4" class="form-label mb-3">年齢</label>
-                        <input type="number" name="age" value="<?=$profile->age?>" class="form-control" id="inputPassword4" placeholder=<?=$profile->age?>歳>
-                     </div>
+                     <select class="form-select form-select-lg mb-3" name="age" id="age" aria-label=".form-select-lg example">
+                       <option selected id="php_age" value="<?=$profile->age?>"><?=$profile->age?>歳</option> 
+                     </select>                      
                      <div class="col-lg-6 mb-3">
                         <label class="form-label mb-3" >仕事</label>
                         <input type="text" name="job" value="<?=$profile->job?>" class="form-control" id="inputAddress2" placeholder=<?=$profile->job?>>
