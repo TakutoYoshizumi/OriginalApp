@@ -29,13 +29,13 @@
   font-weight: 100;
   font-size: 2em;
   font-family: "Helvetica Neue","Yu Gothic","Meiryo",sans-serif;
-  color: #333333bf;
+  color: #904669;
   padding-top: 5px; }
 
 .pace-progress-inner {
   width: 45px;
   height: 45px;
-  background-color: #333333bf;
+  background-color: #904669;
   margin: 0 auto;
   animation-name: sk-rotateplane;
   animation-duration: 1.2s;

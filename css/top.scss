@@ -40,7 +40,10 @@ $cBlack:#0000009c;
         }           
         
         & .section{
-            width:100%;
+            width:530px;
+            @media screen and (max-width: 1024px) {
+                width:100%;
+            } 
             
             & .section-title{
                 @include font(32px,600,1.5);
@@ -80,6 +83,7 @@ $cBlack:#0000009c;
             }
             & img{
                 height:250px!important;
+                
             }
         }
     }
@@ -87,6 +91,7 @@ $cBlack:#0000009c;
     & .section-create{
         padding-bottom: 40px;
         & .section-title{
+            z-index:4;
             top: 20px;
             left: 25px;
             color: white;
@@ -110,7 +115,8 @@ $cBlack:#0000009c;
 
 
 img{
-    width:100%;
+    max-width:100%;
+    vertical-align:bottom;
     border-radius:25px;
         @media screen and (max-width: 567px) {
         object-fit: cover!important;     

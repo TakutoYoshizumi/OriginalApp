@@ -5,10 +5,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>トップページ</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-      <link rel="stylesheet" href="css/top.css">
-      <link rel="stylesheet" href="css/loader.css">
       <link rel="stylesheet" href="css/reset.css">
       <link rel="stylesheet" href="css/nav.css">
+      <link rel="stylesheet" href="css/slide_animation.css">
+      <link rel="stylesheet" href="css/top.css">
+      <link rel="stylesheet" href="css/loader.css">
       <link rel="stylesheet" href="css/swiper.css">
       <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
       <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48" />
@@ -70,11 +71,17 @@
              <div class="section-wrapper d-grid">
                  <div class="section">
                     <h2 class="section-title">ユーザーを探す</h2>
-                    <a href="users_top.php"><img src="images/top1.jpg"></a>
+                    <div class="cover-slide hover-darken">
+                    <a href="users_top.php">
+                        <img class="img-zoom" src="images/top1.jpg">
+                    </a>
+                    </div>
                  </div>
                  <div class="section">
                     <h2 class="section-title">イベントを探す</h2>
-                    <a href="event_top.php"><img src="images/top2.jpg"></a>
+                    <div class="cover-slide hover-darken">
+                        <a href="event_top.php"><img class="img-zoom" src="images/top2.jpg"></a>
+                    </div>
                  </div> 
              </div>
              <div class="section-event-wrapper">
@@ -82,26 +89,36 @@
                  <div class="section-events d-grid">
                     <div class="section">
                         <h2 class="section-title">オフラインのイベント</h2>
-                        <a href="event_top_offline.php"><img src="images/top3.jpg"></a>
+                        <div class="cover-slide hover-darken">
+                            <a href="event_top_offline.php"><img class="img-zoom" src="images/top3.jpg"></a>
+                        </div>
                      </div>
                     <div class="section">
                         <h2 class="section-title">オンラインのイベント</h2>
-                        <a href="event_top_online.php"><img src="images/top4.jpg"></a>
+                        <div class="cover-slide hover-darken">
+                            <a href="event_top_online.php"><img class="img-zoom"src="images/top4.jpg"></a>
+                        </div>
                     </div>
                     <div class="section">
                         <h2 class="section-title">アウトドアのイベント</h2>
-                        <a href="event_top_outdoor.php"><img src="images/top5.jpg"></a>
+                        <div class="cover-slide hover-darken">
+                            <a href="event_top_outdoor.php"><img class="img-zoom" src="images/top5.jpg"></a>
+                        </div>    
                     </div>
                     <div class="section">
                         <h2 class="section-title">インドアのイベント</h2>
-                        <a href="event_top_indoor.php"><img src="images/top6.jpg"></a>
-                 </div>
+                        <div class="cover-slide hover-darken">
+                            <a href="event_top_indoor.php"><img class="img-zoom" src="images/top6.jpg"></a>
+                        </div>    
+                     </div>
                  </div>
              </div>
              <div class="section-evnt-create">
                  <div class="section-create position-relative">
+                    <div class="cover-slide hover-darken">
                     <h2 class="section-title position-absolute">イベントを作成しよう</h2>
-                    <a href="event_create.php"><img src="images/top7.jpg"></a>
+                        <a href="event_create.php"><img class="img-zoom" src="images/top7.jpg"></a>
+                    </div>    
                  </div>             
              </div>
           </div>
@@ -109,6 +126,7 @@
       <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="js/swiper.js"></script>
+      <script src="js/scroll.js"></script>
       <script src="js/nav.js"></script>
       <script src="js/pace.js"></script>
    </body>
