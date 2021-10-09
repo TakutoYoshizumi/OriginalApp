@@ -15,33 +15,41 @@
   // 条件分岐でユーザーが登録してあるかをチェック
   //ユーザーが登録していればtrue。
   if ($user !== false) {
-      //ユーザーをセッションに保存
+      //ユーザーをセッションに保存_
       $_SESSION['login_user'] = $user;
-      //ユーザーのidを取得
+
       $id = $user->id;
       //取得したidからプロフィールを取得
-      $profile = Profile::find($id);
+      $profile = Profile::find_by_user_id($id);
+      
+      //プロフィール登録されていなければfalse
+      //未登録のユーザーのプロフィールインスタンスを作成　プロフィール情報閲覧のため作成
+      //user_id,imageのみ、初期値はない状態で保存
+      if($profile === false){
+        $image = 'user_pic.jpg';
+        $age          = "";
+        $gender       = "";
+        $job          = "";
+        $country      = "";
+        $introduction = "";        
+        $profile = new Profile($id, $age, $gender, $job, $country, $introduction, $image);
+        
+        $profile->save();
+      }      
+      
       //プロフィールからユーザーのアイコンを取得
-      $user_icon = $profile->image;
-      //アイコンをセッションに保存
-      $_SESSION["user_icon"] = $user_icon;
- 
- 
-      //プロフィールの入力項目に未回答があればプロフィールページへリダイレクト
-      $true = array();
-      foreach ($profile as $key => $value) {
-          // 条件分岐でプロフィールに未回答の項目があればtrue。
-          if ((empty($value)) === true) {
-              $true[] = 'true';
-          }
+      if(isset($profile->image)){
+        $user_icon = $profile->image;
+        //アイコンをセッションに保存
+        $_SESSION["user_icon"] = $user_icon;
+      }else{
+        $user_icon = 'user_pic.jpg';   
+        $_SESSION["user_icon"] = $user_icon;  var_dump($profile);
       }
-      if (count($true) !== 0 ||$profile === false) {
-          header('Location:profile_create.php');
-          exit;
-      } else {
+      
           header('Location:top.php');
           exit;
-      }
+      // }
       // //エラーが１つでもあればelse。
   } else {
       $errors = [];  //= $errors=array();

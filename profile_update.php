@@ -7,9 +7,11 @@
     session_start();
     
     
+    //idから対象のプロフィール情報を取得
     $login_user = $_SESSION["login_user"];
+    $profile = Profile::find_by_user_id($login_user->id);
     
-    
+    //入力情報を取得
     $id           = $_POST['id'];
     $introduction = $_POST['introduction'];
     $country      = $_POST['country'];
@@ -19,10 +21,6 @@
     $image        = $_FILES['image']['name'];
     
     
-    
-    //idから対象のプロフィール情報を取得
-    $profile = Profile::find_by_user_id($id);
-    
     // //情報を更新する
     $profile->country      = $country;
     $profile->age          = $age;
@@ -30,7 +28,7 @@
     $profile->gender       = $gender;
     $profile->introduction = $introduction;
     
-    // //入力エラーチェック
+    // // //入力エラーチェック
     $errors = $profile->validate();
     
     // 画像情報がある時のみアップロード

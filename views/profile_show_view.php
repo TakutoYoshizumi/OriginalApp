@@ -51,7 +51,12 @@
                   <ul class="user_info">
                      <li><?=set_time($profile->created_at)?>からユーザーサービスを利用してます</li>
                      <?php if ($profile->user_id == $login_user->id):?>
-                     <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
+                        <?php if (count($true) !== 0):?>
+                           <li><a href="profile_create.php?id=<?=$login_user->id?>">プロフィールを作成</a></li>
+                           <li class="mt-2" style="color: rgb(255, 56, 92);">プロフィールを完成させよう</li>
+                           <?php else :?>
+                           <li><a href="profile_edit.php?id=<?=$login_user->id?>">プロフィールを編集</a></li>
+                        <?php endif; ?> 
                      <?php endif;?>
                      <?php if ($profile->user_id !== $login_user->id):?>
                      <li><a href="message_show.php?id=<?=$profile->user_id?>">メッセージ送信</a></li>

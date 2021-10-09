@@ -6,17 +6,29 @@
     
     session_start();
     
+    
     //セッションからログインしているログイン情報を取得
     $login_user = $_SESSION["login_user"];
-    var_dump($_POST);
-    //プロフィール情報を取得
+    $profile = Profile::find_by_user_id($login_user->id);
+
+
+    //入力情報を取得
     $age          = $_POST["age"];
     $gender       = $_POST["gender"];
     $job          = $_POST["job"];
     $country      = $_POST["country"];
     $introduction = $_POST["introduction"];
-    
     $image = $_FILES["image"]["name"];
+    
+    // //情報を更新する
+    $profile->country      = $country;
+    $profile->age          = $age;
+    $profile->job          = $job;
+    $profile->gender       = $gender;
+    $profile->introduction = $introduction;       
+    
+    //入力項目に誤りがないかチェック
+    $errors = $profile->validate();
     
     //   //画像が選択されていれば
     if ($_FILES["image"]["size"] !== 0) {
@@ -28,12 +40,6 @@
     } else {
         $image = 'user_pic.jpg';
     }
-    
-    // // 入力情報から新規プロフィールインスタンスを作成
-    $profile = new Profile($login_user->id, $age, $gender, $job, $country, $introduction, $image);
-    
-    //入力項目に誤りがないかチェック
-    $errors = $profile->validate();
     
     // 入力エラーが１つもなければ
     if (count($errors) === 0) {
@@ -48,6 +54,8 @@
         //入力エラーが１つでもあれば
     } else {
         $_SESSION["errors"] = $errors;
+        $input_info = $profile;
+        $_SESSION["input_info"] = $input_info;
         header("Location:profile_create.php");
         exit;
     }

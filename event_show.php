@@ -45,4 +45,5 @@
     //このイベント投稿に対するコメント一覧を取得
     $comments = $event->comments();
     
+
     include_once 'views/event_show_view.php';

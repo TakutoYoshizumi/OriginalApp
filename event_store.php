@@ -37,9 +37,6 @@
         $errors[] = "イベントカテゴリーを選択してください";
     }
     
-    // 入力エラーが１つもなければ
-    if (count($errors) === 0) {
-        
         //画像が選択されていれば
         if ($_FILES["image"]["size"] !== 0) {
             //uploadディレクトリにファイルを保存
@@ -47,6 +44,9 @@
             //画像をアップロード
             move_uploaded_file($_FILES['image']['tmp_name'], $file);
         }
+    // // 入力エラーが１つもなければ
+    if (count($errors) === 0) {
+        
         
         // イベントインスタンスを作成
         $event_id = $event->save();
@@ -56,7 +56,11 @@
             $event_category_relation = new Event_Category_Relation($event_id, $category_id);
             // //入力項目に誤りがないかチェック
             $errors                  = $event_category_relation->validate();
-            $event_category_relation->save();
+            //全体の入力エラーが１つもなけらばイベントリレーションインスタンスを保存
+            if (count($errors) === 0){
+                 $event_category_relation->save();
+                 var_dump("反応している");
+            }
         }
         
         $_SESSION["flash_message"] = $flash_message;
@@ -68,6 +72,10 @@
     } else {
         //セッションにエラーを保存
         $_SESSION["errors"] = $errors;
+        $input_info = $event;
+        $_SESSION["input_info"] = $input_info;
+        $_SESSION["category_ids"] = $category_ids;
         header("Location:event_create.php");
         exit;
     }
+

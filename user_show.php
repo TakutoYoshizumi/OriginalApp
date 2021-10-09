@@ -1,6 +1,7 @@
 <?php
     //(C)
     require_once 'filters/LoginFilter.php';
+    require_once "filters/EditFilter.php";
     require_once 'models/Profile.php';
     require_once 'models/User.php';
     

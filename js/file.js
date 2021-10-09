@@ -27,18 +27,18 @@
  btn.addEventListener("mouseleave", function () {
  	btn.style.color = "#d29f08";
  })
- //プルダウンメニュー
- let val = $("#php_age").val();
- if (val == "") {
- 	console.log("からです");
- 	for (let i = 0; i <= 100; i++) {
- 		$("#age").append("<option value=" + i + ">" + i + "歳</option>");
- 	}
- } else {
- 	for (let i = parseInt(val) - 1; i > 0; i--) {
- 		$("#age").prepend("<option value=" + i + ">" + i + "歳</option>");
- 	}
- 	for (let i = parseInt(val) + 1; i <= 100; i++) {
- 		$("#age").append("<option value=" + i + ">" + i + "歳</option>");
- 	}
- }
+	 //年齢プルダウン フォーム
+	 //年齢編集時入力値に合わせ上下のプルダウンを表示するメソッド
+	 let val = $("#php_age").val();
+	 if (val == "") {
+	 	for (let i = 0; i <= 100; i++) {
+	 		$("#age").append("<option value=" + i + ">" + i + "歳</option>");
+	 	}
+	 } else {
+	 	for (let i = parseInt(val) - 1; i > 0; i--) {
+	 		$("#age").prepend("<option value=" + i + ">" + i + "歳</option>");
+	 	}
+	 	for (let i = parseInt(val) + 1; i <= 100; i++) {
+	 		$("#age").append("<option value=" + i + ">" + i + "歳</option>");
+	 	}
+	 }	

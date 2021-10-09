@@ -56,7 +56,7 @@
         <?php endif; ?>
         </div>
             <?php foreach ($event as $event):?>
-                <div class="grid_wrapper <?=$event->type?>">
+               <div class="grid_wrapper <?=$event->type?><?php foreach ($event->categories() as $category):?><?=$category->type?> <?php endforeach; ?>">
                 <div class="grid_img"><a href="event_show.php?id=<?=$event->id?>"><img src="upload/<?=$event->image?>">
                 </a></li>
                 </div>

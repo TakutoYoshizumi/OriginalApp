@@ -69,10 +69,13 @@ main {
           justify-content: center; } }
       main .main-item ul li {
         padding-right: 10px; }
-        main .main-item ul li:nth-child(2) {
+        main .main-item ul li:nth-child(1) {
           font-weight: bold; }
-          main .main-item ul li:nth-child(2) a {
+          main .main-item ul li:nth-child(1) a {
             color: #008489; }
+        main .main-item ul li:nth-child(2) {
+          font-weight: bold;
+          color: #ff385c; }
   main .grid {
     display: grid;
     gap: 30px;

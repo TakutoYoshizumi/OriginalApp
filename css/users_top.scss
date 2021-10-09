@@ -48,7 +48,7 @@ $cLgreen:var(--color-text-link, #008489);
             grid-template-columns: repeat(3,1fr); 
             column-gap: 30px;
         }        
-        @media screen and (max-width: 568px) {
+        @media screen and (max-width: 678px) {
             grid-template-columns: repeat(2,1fr); 
             column-gap: 30px;
         }  

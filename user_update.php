@@ -33,7 +33,7 @@
         
         
         $flash_message = $user->save();
-        var_dump($flash_message);
+        
         $_SESSION['flash_message'] = $flash_message;
         
         header('Location:user_show.php?id=' . $login_user->id);

@@ -58,7 +58,7 @@ $cLgreen:var(--color-text-link, #008489);
     }
     & .grid_wrapper{
         grid-template-columns: 1fr 2fr;
-        grid-template-rows: 250px;
+        grid-template-rows: 300px;
         gap:80px;
         display:grid;
         border-top: 0.5px solid rgb(235, 235, 235);
@@ -118,11 +118,8 @@ $cLgreen:var(--color-text-link, #008489);
                 border: red;
                 width: 50px;
                 height: 40px;
-                top: 6%;
+                top: 15%;
                 right: 5%; 
-            @media screen and (max-width: 1023px) {
-                top:10%;
-            }     
             @media screen and (max-width: 768px) {
                 top:5%;
                 right:8%;

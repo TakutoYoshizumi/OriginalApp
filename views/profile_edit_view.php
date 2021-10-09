@@ -48,7 +48,6 @@
                   </svg>
                      <input id="file" type="file" name="image" style="display:none">
                   </label>
-                  <p id="file_desc">写真をアップロード</p>
                   </div>
                </div>
                <div class="grid-item-right">

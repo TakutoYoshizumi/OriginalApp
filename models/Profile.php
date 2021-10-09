@@ -47,15 +47,14 @@
                     
                     return 'プロフィールの作成が成功しました';
                 } else { //更新処理
-                    $stmt = $pdo->prepare('UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE user_id=:id'); //変数値を保持しているのでprepare
+                    $stmt = $pdo->prepare('UPDATE profiles SET age=:age,gender=:gender,job=:job,country=:country,introduction=:introduction,image=:image WHERE user_id=:user_id'); //変数値を保持しているのでprepare
                     
+                    $stmt->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
                     $stmt->bindParam(':age', $this->age, PDO::PARAM_INT);
                     $stmt->bindParam(':gender', $this->gender, PDO::PARAM_STR);
                     $stmt->bindParam(':job', $this->job, PDO::PARAM_STR);
                     $stmt->bindParam(':country', $this->country, PDO::PARAM_STR);
                     $stmt->bindParam(':introduction', $this->introduction, PDO::PARAM_STR);
-                    $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
-                    $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
                     $stmt->bindParam(':image', $this->image, PDO::PARAM_STR);
                     // 実行
                     $stmt->execute();
@@ -88,7 +87,7 @@
             } elseif ($this->job === '') {
                 $errors[] = '仕事内容を入力してください';
             }
-            if ($this->introduction === '') {
+            if (trim($this->introduction) === '') {
                 $errors[] = '自己紹介を入力してください';
             }
             
@@ -99,7 +98,7 @@
         {
             try {
                 $pdo  = self::get_connection();
-                $stmt = $pdo->query('SELECT age, gender,job,country,introduction,image FROM profile');
+                $stmt = $pdo->query('SELECT age, gender,job,country,introduction,image FROM profiles　');
                 // フェッチの結果を、Profileクラスのインスタンスにマッピングする
                 $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Profile');
                 $profiles = $stmt->fetchAll();
@@ -116,7 +115,7 @@
         {
             try {
                 $pdo  = self::get_connection();
-                $stmt = $pdo->query('SELECT profiles.id,profiles.user_id,users.name,profiles.age, profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image FROM profiles JOIN users ON profiles.user_id=users.id');
+                $stmt = $pdo->query('SELECT profiles.id,profiles.user_id,users.name,profiles.age, profiles.gender,profiles.job,profiles.country,profiles.introduction,profiles.image FROM profiles JOIN users ON profiles.user_id=users.id order by profiles.user_id desc');
                 
                 // フェッチの結果を、Profileクラスのインスタンスにマッピングする
                 $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Profile');

@@ -44,7 +44,7 @@
     background: #b0b0b038; }
   .scroll_wrapper .grid_wrapper {
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 250px;
+    grid-template-rows: 300px;
     gap: 80px;
     display: grid;
     border-top: 0.5px solid #ebebeb;
@@ -103,11 +103,8 @@
         border: red;
         width: 50px;
         height: 40px;
-        top: 6%;
+        top: 15%;
         right: 5%; }
-        @media screen and (max-width: 1023px) {
-          .scroll_wrapper .grid_wrapper .grid_img .hurt {
-            top: 10%; } }
         @media screen and (max-width: 768px) {
           .scroll_wrapper .grid_wrapper .grid_img .hurt {
             top: 5%;

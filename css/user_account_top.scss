@@ -93,12 +93,16 @@ main{
             }  
             & li{
               padding-right: 10px;
-            &:nth-child(2){
+            &:nth-child(1){
                 font-weight:bold;
                 & a{
                     color:$cGreen;
                 }
-            }              
+            }     
+            &:nth-child(2){
+                font-weight:bold;
+                @include pink;
+            }     
             }
         }
     }

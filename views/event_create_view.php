@@ -34,11 +34,11 @@
             <form action="event_store.php" method="POST" enctype="multipart/form-data">
                <div class="form form1 current">
                   <div class="form-floating mb-3">
-                    <input type="text"name="name" class="form-control" id="floatingInput" placeholder="イベント名">
+                    <input type="text"name="name" class="form-control" value="<?=$input[name]?>" id="floatingInput" placeholder="イベント名">
                     <label for="floatingInput">イベント名</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="textarea" name="content" class="form-control" id="floatingInput" placeholder="イベント内容">
+                    <input type="textarea" name="content" class="form-control" value="<?=$input[content]?>" id="floatingInput" placeholder="イベント内容">
                     <label for="floatingInput">イベント内容</label>
                   </div>
                   <div class="label d-flex">
@@ -46,7 +46,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                      </svg>
-                     <input id="file" type="file" name="image" style="display:none">
+                     <input id="file" type="file" name="image"  style="display:none">
                   </label>
                   <p id="file_desc">写真をアップロード</p>
                   </div>
@@ -57,26 +57,32 @@
                   <h2>イベントカテゴリー</h2>
                   <?php foreach ($categories as $category): ?>
                   <div class="my-3">
-                  <input type ="checkbox" name="category_id[ ]" value="<?=$category->id?>"><?=$category->type?>
+                  <input type ="checkbox" name="category_id[ ]" value="<?=$category->id?>"
+                  <?php foreach ($category_ids as $e): ?> 
+                  <?php if($category->id === $e) :?>
+                  checked
+                  <?php endif;?>
+                  <?php endforeach; ?>>
+                  <?=$category->type?>
                   </div>
                   <?php endforeach; ?>
                </p>          
                </div>
                <div class="form form3">
                   <div class="form-floating mb-4">
-                       <input type="text"name="place" class="form-control" id="floatingInput" placeholder="開催地">
+                       <input type="text"name="place" class="form-control" value="<?=$input[place]?>"id="floatingInput" placeholder="開催地">
                        <label for="floatingInput">開催地</label>
                   </div>
                   <div class="form-floating mb-4">
-                       <input type="date"name="day" class="form-control" id="floatingInput" placeholder="開催日">
+                       <input type="date"name="day" class="form-control" value="<?=$input[day]?>"id="floatingInput" placeholder="開催日">
                        <label for="floatingInput">開催日</label>
                   </div>
                   <div class="form-floating mb-4">
-                       <input type="time"name="time" class="form-control" id="floatingInput" placeholder="開催時間">
+                       <input type="time"name="time" class="form-control" value="<?=$input[time]?>"id="floatingInput" placeholder="開催時間">
                        <label for="floatingInput">開催時間</label>
                   </div>
                   <div class="form-floating mb-4">
-                       <input type="number"name="participants" class="form-control" id="floatingInput" placeholder="参加人数">
+                       <input type="number"name="participants" class="form-control" value="<?=$input[participants]?>"id="floatingInput" placeholder="参加人数">
                        <label for="floatingInput">参加人数</label>
                   </div>
                   <label class="mb-4 w-100">

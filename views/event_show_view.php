@@ -169,11 +169,15 @@
                             <?php endif;?>
                       　   </div>
                         <div class="event_join">
+                        <?php if ($event->user_id != $login_user->id): ?>
                         <h2>イベントに参加する</h2>
+                        <?php endif;?>
                         <!--開催日が過ぎていない場合-->
                         <?php if((current_time()) <= (set_time($event->day))):?>
                         <?php if (! $event->is_participant($login_user->id)): ?>
                         <?php if(($event->participants) != (count($participants))):?>
+                        <!--ユーザーがイベントホストであれば非表示-->
+                        <?php if(($event->user_id) != ($login_user->id)) :?>
                      　 <form action="participant_store.php" method="POST">
                            <input type="hidden" name="event_id" value="<?=$event->id?>">
                            <label>
@@ -184,6 +188,7 @@
                            <button type="subbmit" style="display:none">イベントに参加</button>
                            </label>
                            <p class="mt-2">参加する</p>
+                           <?php endif;?>
                         </form>
                         <?php else :?>
                         <p>募集人数に達しました</p>
@@ -213,7 +218,9 @@
                            <h2>開催場所</h2>
                            <P id="place"><?=$event->place?></P>
                         </div>
+                        <?php if($event->type != "オンライン") :?>
                          <div id="map"></div>
+                         <?php endif ;?>
                      </div>
                   </section>
                   <section class="grid my-5 py-4 border-top h-auto">

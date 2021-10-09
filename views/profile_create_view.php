@@ -30,14 +30,18 @@
          <section class="forms position-relative">
             <form action="profile_store.php" method="POST" enctype="multipart/form-data">
                <div class="form form1 current">
-                  <select class="form-select form-select-lg mb-3" name="age" id="age" aria-label=".form-select-lg example">
-                    <option selected id="php_age" value="">年齢</option> 
+                  <select class="form-select form-select-lg mb-3" id="age"name="age" id="age"  aria-label=".form-select-lg example">
+                     <?php if(!isset($input[age])):?>
+                    <option selected id="php_age" value="<?=$input[age]?>">年齢</option> 
+                    <?php else :?>
+                    <option selected id="php_age" value="<?=$input[age]?>"><?=$input[age]?>歳</option> 
+                    <?php endif; ?>
                   </select>                
                   <div class="form-floating mb-5">
-                    <input type="text"name="country" class="form-control my-3" id="floatingInput" placeholder="滞在国">
+                    <input id="country" type="text"name="country" class="form-control my-3" id="floatingInput" value="<?=$input[country]?>" placeholder="滞在国">
                     <label for="floatingInput">滞在国</label>
                </div>
-                  <div class="gender my-5">
+                  <div id="gender"class="gender my-5">
                      <label>
                   性別: <input type="radio" name="gender" value="男性" checked>男性
                　　      　<input type="radio" name="gender" value="女性">女性
@@ -54,17 +58,22 @@
                   </label>
                   <p id="file_desc">写真をアップロード</p>
                   </div>
-                  <img src="" class="icon" id="result">
+                     <img src="" class="icon" id="result">
                </div>
                <div class="form form3">
                   <div class="form-floating mb-4">
-                       <input type="text"name="job" class="form-control" id="floatingInput" placeholder="仕事">
+                       <input type="text"name="job" class="form-control" id="floatingInput" value="<?=$input[job]?>" placeholder="仕事">
                        <label for="floatingInput">仕事</label>
                   </div>
                   <div class="form-floating mb-4">
                   <div class="form-floating mb-4">
-                    <textarea id="floatingInput" class="form-control" name='introduction'　placeholder="自己紹介" id="floatingTextarea2" style="height: 150px"></textarea>
+                    <textarea id="floatingInput" class="form-control" name='introduction'　value="<?=$input[introduction]?>" 　placeholder="自己紹介" id="floatingTextarea2"  style="height: 150px"></textarea>
+                     <?php if(!isset($input[introduction])):?>
                     <label for="floatingTextarea2">自己紹介</label>
+                    <?php else :?>
+                    <label for="floatingTextarea2"><?=$input[introduction]?></label>
+                    <?php endif; ?>                    
+                    
                   </div>                     
                   </div>
                   <button id="btn" type="submit" class="btn btn-outline-dark">保存</button>

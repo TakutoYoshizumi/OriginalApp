@@ -1,10 +1,12 @@
 <?php
     //(C)
+    require_once "filters/EventFilter.php";
     require_once 'filters/LoginFilter.php';
     require_once 'models/Profile.php';
     require_once 'models/User.php';
     require_once "models/Event.php";
     require_once "models/Event_Category_Relation.php";
+    
     
     session_start();
     

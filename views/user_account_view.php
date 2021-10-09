@@ -29,7 +29,7 @@
             <div class="slider-menu">
                     <ul class="menu">
                         <li><a href="user_account.php?id<?=$login_user->id?>">アカウント</a></li>
-                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                        <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィール</a></li>
                         <li><a href="message_top.php?id=<?=$login_user->id?>">メッセージ</a></li>
                         <li><a href ="favorite_show.php?id=<?=$login_user->id?>">お気に入り</a></li>
                         <li><a href="logout.php">ログアウト</a></li>
@@ -42,8 +42,12 @@
            <div class="main-item">
                <h2>アカウント</h2>
                <ul>
-                   <li><?=$login_user->name?>さん</li>
+                   <?php if (count($true) !== 0):?>
+                   <li><a href="profile_create.php?id=<?=$login_user->id?>">プロフィール作成へ</a></li>
+                   <li>プロフィールを完成させよう</li>
+                   <?php else :?>
                    <li><a href="profile_show.php?id=<?=$login_user->id?>">プロフィールへ</a></li>
+                   <?php endif; ?> 
                </ul>
            </div>
            <div class="grid">

@@ -62,7 +62,7 @@
             <div class="content d-grid">
                 <?php foreach ($users as $user):?>
                 <div class="grid_wrapper <?=$user->gender?> <?=$user->country?>">
-                    <div class="grid_img"><a href="profile_all_show.php?id=<?=$user->id?>"><img src="upload/<?=$user->image?>">
+                    <div class="grid_img"><a href="profile_all_show.php?id=<?=$user->user_id?>"><img src="upload/<?=$user->image?>">
                         </a></li>
                         </div>
                     <div class="grid_items">

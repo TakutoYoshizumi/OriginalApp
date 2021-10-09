@@ -12,6 +12,7 @@
     //全てのユーザー一覧情報を取得
     $users = Profile::all_profiles();
     
+    
     include_once "views/users_top_view.php";
 
    

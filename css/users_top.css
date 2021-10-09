@@ -40,7 +40,7 @@
       .scroll_wrapper .content {
         grid-template-columns: repeat(3, 1fr);
         column-gap: 30px; } }
-    @media screen and (max-width: 568px) {
+    @media screen and (max-width: 678px) {
       .scroll_wrapper .content {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 30px; } }
