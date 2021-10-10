@@ -14,8 +14,6 @@
     //入力チェック
     //引数の値が既にDBに登録されていればエラーが返る
     $errors = $user->validation($user->account);
-
-
     // 入力エラーがなければ
     if (count($errors) === 0) {
         $flash_message = $user->save();
