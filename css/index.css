@@ -59,11 +59,9 @@ html {
       font-weight: bold;
       color: #e91e63;
       text-shadow: 4px 0px 2px #8f2ba0;
-      letter-spacing: 5px;
       position: absolute;
       top: 8%;
-      text-align: center;
-      opacity: 0; }
+      text-align: center; }
       @media screen and (max-width: 568px) {
         .wrapper .content .animation-title {
           font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
@@ -82,67 +80,63 @@ html {
           letter-spacing: 1px;
           font-size: 20px;
           font-weight: bold; } }
-      .wrapper .content .animation-title .next {
-        font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-        letter-spacing: 2px;
-        font-size: 25px;
-        font-weight: bold;
-        padding-top: 5px; }
-        @media screen and (max-width: 568px) {
-          .wrapper .content .animation-title .next {
-            font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-            letter-spacing: 1px;
-            font-size: 23px;
-            font-weight: bold; } }
-        @media screen and (max-width: 488px) {
-          .wrapper .content .animation-title .next {
-            font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-            letter-spacing: 1px;
-            font-size: 20px;
-            font-weight: bold; } }
-        @media screen and (max-width: 360px) {
-          .wrapper .content .animation-title .next {
-            font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
-            letter-spacing: 1px;
-            font-size: 18px;
-            font-weight: bold; } }
-      .wrapper .content .animation-title.inview {
-        opacity: 1; }
-        .wrapper .content .animation-title.inview .char {
-          display: inline-block;
-          animation-name: animation-frame;
-          animation-duration: 0.5s;
-          animation-timing-function: cubic-bezier(0.39, 1.57, 0.58, 1);
-          animation-delay: 0s;
-          animation-iteration-count: 1;
-          animation-direction: normal;
-          animation-fill-mode: both; }
-          .wrapper .content .animation-title.inview .char:nth-child(1) {
-            animation-delay: 0.04s; }
-          .wrapper .content .animation-title.inview .char:nth-child(2) {
-            animation-delay: 0.08s; }
-          .wrapper .content .animation-title.inview .char:nth-child(3) {
-            animation-delay: 0.12s; }
-          .wrapper .content .animation-title.inview .char:nth-child(4) {
-            animation-delay: 0.16s; }
-          .wrapper .content .animation-title.inview .char:nth-child(5) {
-            animation-delay: 0.2s; }
-          .wrapper .content .animation-title.inview .char:nth-child(6) {
-            animation-delay: 0.24s; }
-          .wrapper .content .animation-title.inview .char:nth-child(7) {
-            animation-delay: 0.28s; }
-          .wrapper .content .animation-title.inview .char:nth-child(8) {
-            animation-delay: 0.32s; }
-          .wrapper .content .animation-title.inview .char:nth-child(9) {
-            animation-delay: 0.36s; }
-          .wrapper .content .animation-title.inview .char:nth-child(10) {
-            animation-delay: 0.4s; }
-          .wrapper .content .animation-title.inview .char:nth-child(11) {
-            animation-delay: 0.44s; }
-          .wrapper .content .animation-title.inview .char:nth-child(12) {
-            animation-delay: 0.48s; }
-          .wrapper .content .animation-title.inview .char:nth-child(13) {
-            animation-delay: 0.52s; }
+    .wrapper .content .animation-title2 {
+      font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+      letter-spacing: 5px;
+      font-size: 25px;
+      font-weight: bold;
+      font-weight: 600;
+      padding-top: 60px; }
+      @media screen and (max-width: 568px) {
+        .wrapper .content .animation-title2 {
+          font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+          letter-spacing: 3px;
+          font-size: 20px;
+          font-weight: bold;
+          padding-top: 50px; } }
+      @media screen and (max-width: 488px) {
+        .wrapper .content .animation-title2 {
+          font-family: "SF Pro JP","SF Pro Display","SF Pro Icons","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Helvetica Neue","Helvetica","Arial",sans-serif;
+          letter-spacing: 3px;
+          font-size: 18px;
+          font-weight: bold; } }
+    .wrapper .content .inview {
+      opacity: 1; }
+      .wrapper .content .inview .char {
+        display: inline-block;
+        animation-name: animation-frame;
+        animation-duration: 0.5s;
+        animation-timing-function: cubic-bezier(0.39, 1.57, 0.58, 1);
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both; }
+        .wrapper .content .inview .char:nth-child(1) {
+          animation-delay: 0.04s; }
+        .wrapper .content .inview .char:nth-child(2) {
+          animation-delay: 0.08s; }
+        .wrapper .content .inview .char:nth-child(3) {
+          animation-delay: 0.12s; }
+        .wrapper .content .inview .char:nth-child(4) {
+          animation-delay: 0.16s; }
+        .wrapper .content .inview .char:nth-child(5) {
+          animation-delay: 0.2s; }
+        .wrapper .content .inview .char:nth-child(6) {
+          animation-delay: 0.24s; }
+        .wrapper .content .inview .char:nth-child(7) {
+          animation-delay: 0.28s; }
+        .wrapper .content .inview .char:nth-child(8) {
+          animation-delay: 0.32s; }
+        .wrapper .content .inview .char:nth-child(9) {
+          animation-delay: 0.36s; }
+        .wrapper .content .inview .char:nth-child(10) {
+          animation-delay: 0.4s; }
+        .wrapper .content .inview .char:nth-child(11) {
+          animation-delay: 0.44s; }
+        .wrapper .content .inview .char:nth-child(12) {
+          animation-delay: 0.48s; }
+        .wrapper .content .inview .char:nth-child(13) {
+          animation-delay: 0.52s; }
     .wrapper .content p {
       padding-top: 80px; }
     @media screen and (max-width: 896px) {

@@ -13,24 +13,9 @@
    <body>
       <div id="global-container" class="wrapper">
          <div class="content">
-            <div class="animation-title inview">
-               <span class="char">A</span>
-               <span class="char">w</span>
-               <span class="char">s</span>
-               <span class="char">o</span>
-               <span class="char">m</span>
-               <span class="char">e</span>
-               <div class="next">
-               <span class="char">&nbsp;</span>
-               <span class="char">M</span>
-               <span class="char">e</span>
-               <span class="char">e</span>
-               <span class="char">t</span>
-               <span class="char">u</span>
-               <span class="char">p</span>
-               </div>
+            <div class="animation-title">Awsome Meetup
             </div>
-            <p>Welcome</p>
+            <p class="animation-title2">Welcome</p>
             <!--入力エラー表示-->
             <div class="flesh_message my-2">
                <?php if ($errors !== null):?>
@@ -67,5 +52,6 @@
          </div>
       </div>
       </div>
+      <script src="js/animation-title.js"></script> 
    </body>
 </html>

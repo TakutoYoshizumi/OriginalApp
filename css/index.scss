@@ -61,14 +61,13 @@ html{
         }          
     
     & .animation-title{
-        @include title(36px,2px);;
+        @include title(36px,2px);
         color: #e91e63;
         text-shadow: 4px 0px 2px #8f2ba0;
-        letter-spacing:5px;
         position: absolute;
         top:8%;
         text-align: center;
-        opacity:0;
+        
         
         @media screen and (max-width: 568px) {
           @include title(25px,1px);
@@ -80,27 +79,25 @@ html{
         @media screen and (max-width: 360px) {
           @include title(20px,1px);
         }
-        
-        & .next{
-            @include title(25px,2px);
-            padding-top:5px;
-            @media screen and (max-width: 568px) {
-              @include title(23px,1px);
+    }
+    & .animation-title2{
+        @include title(25px,5px);
+        font-weight: 600;
+        padding-top: 60px;
+          @media screen and (max-width: 568px) {
+              @include title(20px,3px);
+              padding-top:50px;
               
             }
             @media screen and (max-width: 488px) {
-              @include title(20px,1px);
+              @include title(18px,3px);
             }
-            @media screen and (max-width: 360px) {
-              @include title(18px,1px);
-            }            
-        }
+    }
         
-
-         &.inview {
-            opacity: 1;
+     .inview {
+        opacity: 1;
         
-            & .char {
+        & .char {
               display: inline-block;
         
               @include animation(
@@ -116,7 +113,7 @@ html{
                   }
               }
             }
-  }
+  
     }
     & p{
         padding-top: 80px;

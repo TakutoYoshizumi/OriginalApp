@@ -13,7 +13,7 @@
     
     //セッションからメーセージを取得
     $flash_message             = $_SESSION['flash_message'];
- 
+    $_SESSION['flash_message'] = null;
     //ユーザーidからユーザーのプロフィール情報を取得
     $profile = Profile::find_by_user_id($id);
     

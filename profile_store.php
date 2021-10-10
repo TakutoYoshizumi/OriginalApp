@@ -10,8 +10,7 @@
     //セッションからログインしているログイン情報を取得
     $login_user = $_SESSION["login_user"];
     $profile = Profile::find_by_user_id($login_user->id);
-
-
+    
     //入力情報を取得
     $age          = $_POST["age"];
     $gender       = $_POST["gender"];
@@ -32,6 +31,7 @@
     
     //   //画像が選択されていれば
     if ($_FILES["image"]["size"] !== 0) {
+        $profile->image = $image;
         //uploadディレクトリにファイルを保存
         $file = 'upload/' . $image;
         move_uploaded_file($_FILES['image']['tmp_name'], $file);
@@ -40,8 +40,7 @@
     } else {
         $image = 'user_pic.jpg';
     }
-    
-    // 入力エラーが１つもなければ
+    // // 入力エラーが１つもなければ
     if (count($errors) === 0) {
         
         //データベースにプロフィールを保存
